@@ -15,10 +15,10 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "Exercicio")
-public class Exercicio {
+public class ExercicioEntity {
     
-    @ManyToOne(targetEntity = Treino.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Treino treino;
+    @ManyToOne(targetEntity = TreinoEntity.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private TreinoEntity treino;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

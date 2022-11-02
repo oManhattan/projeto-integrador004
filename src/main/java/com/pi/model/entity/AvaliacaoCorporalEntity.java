@@ -17,10 +17,10 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "AvaliacaoCorporal")
-public class AvaliacaoCorporal {
+public class AvaliacaoCorporalEntity {
     
-    @ManyToOne(targetEntity = Cliente.class, fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    private Cliente cliente;
+    @ManyToOne(targetEntity = ClienteEntity.class, fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    private ClienteEntity cliente;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

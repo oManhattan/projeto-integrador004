@@ -6,9 +6,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Data;
 
 @Data
-@JsonPropertyOrder({"nome", "sobrenome", "email", "cpf", "cnpj"})
-public class ProfissionalPerfil {
+@JsonPropertyOrder({"id", "nome", "sobrenome", "email", "cpf", "cnpj"})
+public class ProfissionalResponse {
     
+    @JsonProperty(namespace = "id")
+    private Long id;
+
     @JsonProperty(namespace = "nome")
     private String nome;
 

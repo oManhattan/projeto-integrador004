@@ -19,13 +19,13 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "Treino")
-public class Treino {
+public class TreinoEntity {
     
-    @ManyToOne(targetEntity = Cliente.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Cliente cliente;
+    @ManyToOne(targetEntity = ClienteEntity.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private ClienteEntity cliente;
 
-    @OneToMany(targetEntity = Exercicio.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY) 
-    private List<Exercicio> exercicios = new ArrayList<>();
+    @OneToMany(targetEntity = ExercicioEntity.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY) 
+    private List<ExercicioEntity> exercicios = new ArrayList<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

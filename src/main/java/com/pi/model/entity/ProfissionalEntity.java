@@ -1,6 +1,5 @@
 package com.pi.model.entity;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -19,14 +17,11 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "Cliente")
-public class Cliente {
+@Table(name = "Profissional")
+public class ProfissionalEntity {
     
-    @OneToMany(targetEntity = Treino.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-    private List<Treino> treinos = new ArrayList<>();
-
-    @ManyToOne(targetEntity = Profissional.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Profissional profissional;
+    @OneToMany(targetEntity = ClienteEntity.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<ClienteEntity> clientes = new ArrayList<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,22 +34,16 @@ public class Cliente {
     @Column(name = "sobrenome", nullable = false, unique = false)
     private String sobrenome;
 
-    @Column(name = "data_nascimento", nullable = false, unique = false)
-    private LocalDate dataNascimento;
-
-    @Column(name = "genero", nullable = false, unique = false)
-    private GeneroPessoa genero;
-
-    @Column(name = "altura", nullable = false, unique = false)
-    private Float altura;
-
     @Column(name = "email", nullable = false, unique = true)
     private String email;
+
+    @Column(name = "cpf", nullable = false, unique = true)
+    private String cpf;
+
+    @Column(name = "cnpj", nullable = true, unique = true)
+    private String cnpj;
 
     @Column(name = "senha", nullable = false, unique = false)
     private String senha;
 
-    public Cliente() {
-        
-    }
 }

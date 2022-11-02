@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "Exercicio")
 public class Exercicio {
@@ -20,7 +23,7 @@ public class Exercicio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "nome")
     private String nome;
@@ -33,10 +36,5 @@ public class Exercicio {
 
     @Column(name = "repeticao")
     private Integer repeticao;
-
-    public Exercicio() {
-
-    }
-
     
 }

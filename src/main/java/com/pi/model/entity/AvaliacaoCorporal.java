@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "AvaliacaoCorporal")
 public class AvaliacaoCorporal {
@@ -22,7 +25,7 @@ public class AvaliacaoCorporal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "data_realizacao")
     private LocalDate dataRealizacao;
@@ -89,9 +92,5 @@ public class AvaliacaoCorporal {
     
     @Column(name = "panturrilha_direita")
     private Integer panturrilhaDireita;
-
-    public AvaliacaoCorporal() {
-        
-    }
 
 }

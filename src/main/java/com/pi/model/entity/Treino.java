@@ -14,6 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "Treino")
 public class Treino {
@@ -27,7 +30,7 @@ public class Treino {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "titulo")
     private Character titulo;
@@ -35,7 +38,4 @@ public class Treino {
     @Column(name = "subtitulo")
     private String subtitulo;
 
-    public Treino() {
-
-    }
 }

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.pi.model.entity.Treino;
 
 @Repository
-public interface RepoTreino extends JpaRepository<Treino, Integer> {
+public interface RepoTreino extends JpaRepository<Treino, Long> {
     
 }

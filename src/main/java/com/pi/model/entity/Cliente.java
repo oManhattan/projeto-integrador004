@@ -15,6 +15,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "Cliente")
 public class Cliente {
@@ -28,7 +31,7 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Integer id;
+    private Long id;
 
     @Column(name = "nome", nullable = false, unique = false)
     private String nome;
@@ -53,17 +56,5 @@ public class Cliente {
 
     public Cliente() {
         
-    }
-
-    public Cliente(Integer id, String nome, String sobrenome, LocalDate dataNascimento, GeneroPessoa genero,
-            Float altura, String email, String senha) {
-        this.id = id;
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.dataNascimento = dataNascimento;
-        this.genero = genero;
-        this.altura = altura;
-        this.email = email;
-        this.senha = senha;
     }
 }

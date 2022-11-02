@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.pi.model.entity.Exercicio;
 
 @Repository
-public interface RepoExercicio extends JpaRepository<Exercicio, Integer> {
+public interface RepoExercicio extends JpaRepository<Exercicio, Long> {
     
 }

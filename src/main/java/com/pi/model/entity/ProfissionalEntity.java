@@ -1,6 +1,5 @@
 package com.pi.model.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,15 +12,23 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
 @Table(name = "Profissional")
 public class ProfissionalEntity {
-    
+
     @OneToMany(targetEntity = ClienteEntity.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<ClienteEntity> clientes = new ArrayList<>();
+    private List<ClienteEntity> clientes;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

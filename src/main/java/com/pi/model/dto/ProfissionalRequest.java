@@ -7,14 +7,17 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-@Builder(builderMethodName = "profissionalResponseBuilder")
+@Builder(builderMethodName = "profissionalRequestBuilder")
 @Getter
 @Setter
-@JsonPropertyOrder({"id", "email", "nome", "sobrenome", "cpf", "cnpj"})
-public class ProfissionalResponse {
+@JsonPropertyOrder({"email", "senha", "nome", "sobrenome", "cpf", "cnpj"})
+public class ProfissionalRequest {
     
-    @JsonProperty(namespace = "id")
-    private Long id;
+    @JsonProperty(namespace = "email")
+    private String email;
+
+    @JsonProperty(namespace = "senha")
+    private String senha;
 
     @JsonProperty(namespace = "nome")
     private String nome;
@@ -22,12 +25,9 @@ public class ProfissionalResponse {
     @JsonProperty(namespace = "sobrenome")
     private String sobrenome;
 
-    @JsonProperty(namespace = "email")
-    private String email;
-
     @JsonProperty(namespace = "cpf")
     private String cpf;
-
+    
     @JsonProperty(namespace = "cnpj")
     private String cnpj;
 }

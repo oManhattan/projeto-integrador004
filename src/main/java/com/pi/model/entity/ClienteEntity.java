@@ -1,7 +1,6 @@
 package com.pi.model.entity;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,15 +14,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Builder
+@Getter
+@Setter
 @Entity
 @Table(name = "Cliente")
 public class ClienteEntity {
     
     @OneToMany(targetEntity = TreinoEntity.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-    private List<TreinoEntity> treinos = new ArrayList<>();
+    private List<TreinoEntity> treinos;
 
     @ManyToOne(targetEntity = ProfissionalEntity.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private ProfissionalEntity profissional;
@@ -32,6 +35,15 @@ public class ClienteEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
+
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
+
+    @Column(name = "senha", nullable = false, unique = false)
+    private String senha;
+    
+    @Column(name = "cpf", nullable = false, unique = true)
+    private String cpf;
 
     @Column(name = "nome", nullable = false, unique = false)
     private String nome;
@@ -48,13 +60,4 @@ public class ClienteEntity {
     @Column(name = "altura", nullable = false, unique = false)
     private Float altura;
 
-    @Column(name = "email", nullable = false, unique = true)
-    private String email;
-
-    @Column(name = "senha", nullable = false, unique = false)
-    private String senha;
-
-    public ClienteEntity() {
-        
-    }
 }

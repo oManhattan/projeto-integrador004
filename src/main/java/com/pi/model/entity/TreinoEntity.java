@@ -1,6 +1,5 @@
 package com.pi.model.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,10 +13,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
 @Table(name = "Treino")
 public class TreinoEntity {
     
@@ -25,7 +32,7 @@ public class TreinoEntity {
     private ClienteEntity cliente;
 
     @OneToMany(targetEntity = ExercicioEntity.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY) 
-    private List<ExercicioEntity> exercicios = new ArrayList<>();
+    private List<ExercicioEntity> exercicios;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

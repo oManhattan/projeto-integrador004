@@ -73,11 +73,8 @@ public class ProfissionalService {
         }
 
         try {
-            System.out.println("Antes da autentificação");
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-            System.out.println("Depois de autentificação");
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            System.out.println("Depois de salvar o contexto");
             return ProfissionalConverter.toResponse(optionalProfissional.get());
         } catch (Exception e) {
             throw new Exception("Senha incorreta.");

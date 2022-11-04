@@ -1,6 +1,8 @@
 package com.pi.logic.service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -48,6 +50,7 @@ public class ClienteService {
     public ClienteResponse registrar(String token, ClienteRequest request) throws Exception {
         token = jwtUtil.formatToken(token);
         String profissionalUsername = jwtUtil.getUsernameFromToken(token);
+
         Optional<ProfissionalEntity> optionalProfissional = profissionalRepository
                 .encontrarPorEmail(profissionalUsername);
 
@@ -64,17 +67,13 @@ public class ClienteService {
             throw new Exception("CPF já cadastrado.");
         }
 
-        System.out.println(request.toString());
         String generatedPassword = passwordGenerator.generateCommonLangPassword();
         ClienteEntity entity = ClienteConverter.toEntity(request);
-        System.out.println("Depois de criar entidade");
         entity.setProfissional(optionalProfissional.get());
-        System.out.println("Profissional adicionado");
         entity.setEmail(request.getEmail().toLowerCase());
-        System.out.println("Antes da criacao da senha");
         entity.setSenha(passwordEncoder.encode(generatedPassword));
-        System.out.println("tentando salvar o cliente");
-        return ClienteConverter.toResponse(clienteRepository.save(entity));
+        ClienteResponse response = ClienteConverter.toResponse(clienteRepository.save(entity));
+        return response;
     }
 
     public ClienteResponse authenticate(LoginRequest request) throws Exception {
@@ -95,6 +94,14 @@ public class ClienteService {
         }
     }
 
-    
+    public List<ClienteResponse> todosClientesDoProfissional(String token) throws Exception {
+        String formattedToken = jwtUtil.formatToken(token);
+        Long profissionalID = jwtUtil.getIdFromToken(formattedToken);
+        List<ClienteEntity> entityList = clienteRepository.todosClientesComProfissional(profissionalID);
+        return entityList
+                .stream()
+                .map((cliente) -> ClienteConverter.toResponse(cliente))
+                .collect(Collectors.toList());
+    }
 
 }

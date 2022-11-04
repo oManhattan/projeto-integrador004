@@ -86,7 +86,7 @@ public class ProfissionalService {
         } catch (Exception e) {
             throw new Exception("Senha incorreta.");
         } finally {
-            
+
         }
     } 
 

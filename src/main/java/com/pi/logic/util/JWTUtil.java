@@ -31,6 +31,12 @@ public class JWTUtil implements Serializable {
         return claimsResolver.apply(claims);
     }
 
+    public Long getIdFromToken(String token) {
+        Claims claims = getAllClaimsFromToken(token);
+        Long id = ((Number) claims.get("user_id")).longValue();
+        return id; 
+    }
+
     public String getUsernameFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);
     }
@@ -54,17 +60,22 @@ public class JWTUtil implements Serializable {
     }
 
     public String formatToken(String token) throws Exception {
-        if (token.isEmpty() || !token.startsWith("Bearer")) {
+
+        String formattedToken = token.substring(7);
+
+        if (token.isEmpty()) {
             throw new Exception("Token inválido.");
         }
-        if (isTokenExpired(token)) {
+
+        if (isTokenExpired(formattedToken)) {
             throw new Exception("Token expirado.");
         }
-        return token.substring(7);
+
+        return formattedToken;
     }
 
     private Boolean isTokenExpired(String token) {
-        final Date expiration = getExpirationDateFromToken(token);
+        Date expiration = getExpirationDateFromToken(token);
         return expiration.before(new Date());
     }
 

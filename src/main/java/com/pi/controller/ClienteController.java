@@ -1,8 +1,11 @@
 package com.pi.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -26,13 +29,17 @@ public class ClienteController {
             ClienteResponse response = clienteService.registrar(token, request);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (Exception e) {
-            System.out.println(e);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 
-    // @GetMapping("/all")
-    // public ResponseEntity<?> getAllClients(@RequestHeader(name = "Authorization") String token) {
-
-    // }
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllClients(@RequestHeader(name = "Authorization") String token) {
+        try {
+            List<ClienteResponse> response = clienteService.todosClientesDoProfissional(token);
+            return ResponseEntity.ok().body(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
 }

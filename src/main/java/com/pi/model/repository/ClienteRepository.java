@@ -22,5 +22,5 @@ public interface ClienteRepository extends JpaRepository<ClienteEntity, Long> {
     Optional<List<ClienteEntity>> encontrarPorEmailCpf(String email, String cpf);
 
     @Query(nativeQuery = true, value = "SELECT * FROM Cliente c WHERE c.profissional_id = ?1")
-    List<ClienteEntity> todosClientes(Long id);
+    List<ClienteEntity> todosClientesComProfissional(Long id);
 }

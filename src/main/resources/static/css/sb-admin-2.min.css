@@ -53,6 +53,17 @@ html {
     -webkit-tap-highlight-color: transparent
 }
 
+#linha{
+    cursor: pointer;
+    transition: 0.5s;
+}
+#linha:hover{
+    background-color: #fca311;
+    color: white;
+    font-size: 1.1em;
+   
+}
+
 article,
 aside,
 figcaption,
@@ -2277,7 +2288,7 @@ textarea.form-control {
 }
 
 .form-group {
-    margin-bottom: 1rem
+    margin-bottom: 2rem
 }
 
 .form-text {
@@ -4986,7 +4997,7 @@ input[type=submit].btn-block {
 }
 
 .card-header {
-    padding: .75rem 1.25rem;
+    padding: .5rem 1.25rem;
     margin-bottom: 0;
     background-color: #f8f9fc;
     border-bottom: 1px solid #e3e6f0
@@ -8583,10 +8594,10 @@ button.bg-dark:hover {
     padding-right: 1rem !important
 }
 
-.pb-3,
+/* .pb-3,
 .py-3 {
     padding-bottom: 1rem !important
-}
+} */
 
 .pl-3,
 .px-3 {
@@ -11904,7 +11915,7 @@ a:focus {
     padding: 0;
     overflow: hidden;
     display: inline-flex;
-    align-items: stretch;
+    align-items: center;
     justify-content: center
 }
 

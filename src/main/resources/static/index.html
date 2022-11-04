@@ -157,9 +157,11 @@
                     <h1 class="h3 mb-2 text-gray-800">Meus clientes</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3" style="display: flex;align-items: center;justify-content: space-between;">
+                        <div class="card-header py-3"
+                            style="display: flex;align-items: center;justify-content: space-between;">
                             <h6 class="m-0 font-weight-bold text-primary">Lista completa</h6>
-                            <a href="branco.html" class="btn btn-primary btn-icon-split btn-lg mt-3 mb-3" style="height: 35px; font-size: medium; ">
+                            <a href="branco.html" class="btn btn-primary btn-icon-split btn-lg mt-3 mb-3"
+                                style="height: 35px; font-size: medium; ">
                                 <span class="icon text-white-50">
                                     <i class="fa fa-solid fa-plus"></i>
                                 </span>
@@ -178,7 +180,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr onclick="location.href = 'tabelaclientes.html'" data-arg1="teste" id="linha">
+                                        <tr onclick="location.href = 'tabelaclientes.html'" data-arg1="teste"
+                                            id="linha">
                                             <td>1</td>
                                             <td>João Vitor Richard</td>
                                             <td>teste@teste.com</td>
@@ -190,10 +193,10 @@
                                             <td>teste@teste.com</td>
 
                                         </tr>
-                                        <tr onclick="alert('Aqui')" id="linha">
-                                            <td>1</td>
-                                            <td>João Vitor Richard</td>
-                                            <td>teste@teste.com</td>
+                                        <tr onclick="getId(this)" id="linha">
+                                            <td>3</td>
+                                            <td>Teste</td>
+                                            <td>2@teste.com</td>
 
                                         </tr>
                                     </tbody>
@@ -266,6 +269,17 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
 
+    <script>
+        function getId(elemento) {
+
+   
+            let id = elemento.getElementsByClassName('sorting_1')[0].innerHTML
+            localStorage.setItem('id', id);
+
+        }
+    
+    </script>
 </body>
+
 
 </html>

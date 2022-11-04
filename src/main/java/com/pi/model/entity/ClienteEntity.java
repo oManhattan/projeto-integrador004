@@ -61,7 +61,4 @@ public class ClienteEntity {
     @Column(name = "genero", nullable = false, unique = false)
     private GeneroPessoa genero;
 
-    @Column(name = "altura", nullable = false, unique = false)
-    private Float altura;
-
 }

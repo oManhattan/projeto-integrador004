@@ -36,7 +36,4 @@ public class ClienteResponse {
 
     @JsonProperty(namespace = "genero")
     private GeneroPessoa genero;
-
-    @JsonProperty(namespace = "altura")
-    private Float altura;
 }

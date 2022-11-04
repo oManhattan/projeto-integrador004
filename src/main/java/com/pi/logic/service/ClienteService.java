@@ -11,10 +11,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.pi.logic.converter.ClienteConverter;
+import com.pi.logic.util.JWTUtil;
 import com.pi.model.dto.ClienteRequest;
 import com.pi.model.dto.ClienteResponse;
 import com.pi.model.dto.LoginRequest;
 import com.pi.model.entity.ClienteEntity;
+import com.pi.model.entity.ProfissionalEntity;
 import com.pi.model.repository.ClienteRepository;
 import com.pi.model.repository.ProfissionalRepository;
 
@@ -33,6 +35,9 @@ public class ClienteService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private JWTUtil jwtUtil;
+
     public Boolean emailExiste(String email) {
         return clienteRepository.encontrarPorEmail(email).isPresent();
     }
@@ -41,7 +46,14 @@ public class ClienteService {
         return clienteRepository.encontrarPorCPF(cpf).isPresent();
     }
 
-    public ClienteResponse registrar(ClienteRequest request) throws Exception {
+    public ClienteResponse registrar(String token, ClienteRequest request) throws Exception {
+
+        String profissionalUsername = jwtUtil.getUsernameFromToken(token);
+        Optional<ProfissionalEntity> optionalProfissional = profissionalRepository.encontrarPorEmail(profissionalUsername);
+
+        if (optionalProfissional.isEmpty()) {
+            throw new Exception("Token inválido. Faça login novamente.");
+        }
 
         if (emailExiste(request.getEmail()) || profissionalRepository.encontrarPorEmail(request.getEmail()).isPresent()) {
             throw new Exception("E-mail já cadastrado.");
@@ -52,6 +64,7 @@ public class ClienteService {
         }
 
         ClienteEntity entity = ClienteConverter.toEntity(request);
+        entity.setProfissional(optionalProfissional.get());
         entity.setEmail(request.getEmail().toLowerCase());
         entity.setSenha(passwordEncoder.encode(request.getSenha()));
 

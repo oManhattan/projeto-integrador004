@@ -17,7 +17,6 @@ public class ClienteConverter {
         .cpf(request.getCpf())
         .dataNascimento(request.getDataNascimento())
         .genero(request.getGenero())
-        .altura(request.getAltura())
         .treinos(new ArrayList<>())
         .build();
     }
@@ -31,7 +30,6 @@ public class ClienteConverter {
         .cpf(entity.getCpf())
         .dataNascimento(entity.getDataNascimento())
         .genero(entity.getGenero())
-        .altura(entity.getAltura())
         .build();
     }
 

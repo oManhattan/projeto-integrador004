@@ -78,6 +78,8 @@ public class ProfissionalService {
             return ProfissionalConverter.toResponse(optionalProfissional.get());
         } catch (Exception e) {
             throw new Exception("Senha incorreta.");
+        } finally {
+            
         }
     } 
 

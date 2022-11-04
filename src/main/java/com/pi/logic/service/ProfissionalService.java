@@ -10,6 +10,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.pi.logic.converter.ProfissionalConverter;
+import com.pi.logic.util.JWTUtil;
+import com.pi.logic.util.Pair;
 import com.pi.model.dto.LoginRequest;
 import com.pi.model.dto.ProfissionalRequest;
 import com.pi.model.dto.ProfissionalResponse;
@@ -31,6 +33,9 @@ public class ProfissionalService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private JWTUtil jwtUtil;
 
     public boolean emailExiste(String email) {
         return profissionalRepository.encontrarPorEmail(email).isPresent();
@@ -64,7 +69,7 @@ public class ProfissionalService {
         return ProfissionalConverter.toResponse(profissionalRepository.save(entity));
     }
 
-    public ProfissionalResponse authenticate(LoginRequest request) throws Exception {
+    public Pair<ProfissionalResponse, String> authenticate(LoginRequest request) throws Exception {
 
         Optional<ProfissionalEntity> optionalProfissional = profissionalRepository.encontrarPorEmail(request.getEmail());
 
@@ -75,7 +80,9 @@ public class ProfissionalService {
         try {
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            return ProfissionalConverter.toResponse(optionalProfissional.get());
+            String token = jwtUtil.generateToken(optionalProfissional.get());
+            ProfissionalResponse response = ProfissionalConverter.toResponse(optionalProfissional.get());
+            return new Pair<ProfissionalResponse,String>(response, token);
         } catch (Exception e) {
             throw new Exception("Senha incorreta.");
         } finally {

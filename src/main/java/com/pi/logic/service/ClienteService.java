@@ -94,4 +94,7 @@ public class ClienteService {
             throw new Exception("Senha incorreta.");
         }
     }
+
+    
+
 }

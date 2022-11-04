@@ -30,4 +30,9 @@ public class ClienteController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
+
+    // @GetMapping("/all")
+    // public ResponseEntity<?> getAllClients(@RequestHeader(name = "Authorization") String token) {
+
+    // }
 }

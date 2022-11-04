@@ -2,12 +2,14 @@ package com.pi.logic.util;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+
+import com.pi.model.entity.ClienteEntity;
+import com.pi.model.entity.ProfissionalEntity;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -37,9 +39,13 @@ public class JWTUtil implements Serializable {
         return getClaimFromToken(token, Claims::getExpiration);
     }
 
-    public String generateToken(UserDetails userdetails) {
-        Map<String, Object> claims = new HashMap<>();
-        return doGenerateToken(claims, userdetails.getUsername());
+    public String generateToken(ProfissionalEntity entity) {
+        Map<String, Object> claims = Map.of("user_id", entity.getId());
+        return doGenerateToken(claims, entity.getEmail());
+    }
+
+    public String generateToken(ClienteEntity entity) {
+        return null;
     }
 
     public Boolean validateToken(String token, UserDetails userDetails) {
@@ -47,7 +53,13 @@ public class JWTUtil implements Serializable {
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
-    public String formatToken(String token) {
+    public String formatToken(String token) throws Exception {
+        if (token.isEmpty() || !token.startsWith("Bearer")) {
+            throw new Exception("Token inválido.");
+        }
+        if (isTokenExpired(token)) {
+            throw new Exception("Token expirado.");
+        }
         return token.substring(7);
     }
 
@@ -58,7 +70,7 @@ public class JWTUtil implements Serializable {
 
     private String doGenerateToken(Map<String, Object> claims, String subject) {
         return Jwts.builder()
-                .setClaims(claims)
+                .addClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))

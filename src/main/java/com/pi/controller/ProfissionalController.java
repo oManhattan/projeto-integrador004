@@ -3,15 +3,13 @@ package com.pi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pi.logic.service.ProfissionalService;
-import com.pi.logic.service.UserLoginService;
-import com.pi.logic.util.JWTUtil;
+import com.pi.logic.util.Pair;
 import com.pi.model.dto.LoginRequest;
 import com.pi.model.dto.ProfissionalRequest;
 import com.pi.model.dto.ProfissionalResponse;
@@ -23,18 +21,12 @@ public class ProfissionalController {
     @Autowired
     private ProfissionalService profissionalService;
 
-    @Autowired
-    private UserLoginService userLoginService;
-
-    @Autowired
-    private JWTUtil jwtUtil;
-
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
         try {
-            ProfissionalResponse response = profissionalService.authenticate(request);
-            UserDetails userDetails = userLoginService.loadUserByUsername(request.getEmail());
-            String token = jwtUtil.generateToken(userDetails);
+            Pair<ProfissionalResponse, String> pair = profissionalService.authenticate(request);
+            ProfissionalResponse response = pair.getA();
+            String token = pair.getB();
             return ResponseEntity.ok().header("Authorization", token).body(response);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
@@ -50,5 +42,9 @@ public class ProfissionalController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
+
+    // public ResponseEntity<?> todosClientes(@RequestHeader(name = "Authorization") String token) {
+
+    // }
 
 }

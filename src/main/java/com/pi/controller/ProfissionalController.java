@@ -35,7 +35,7 @@ public class ProfissionalController {
             ProfissionalResponse response = profissionalService.authenticate(request);
             UserDetails userDetails = userLoginService.loadUserByUsername(request.getEmail());
             String token = jwtUtil.generateToken(userDetails);
-            return ResponseEntity.ok().header("Authenticate", token).body(response);
+            return ResponseEntity.ok().header("Authorization", token).body(response);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }

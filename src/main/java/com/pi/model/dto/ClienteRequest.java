@@ -2,6 +2,7 @@ package com.pi.model.dto;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.pi.model.entity.GeneroPessoa;
@@ -9,17 +10,19 @@ import com.pi.model.entity.GeneroPessoa;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Builder()
 @Getter
 @Setter
-@JsonPropertyOrder({"email", "senha", "nome", "sobrenome", "cpf", "dataNascimento", "genero", "altura"})
+@ToString
+@JsonPropertyOrder({"email", "nome", "sobrenome", "cpf", "dataNascimento", "genero"})
 public class ClienteRequest {
     
     @JsonProperty(namespace = "email")
     private String email;
 
-    @JsonProperty(namespace = "senha")
+    @JsonIgnore
     private String senha;
 
     @JsonProperty(namespace = "nome")

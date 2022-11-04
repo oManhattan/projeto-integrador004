@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.pi.logic.converter.ClienteConverter;
 import com.pi.logic.util.JWTUtil;
+import com.pi.logic.util.PasswordGeneratorUtil;
 import com.pi.model.dto.ClienteRequest;
 import com.pi.model.dto.ClienteResponse;
 import com.pi.model.dto.LoginRequest;
@@ -22,21 +23,19 @@ import com.pi.model.repository.ProfissionalRepository;
 
 @Service
 public class ClienteService {
-    
+
     @Autowired
     private ClienteRepository clienteRepository;
-
     @Autowired
     private ProfissionalRepository profissionalRepository;
-
     @Autowired
     private AuthenticationManager authenticationManager;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
-
     @Autowired
     private JWTUtil jwtUtil;
+    @Autowired
+    private PasswordGeneratorUtil passwordGenerator;
 
     public Boolean emailExiste(String email) {
         return clienteRepository.encontrarPorEmail(email).isPresent();
@@ -47,15 +46,17 @@ public class ClienteService {
     }
 
     public ClienteResponse registrar(String token, ClienteRequest request) throws Exception {
-
+        token = jwtUtil.formatToken(token);
         String profissionalUsername = jwtUtil.getUsernameFromToken(token);
-        Optional<ProfissionalEntity> optionalProfissional = profissionalRepository.encontrarPorEmail(profissionalUsername);
+        Optional<ProfissionalEntity> optionalProfissional = profissionalRepository
+                .encontrarPorEmail(profissionalUsername);
 
         if (optionalProfissional.isEmpty()) {
             throw new Exception("Token inválido. Faça login novamente.");
         }
 
-        if (emailExiste(request.getEmail()) || profissionalRepository.encontrarPorEmail(request.getEmail()).isPresent()) {
+        if (emailExiste(request.getEmail())
+                || profissionalRepository.encontrarPorEmail(request.getEmail()).isPresent()) {
             throw new Exception("E-mail já cadastrado.");
         }
 
@@ -63,11 +64,16 @@ public class ClienteService {
             throw new Exception("CPF já cadastrado.");
         }
 
+        System.out.println(request.toString());
+        String generatedPassword = passwordGenerator.generateCommonLangPassword();
         ClienteEntity entity = ClienteConverter.toEntity(request);
+        System.out.println("Depois de criar entidade");
         entity.setProfissional(optionalProfissional.get());
+        System.out.println("Profissional adicionado");
         entity.setEmail(request.getEmail().toLowerCase());
-        entity.setSenha(passwordEncoder.encode(request.getSenha()));
-
+        System.out.println("Antes da criacao da senha");
+        entity.setSenha(passwordEncoder.encode(generatedPassword));
+        System.out.println("tentando salvar o cliente");
         return ClienteConverter.toResponse(clienteRepository.save(entity));
     }
 
@@ -80,7 +86,8 @@ public class ClienteService {
         }
 
         try {
-            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+            Authentication authentication = authenticationManager
+                    .authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
             SecurityContextHolder.getContext().setAuthentication(authentication);
             return ClienteConverter.toResponse(optionalCliente.get());
         } catch (Exception e) {

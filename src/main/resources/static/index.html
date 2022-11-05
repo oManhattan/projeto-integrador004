@@ -26,7 +26,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="listaClientes();">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -179,26 +179,8 @@
 
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr onclick="location.href = 'tabelaclientes.html'" data-arg1="teste"
-                                            id="linha">
-                                            <td>1</td>
-                                            <td>João Vitor Richard</td>
-                                            <td>teste@teste.com</td>
-
-                                        </tr>
-                                        <tr onclick="location.href = 'tabelaclientes.html'" id="linha">
-                                            <td>1</td>
-                                            <td>João Vitor Richard</td>
-                                            <td>teste@teste.com</td>
-
-                                        </tr>
-                                        <tr onclick="getId(this)" id="linha">
-                                            <td>3</td>
-                                            <td>Teste</td>
-                                            <td>2@teste.com</td>
-
-                                        </tr>
+                                    <tbody  id="tabela">
+                                   
                                     </tbody>
                                 </table>
                             </div>
@@ -272,13 +254,42 @@
     <script>
         function getId(elemento) {
 
-   
-            let id = elemento.getElementsByClassName('sorting_1')[0].innerHTML
+            let id = elemento.innerText[0]
+
             localStorage.setItem('id', id);
             location.href = "tabelaclientes.html"
 
         }
-    
+
+        function listaClientes() {
+
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('GET', 'http://192.168.15.16:8080/cliente/all', true); 
+
+
+            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxLCJzdWIiOiJtYW5oYXR0YW5AZW1haWwuY29tIiwiaWF0IjoxNjY3NjgzMDU1LCJleHAiOjE2Njc3MDEwNTV9.lHLtjFjHWAndYp5oxO0t7X4HY262zSFz5s7sOMsSCbb5Xq6Di5aQn3ow5PCsLOtAKfsj_8Oaqiwg87yvX5P5cQ');
+
+            // xhr.open('GET', 'json/dadosclientes.json'); 
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    const dados = JSON.parse(xhr.responseText);
+
+                    for (const campos of dados) {
+
+                        document.getElementById('tabela').insertAdjacentHTML('beforeend',
+                            '<tr onclick="getId(this)" id="linha" ><th>' + campos.id + '</th><td>' + campos.nome +' '+ campos.sobrenome + '</td><td>' + campos.email + '</td></tr>');
+                    }
+                }
+            };
+ 
+  
+            xhr.send();  
+
+
+        }
+
     </script>
 </body>
 

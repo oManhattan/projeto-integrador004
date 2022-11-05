@@ -26,7 +26,7 @@
 
 </head>
 
-<body id="page-top" onload="dash();">
+<body id="page-top" onload="dashClientes();">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -249,19 +249,19 @@
                     <div class="form-group row">
                         <div class="col-sm-3 mb-3 mb-sm-0">
                             <span>Data de nascimento</span>
-                            <input type="text" disabled class="form-control form-control-user" id="exampleFirstName">
+                            <input type="text" disabled class="form-control form-control-user" id="dtnascimento">
                         </div>
                         <div class="col-sm-3">
                             <span>Gênero</span>
-                            <input type="text" disabled class="form-control form-control-user" id="exampleLastName">
+                            <input type="text" disabled class="form-control form-control-user" id="genero">
                         </div>
                         <div class="col-sm-3">
                             <span>E-mail</span>
-                            <input type="text" disabled class="form-control form-control-user" id="exampleLastName">
+                            <input type="text" disabled class="form-control form-control-user" id="email">
                         </div>
                         <div class="col-sm-3">
                             <span>CPF</span>
-                            <input type="text" disabled class="form-control form-control-user" id="exampleLastName">
+                            <input type="text" disabled class="form-control form-control-user" id="cpf">
                         </div>
                     </div>
 
@@ -276,7 +276,8 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Idade metabólica</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">32 anos</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="idade metabolica">
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -294,10 +295,10 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Peso atual</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">81,2KG</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="peso atual"></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                            <i class="fas fa-balance-scale fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -315,20 +316,15 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">60,3KG
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="massa muscular">
                                                     </div>
                                                 </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 0%" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
+
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                            <i class="fas fa-male fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -343,7 +339,8 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Gordura corporal</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">9,5%</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="gordura corporal">
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-cubes fa-2x text-gray-300"></i>
@@ -381,20 +378,10 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Acertos das apostas</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Percentual de composição corporal</h6>
                                     <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
+
+
                                     </div>
                                 </div>
                                 <!-- Card Body -->
@@ -404,10 +391,10 @@
                                     </div>
                                     <div class="mt-4 text-center small">
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Ganhou
+                                            <span class="dot" style=" background-color: #e2bc11;"></span></i> Gordura
                                         </span>
                                         <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Perdeu
+                                            <span class="dot" style=" background-color: #e24b11;"></span> Massa muscular
                                         </span>
                                     </div>
                                 </div>
@@ -467,21 +454,84 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <!-- <script src="js/demo/chart-pie-demo.js"></script> -->
 
 
 
     <script>
-        function dash() {
 
-            let id = localStorage.getItem('id')
-            console.log(id)
+
+        function dashClientes() {
+            console.log(localStorage.getItem('id'))
 
             const xhr = new XMLHttpRequest();
-            xhr.open('GET', 'info-ex3.json');
+
+            // xhr.open('GET', 'http://192.168.15.16:8080/cliente/all', true); 
+
+
+            // xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxLCJzdWIiOiJtYW5oYXR0YW5AZW1haWwuY29tIiwiaWF0IjoxNjY3NjgzMDU1LCJleHAiOjE2Njc3MDEwNTV9.lHLtjFjHWAndYp5oxO0t7X4HY262zSFz5s7sOMsSCbb5Xq6Di5aQn3ow5PCsLOtAKfsj_8Oaqiwg87yvX5P5cQ');
+
+            xhr.open('GET', './json/clientedash.json');
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    const dados = JSON.parse(xhr.responseText);
+
+                    document.getElementById('dtnascimento').value = dados.dataNascimento;
+                    document.getElementById('genero').value = dados.genero;
+                    document.getElementById('email').value = dados.email;
+                    document.getElementById('cpf').value = dados.cpf;
+
+                    document.getElementById('idade metabolica').innerHTML = dados.idademeta + ' anos';
+                    document.getElementById('peso atual').innerHTML = dados.peso + ' KG';
+
+                    document.getElementById('massa muscular').innerHTML = dados.massa + ' KG';
+                    document.getElementById('gordura corporal').innerHTML = dados.gordura + ' %';
+
+                    let massa = dados.massa 
+                    let gordura = dados.gordura
+
+                    // Gráfico de percentual de composição corporal
+                    var ctx = document.getElementById("myPieChart");
+                    var myPieChart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ["Massa muscular", "Gordura"],
+                            datasets: [{
+                                data: [massa, gordura],
+                                backgroundColor: ['#e24b11', '#e2bc11', '#14213D']
+                            }],
+                        },
+                        options: {
+                            maintainAspectRatio: false,
+                            tooltips: {
+                                backgroundColor: "rgb(255,255,255)",
+                                bodyFontColor: "#000000",
+                                borderColor: '#dddfeb',
+                                borderWidth: 1,
+                                xPadding: 15,
+                                yPadding: 15,
+                                displayColors: false,
+                                caretPadding: 10,
+                            },
+                            legend: {
+                                display: false
+                            },
+                            cutoutPercentage: 60,
+                        },
+                    });
+
+                }
+            };
+
+
+            xhr.send();
         }
 
+    
+
     </script>
+
 </body>
 
 </html>

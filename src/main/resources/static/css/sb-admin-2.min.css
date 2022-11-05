@@ -60,9 +60,16 @@ html {
 #linha:hover{
     background-color: #fca311;
     color: white;
-    font-size: 1.1em;
    
 }
+
+.dot {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    display: inline-block;
+
+  }
 
 article,
 aside,
@@ -10713,7 +10720,7 @@ a.text-info:hover {
 }
 
 .text-warning {
-    color: #f6c23e !important
+    color: #14213D !important 
 }
 
 a.text-warning:focus,
@@ -11191,7 +11198,7 @@ a:focus {
 }
 
 .border-left-warning {
-    border-left: .25rem solid #f6c23e !important
+    border-left: .25rem solid #14213D !important
 }
 
 .border-bottom-warning {

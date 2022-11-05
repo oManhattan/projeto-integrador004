@@ -7,12 +7,10 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["Ganhou", "Perdeu"],
+    labels: ["Massa muscular", "Gordura"],
     datasets: [{
       data: [55, 30],
-      backgroundColor: ['#4e73df', '#14213D', '#14213D'],
-      hoverBackgroundColor: ['#2e59d9', '#14213D', '#14213D'],
-      hoverBorderColor: "rgba(234, 236, 244, 1)",
+      backgroundColor: ['#e24b11', '#e2bc11', '#14213D']
     }],
   },
   options: {

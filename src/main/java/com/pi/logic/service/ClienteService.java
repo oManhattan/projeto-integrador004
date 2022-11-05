@@ -5,6 +5,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -38,6 +40,8 @@ public class ClienteService {
     private JWTUtil jwtUtil;
     @Autowired
     private PasswordGeneratorUtil passwordGenerator;
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     public Boolean emailExiste(String email) {
         return clienteRepository.encontrarPorEmail(email).isPresent();
@@ -73,7 +77,17 @@ public class ClienteService {
         entity.setEmail(request.getEmail().toLowerCase());
         entity.setSenha(passwordEncoder.encode(generatedPassword));
         ClienteResponse response = ClienteConverter.toResponse(clienteRepository.save(entity));
+        enviarEmailCadastroCliente(response.getNome(), response.getEmail(), generatedPassword);
         return response;
+    }
+
+    private void enviarEmailCadastroCliente(String nome, String email, String senha) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("manhattandummymail@gmail.com");
+        message.setTo(email);
+        message.setSubject("Cadastro ");
+        message.setText(String.format("Olá, %s\n\nSeu cadastro foi criado com sucesso.\n\nSua senha é %s\n\nFaça login e altera-a.", nome, senha));
+        javaMailSender.send(message);
     }
 
     public ClienteResponse authenticate(LoginRequest request) throws Exception {

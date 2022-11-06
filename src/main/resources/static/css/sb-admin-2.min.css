@@ -53,13 +53,14 @@ html {
     -webkit-tap-highlight-color: transparent
 }
 
-#linha{
+.odd,.even{
     cursor: pointer;
     transition: 0.5s;
 }
-#linha:hover{
+.odd:hover,.even:hover{
     background-color: #fca311;
     color: white;
+    font-size: 1.1em;
    
 }
 

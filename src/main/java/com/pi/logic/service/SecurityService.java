@@ -1,6 +1,6 @@
 package com.pi.logic.service;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import com.pi.model.repository.ClienteRepository;
 import com.pi.model.repository.ProfissionalRepository;
 
 @Service
-public class UserLoginService implements UserDetailsService {
+public class SecurityService implements UserDetailsService {
     
     @Autowired
     private ProfissionalRepository profissionalRepository;
@@ -29,15 +29,16 @@ public class UserLoginService implements UserDetailsService {
         Optional<ProfissionalEntity> optionalProfissional = profissionalRepository.encontrarPorEmail(username);
 
         if (optionalProfissional.isPresent()) {
-            return new User(optionalProfissional.get().getEmail().toLowerCase(), optionalProfissional.get().getSenha(), new ArrayList<>());
+            return new User(optionalProfissional.get().getEmail().toLowerCase(), optionalProfissional.get().getSenha(), List.of(optionalProfissional.get().getAuthority().getAuthority()));
         }
 
         Optional<ClienteEntity> optionalCliente = clienteRepository.encontrarPorEmail(username);
 
         if (optionalCliente.isPresent()) {
-            return new User(optionalCliente.get().getEmail().toLowerCase(), optionalCliente.get().getSenha(), new ArrayList<>());
+            return new User(optionalCliente.get().getEmail().toLowerCase(), optionalCliente.get().getSenha(), List.of(optionalCliente.get().getAuthority().getAuthority()));
         }
 
         throw new UsernameNotFoundException(String.format("Conta não encontrada com o e-mail %s", username));
     }
+
 }

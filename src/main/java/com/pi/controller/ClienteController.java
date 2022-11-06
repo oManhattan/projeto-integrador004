@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,13 +18,14 @@ import com.pi.model.dto.ClienteRequest;
 import com.pi.model.dto.ClienteResponse;
 
 @RestController
-@RequestMapping("/cliente")
+@RequestMapping("/api/v1/cliente")
 public class ClienteController {
 
     @Autowired
     private ClienteService clienteService;
 
     @PostMapping("/register")
+    @PreAuthorize("hasAuthority('ROLE_PROFISSIONAL')")
     public ResponseEntity<?> register(@RequestHeader(name = "Authorization") String token, @RequestBody ClienteRequest request) {
         try {
             ClienteResponse response = clienteService.registrar(token, request);
@@ -34,6 +36,7 @@ public class ClienteController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("hasAuthority('ROLE_PROFISSIONAL')")
     public ResponseEntity<?> getAllClients(@RequestHeader(name = "Authorization") String token) {
         try {
             List<ClienteResponse> response = clienteService.todosClientesDoProfissional(token);

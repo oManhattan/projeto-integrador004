@@ -5,11 +5,9 @@ import java.util.Date;
 import java.util.Map;
 import java.util.function.Function;
 
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-
-import com.pi.model.entity.ClienteEntity;
-import com.pi.model.entity.ProfissionalEntity;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -45,13 +43,9 @@ public class JWTUtil implements Serializable {
         return getClaimFromToken(token, Claims::getExpiration);
     }
 
-    public String generateToken(ProfissionalEntity entity) {
-        Map<String, Object> claims = Map.of("user_id", entity.getId());
-        return doGenerateToken(claims, entity.getEmail());
-    }
-
-    public String generateToken(ClienteEntity entity) {
-        return null;
+    public String generateToken(Long id, String email, SimpleGrantedAuthority authority) {
+        Map<String, Object> claims = Map.of("user_id", id, "role", authority);
+        return doGenerateToken(claims, email);
     }
 
     public Boolean validateToken(String token, UserDetails userDetails) {

@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,10 +28,13 @@ import lombok.ToString;
 @Getter
 @ToString
 @Table(name = "Profissional")
-public class ProfissionalEntity {
+public class ProfissionalEntity implements UserAccount {
 
     @OneToMany(targetEntity = ClienteEntity.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ClienteEntity> clientes;
+
+    @Transient
+    private final UserAuthority authority = UserAuthority.PROFISSIONAL;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

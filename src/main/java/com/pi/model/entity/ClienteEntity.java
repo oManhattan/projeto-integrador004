@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,13 +28,16 @@ import lombok.Setter;
 @Setter
 @Getter
 @Table(name = "Cliente")
-public class ClienteEntity {
+public class ClienteEntity implements UserAccount {
     
     @OneToMany(targetEntity = TreinoEntity.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     private List<TreinoEntity> treinos;
 
     @ManyToOne(targetEntity = ProfissionalEntity.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private ProfissionalEntity profissional;
+
+    @Transient
+    private final UserAuthority authority = UserAuthority.CLIENTE;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

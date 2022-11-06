@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.pi.logic.service.UserLoginService;
+import com.pi.logic.service.SecurityService;
 import com.pi.logic.util.JWTUtil;
 
 @Component
@@ -25,7 +25,7 @@ public class JWTFilter extends OncePerRequestFilter {
     private JWTUtil jwtUtil;
 
     @Autowired
-    private UserLoginService userLoginService;
+    private SecurityService userLoginService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)

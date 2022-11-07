@@ -35,13 +35,14 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
         String senha = authentication.getCredentials().toString();
 
         Optional<ProfissionalEntity> optionalProfissional = profissionalRepository.encontrarPorEmail(email);
+        // boolean profissional
         
         if (optionalProfissional.isPresent() && passwordEncoder.matches(senha, optionalProfissional.get().getSenha())) {
             return new UsernamePasswordAuthenticationToken(email, senha, List.of(optionalProfissional.get().getAuthority().getAuthority()));
         }
 
         Optional<ClienteEntity> optionalCliente = clienteRepository.encontrarPorEmail(email);
-
+        
         if (optionalCliente.isPresent() && passwordEncoder.matches(senha, optionalCliente.get().getSenha())) {
             return new UsernamePasswordAuthenticationToken(email, senha, List.of(optionalCliente.get().getAuthority().getAuthority()));
         }

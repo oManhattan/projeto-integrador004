@@ -118,4 +118,14 @@ public class ClienteService {
                 .collect(Collectors.toList());
     }
 
+    public void alterarPerfilCliente(String token, ClienteRequest request) throws Exception {
+        String formattedToken = jwtUtil.formatToken(token);
+        Long id = jwtUtil.getIdFromToken(formattedToken);
+
+        if (clienteRepository.emailExiste(request.getEmail())) {
+            System.out.println("EMAIL CADASTRADO");
+        }
+
+        clienteRepository.alterarPerfil(request.getEmail(), request.getNome(), request.getSobrenome(), request.getGenero().name(), request.getDataNascimento(), id);
+    }
 }

@@ -53,11 +53,10 @@ public class AccountService {
 
     public Pair<UserAccount, String> authenticateUser(LoginRequest request) throws Exception {
 
-        authenticateCredentials(request.getEmail(), request.getPassword(), new ArrayList<>());
-
         Optional<ProfissionalEntity> profissional = profissionalRepository.encontrarPorEmail(request.getEmail());
 
         if (profissional.isPresent()) {
+            authenticateCredentials(request.getEmail(), request.getPassword(), new ArrayList<>());
             String token = jwtUtil.generateToken(profissional.get().getId(), profissional.get().getEmail(),
                     profissional.get().getAuthority().getAuthority());
             return new Pair<UserAccount, String>(profissional.get(), token);
@@ -66,6 +65,7 @@ public class AccountService {
         Optional<ClienteEntity> cliente = clienteRepository.encontrarPorEmail(request.getEmail());
 
         if (cliente.isPresent()) {
+            authenticateCredentials(request.getEmail(), request.getPassword(), new ArrayList<>());
             String token = jwtUtil.generateToken(cliente.get().getId(), cliente.get().getEmail(),
                     cliente.get().getAuthority().getAuthority());
             return new Pair<UserAccount, String>(cliente.get(), token);
@@ -77,21 +77,23 @@ public class AccountService {
     public void forgotPasswordRequest(String email) throws Exception {
 
         String novaSenha = passwordGenerator.generateCommonLangPassword();
+        System.out.println(String.format("Nova senha -> %s", novaSenha));
         String senhaCriptografa = passwordEncoder.encode(novaSenha);
 
         int profissionalRows = profissionalRepository.alterarSenha(senhaCriptografa, email);
-
+        System.out.println(String.format("%d linhas de profissional afetadas", profissionalRows));
         if (profissionalRows > 0) {
+            sendMail(email, "Alterar Senha - SmartTraining", String.format("Olá\n\nSua nova senha é %s\n\nAcesse sua conta para alterá-la.", novaSenha));
             return;
         }
         
         int clienteRows = clienteRepository.alterarSenha(senhaCriptografa, email);
-
-        if (clienteRows <= 0) {
-            throw new Exception("E-mail não encontrado.");
+        System.out.println(String.format("%d linhas de cliente afetadas", clienteRows));
+        if (clienteRows > 0) {
+            sendMail(email, "Alterar Senha - SmartTraining", String.format("Olá\n\nSua nova senha é %s\n\nAcesse sua conta para alterá-la.", novaSenha));
         }
         
-        sendMail(email, "Alterar Senha - SmartTraining", String.format("Olá\n\nSua nova senha é %s\n\nAcesse sua conta para alterá-la.", novaSenha));
+        throw new Exception("E-mail não encontrado.");
     }
 
     public void changePassword(String token, AlterarSenhaRequest request) throws Exception {
@@ -130,6 +132,7 @@ public class AccountService {
                     .authenticate(new UsernamePasswordAuthenticationToken(email, password, authorities));
             SecurityContextHolder.getContext().setAuthentication(authentication);
         } catch (Exception e) {
+            System.out.println(e);
             throw new Exception("Senha incorreta.");
         }
     }

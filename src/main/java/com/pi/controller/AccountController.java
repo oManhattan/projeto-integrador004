@@ -72,7 +72,6 @@ public class AccountController {
     @PutMapping("alterar-senha")
     public ResponseEntity<?> changePasswordRequest(@RequestHeader(name = "Authorization") String token, @RequestBody AlterarSenhaRequest request) {
         try {
-            System.out.println(request.toString());
             accountService.changePassword(token, request);
             return ResponseEntity.ok().body("Senha alterada.");
         } catch (Exception e) {

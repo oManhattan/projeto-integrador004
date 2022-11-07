@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import com.pi.logic.util.JWTUtil;
 import com.pi.logic.util.Pair;
 import com.pi.logic.util.PasswordGeneratorUtil;
+import com.pi.model.dto.AlterarSenhaRequest;
 import com.pi.model.dto.LoginRequest;
 import com.pi.model.entity.ClienteEntity;
 import com.pi.model.entity.ProfissionalEntity;
@@ -73,7 +74,7 @@ public class AccountService {
         throw new UsernameNotFoundException(String.format("Conta não encontrada com o e-mail %s", request.getEmail()));
     }
 
-    public void newPasswordRequest(String email) throws Exception {
+    public void forgotPasswordRequest(String email) throws Exception {
 
         String novaSenha = passwordGenerator.generateCommonLangPassword();
         String senhaCriptografa = passwordEncoder.encode(novaSenha);
@@ -93,7 +94,23 @@ public class AccountService {
         sendMail(email, "Alterar Senha - SmartTraining", String.format("Olá\n\nSua nova senha é %s\n\nAcesse sua conta para alterá-la.", novaSenha));
     }
 
-    public void changePassword(String token, String password) throws Exception {
+    public void changePassword(String token, AlterarSenhaRequest request) throws Exception {
+
+        token = jwtUtil.formatToken(token);
+        String email = jwtUtil.getUsernameFromToken(token);
+     
+        authenticateCredentials(email, request.getSenhaAtual(), new ArrayList<>());
+
+        String encodedPassword = passwordEncoder.encode(request.getNovaSenha());
+        String role = jwtUtil.getUserAuthorityFromToken(token);
+        
+        if (role.equals("ROLE_PROFISSIONAL")) {
+            profissionalRepository.alterarSenha(encodedPassword, email);
+        } else if (role.equals("ROLE_CLIENTE")) {
+            clienteRepository.alterarSenha(encodedPassword, email);
+        } else {
+            throw new Exception("Erro interno");
+        }
 
     }
 

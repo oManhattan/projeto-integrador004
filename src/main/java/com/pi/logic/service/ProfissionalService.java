@@ -5,7 +5,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.pi.logic.converter.ProfissionalConverter;
-import com.pi.logic.util.JWTUtil;
 import com.pi.model.dto.ProfissionalRequest;
 import com.pi.model.dto.ProfissionalResponse;
 import com.pi.model.entity.ProfissionalEntity;
@@ -23,9 +22,6 @@ public class ProfissionalService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-
-    @Autowired
-    private JWTUtil jwtUtil;
 
     public boolean emailExiste(String email) {
         return profissionalRepository.encontrarPorEmail(email).isPresent();

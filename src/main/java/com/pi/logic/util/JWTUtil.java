@@ -39,6 +39,13 @@ public class JWTUtil implements Serializable {
         return getClaimFromToken(token, Claims::getSubject);
     }
 
+    @SuppressWarnings("unchecked")
+    public String getUserAuthorityFromToken(String token) {
+        Claims claims = getAllClaimsFromToken(token);
+        Map<String, String> authority = (Map<String, String>) claims.get("role");
+        return authority.get("authority");
+    }
+
     public Date getExpirationDateFromToken(String token) {
         return getClaimFromToken(token, Claims::getExpiration);
     }

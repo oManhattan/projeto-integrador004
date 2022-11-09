@@ -26,12 +26,12 @@
 
     <!-- Máscaras JQUERY -->
     <script type="text/javascript">
-    $(document).ready(function() {
-           $("#cpf").mask("000.000.000-00")
-           $("#cnpj").mask("00.000.000/0000-00")
-           $("#telefone").mask("(00) 00000-0000")
-           $("#dataNascimento").mask("00/00/0000")
-    })
+        $(document).ready(function () {
+            $("#cpf").mask("000.000.000-00")
+            $("#cnpj").mask("00.000.000/0000-00")
+            $("#telefone").mask("(00) 00000-0000")
+            $("#dataNascimento").mask("00/00/0000")
+        })
     </script>
 
     <!-- Custom fonts for this template-->
@@ -118,8 +118,8 @@
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Procurando por.."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small"
+                                placeholder="Procurando por.." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -257,52 +257,57 @@
                             <!-- Inicio do Card -->
                             <div class="card shadow mb-4 card-novaaposta mx-auto">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary text-center">Preencha as informações conforme solicitado abaixo. </h6>
+                                    <h6 class="m-0 font-weight-bold text-primary text-center">Preencha as informações
+                                        conforme solicitado abaixo. </h6>
                                 </div>
                                 <div class="card-body text-center d-flex align-items-center justify-content-center">
 
-                                            <!-- CRIAR CAMPOS PARA NOVO CADASTRO  -->
-                                            <form class="user">
-                                                <div class="form-group row">
-                                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                                            placeholder="Primeiro nome">
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                                            placeholder="Sobrenome">
-                                                    </div>
-                                                </div>
+                                    <!-- CRIAR CAMPOS PARA NOVO CADASTRO  -->
+                                    <form class="user" action="" id="dadosForm" method="post">
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                <input type="text" class="form-control form-control-user"
+                                                    id="primeiroNome" placeholder="Primeiro nome">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control form-control-user"
+                                                    id="ultimoNome" placeholder="Sobrenome">
+                                            </div>
+                                        </div>
 
-                                                <div class="form-group">
-                                                    <input type="text" name="dataNascimento" id="dataNascimento" class="form-control form-control-user"
-                                                        placeholder="Data de nascimento">
-                                                </div>
+                                        <div class="form-group">
+                                            <input type="text" name="dataNascimento" id="dataNascimento"
+                                                class="form-control form-control-user" placeholder="Data de nascimento">
+                                        </div>
 
-                                                <div class="form-group">
-                                                    <input type="text" name="genero" id="genero" class="form-control form-control-user"
-                                                        placeholder="Gênero">
-                                                </div>
+                                        <div class="form-group">
+                                            <input type="text" name="genero" id="genero"
+                                                class="form-control form-control-user" placeholder="Gênero">
+                                        </div>
 
-                                                <div class="form-group">
-                                                    <input type="text" name="cpf" id="cpf" class="form-control form-control-user"
-                                                        placeholder="CPF">
-                                                </div>
+                                        <div class="form-group">
+                                            <input type="text" name="cpf" id="cpf"
+                                                class="form-control form-control-user" placeholder="CPF">
+                                        </div>
 
-                                                <div class="form-group">
-                                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                                        placeholder="Endereço de e-mail">
-                                                </div>
-                                            </form>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control form-control-user"
+                                                id="exampleInputEmail" placeholder="Endereço de e-mail">
+                                        </div>
+                                        <div>
+                                            <input type="submit" value="Submit">
+                                        </div>
+                                        <div class="card-footer text-center">
+                                            <a class="btn btn-primary btn-icon-split btn-lg mt-3 mb-3">
+                                                <span class="icon text-white-50">
+                                                    <i class="fas fa-check"></i>
+                                                </span>
+                                                <span class="text">Cadastrar</span>
+                                            </a>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="card-footer text-center">
-                                    <a href="resultado.html" class="btn btn-primary btn-icon-split btn-lg mt-3 mb-3">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-check"></i>
-                                        </span>
-                                        <span class="text">Cadastrar</span>
-                                    </a>
-                                </div>
+
                             </div>
                             <!-- / Fim do Card-->
                         </div>
@@ -343,7 +348,9 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body"><!-- TEXTO --> </div>
+                <div class="modal-body">
+                    <!-- TEXTO -->
+                </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                     <a class="btn btn-primary" href="login.html">Sair</a>
@@ -352,6 +359,64 @@
         </div>
     </div>
 
+    <script>
+        URL = 'http://localhost:8080/api/v1/'
+
+        function form() {
+
+            // Vincula o evento 'submit' do form à função salvar()
+            document.getElementById('dadosForm').addEventListener('submit', function (evt) {
+                evt.preventDefault(); // Evita o submit padrão do <form>
+                const dados = {
+                    email: document.getElementById('exampleInputEmail').value,
+                    nome: document.getElementById('primeiroNome').value,
+                    sobrenome: document.getElementById('ultimoNome').value,
+                    cpf: document.getElementById('cpf').value,
+                    dataNascimento: document.getElementById('dataNascimento').value,
+                    genero: document.getElementById('genero').value,
+                }
+                console.log(dados)
+                cadastrar_cliente();
+            });
+
+        }
+
+
+        function cadastrar_cliente() {
+
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('POST', `${URL}cliente/register`, true);
+
+            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInVzZXJfaWQiOjEsInN1YiI6Im1hbmhhdHRhbkBlbWFpbC5jb20iLCJpYXQiOjE2NjgwMzMyMDksImV4cCI6MTY2ODA1MTIwOX0._MXNPWHk9Jvm5TU42dF5WMiy2iqy-5pvUBFkNmtw0IqugrABGmHmrooe2mhzOOC66fXHOK_VSTP8z_F2VLipgA');
+
+            xhr.setRequestHeader('Content-type', 'application/json');
+            xhr.setRequestHeader('Accept', 'application/json');
+
+
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+
+                    alert("Deu bomm")
+                };
+
+                const dados2 = {
+                    email: document.getElementById('exampleInputEmail').value,
+                    nome: document.getElementById('primeiroNome').value,
+                    sobrenome: document.getElementById('ultimoNome').value,
+                    cpf: document.getElementById('cpf').value,
+                    dataNascimento: document.getElementById('dataNascimento').value,
+                    genero: document.getElementById('genero').value,
+                }
+
+
+            }
+
+            xhr.send(JSON.stringify(dados2))
+        }
+
+    </script>
 
 </body>
 

@@ -232,14 +232,21 @@
 
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4 no-print">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-
+                    <div class="d-flex align-items-center justify-content-between mb-4 no-print">
+                        <h1 class="h3 mr-auto text-gray-800">Dashboard</h1>
 
 
                         <button onclick="window.print()"
-                            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                            class="d-none mr-3 d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fa fa-solid fa-plus"></i> Nova avaliação</a></button>
+
+                        <button onclick="window.print()"
+                            class="d-none  d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Gerar relatório</a></button>
+
+
+
+
                     </div>
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-4 only-print">
@@ -251,11 +258,11 @@
                             <span>Data de nascimento</span>
                             <input type="text" disabled class="form-control form-control-user" id="dtnascimento">
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-2">
                             <span>Gênero</span>
                             <input type="text" disabled class="form-control form-control-user" id="genero">
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <span>E-mail</span>
                             <input type="text" disabled class="form-control form-control-user" id="email">
                         </div>
@@ -401,6 +408,35 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-12 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Treinos</h6>
+                                </div>
+
+                                
+
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        
+                                    </div>
+                                </div>
+
+                                
+                               
+                            </div>
+                        </div>
+
+                    </div>
+
+                    
                 </div>
                 <!-- /.container-fluid -->
 
@@ -460,36 +496,37 @@
 
     <script>
 
+        URL = 'http://172.20.10.3:8080/api/v1/'
 
         function dashClientes() {
             console.log(localStorage.getItem('id'))
 
             const xhr = new XMLHttpRequest();
 
-            // xhr.open('GET', 'http://192.168.15.16:8080/cliente/all', true); 
+            xhr.open('GET', `${URL}cliente/buscar?id=${localStorage.getItem('id')}`, true);
 
-
-            // xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxLCJzdWIiOiJtYW5oYXR0YW5AZW1haWwuY29tIiwiaWF0IjoxNjY3NjgzMDU1LCJleHAiOjE2Njc3MDEwNTV9.lHLtjFjHWAndYp5oxO0t7X4HY262zSFz5s7sOMsSCbb5Xq6Di5aQn3ow5PCsLOtAKfsj_8Oaqiwg87yvX5P5cQ');
-
-            xhr.open('GET', './json/clientedash.json');
+            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2Nzk1MTQ4NSwiZXhwIjoxNjY3OTY5NDg1fQ.gwKO4oAgZn65ckBiDqv6fxPEa-UP_HEwxVYtf8Iw81DqbDh9fWvb5jaPkCKC4x5sOfb9YHR5w2zR4vKwkhOi5g');
 
             xhr.onload = function () {
                 if (xhr.status === 200) {
                     const dados = JSON.parse(xhr.responseText);
 
-                    document.getElementById('dtnascimento').value = dados.dataNascimento;
+                    document.getElementById('dtnascimento').value = `${dados.dataNascimento.split("-")[2]}/${dados.dataNascimento.split("-")[1]}/${dados.dataNascimento.split("-")[0]}`;
                     document.getElementById('genero').value = dados.genero;
                     document.getElementById('email').value = dados.email;
                     document.getElementById('cpf').value = dados.cpf;
 
-                    document.getElementById('idade metabolica').innerHTML = dados.idademeta + ' anos';
-                    document.getElementById('peso atual').innerHTML = dados.peso + ' KG';
+                    // document.getElementById('idade metabolica').innerHTML = dados.idademeta + ' anos';
+                    // document.getElementById('peso atual').innerHTML = dados.peso + ' KG';
 
-                    document.getElementById('massa muscular').innerHTML = dados.massa + ' KG';
-                    document.getElementById('gordura corporal').innerHTML = dados.gordura + ' %';
+                    // document.getElementById('massa muscular').innerHTML = dados.massa + ' KG';
+                    // document.getElementById('gordura corporal').innerHTML = dados.gordura + ' %';
 
-                    let massa = dados.massa 
-                    let gordura = dados.gordura
+                    // let massa = dados.massa
+                    // let gordura = dados.gordura
+
+                    let massa = 1
+                    let gordura = 2
 
                     // Gráfico de percentual de composição corporal
                     var ctx = document.getElementById("myPieChart");
@@ -524,11 +561,101 @@
                 }
             };
 
+            // Gráfico de evolução de peso
+            var ctx = document.getElementById("myAreaChart");
+            var myLineChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+                    datasets: [{
+                        label: "Peso",
+                        lineTension: 0.3,
+                        backgroundColor: "rgba(78, 115, 223, 0.05)",
+                        borderColor: "rgba(78, 115, 223, 1)",
+                        pointRadius: 3,
+                        pointBackgroundColor: "rgba(78, 115, 223, 1)",
+                        pointBorderColor: "rgba(78, 115, 223, 1)",
+                        pointHoverRadius: 3,
+                        pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+                        pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                        pointHitRadius: 10,
+                        pointBorderWidth: 2,
+                        data: [58, 61, 62, 71, 78, 81, 33],
+                    }],
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            left: 10,
+                            right: 25,
+                            top: 25,
+                            bottom: 0
+                        }
+                    },
+                    scales: {
+                        xAxes: [{
+                            time: {
+                                unit: 'date'
+                            },
+                            gridLines: {
+                                display: false,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                maxTicksLimit: 7
+                            }
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                maxTicksLimit: 5,
+                                padding: 10,
+                                // Include a dollar sign in the ticks
+                                callback: function (value, index, values) {
+                                    return '' + number_format(value);
+                                }
+                            },
+                            gridLines: {
+                                color: "rgb(234, 236, 244)",
+                                zeroLineColor: "rgb(234, 236, 244)",
+                                drawBorder: false,
+                                borderDash: [2],
+                                zeroLineBorderDash: [2]
+                            }
+                        }],
+                    },
+                    legend: {
+                        display: false
+                    },
+                    tooltips: {
+                        backgroundColor: "rgb(255,255,255)",
+                        bodyFontColor: "#858796",
+                        titleMarginBottom: 10,
+                        titleFontColor: '#6e707e',
+                        titleFontSize: 14,
+                        borderColor: '#dddfeb',
+                        borderWidth: 1,
+                        xPadding: 15,
+                        yPadding: 15,
+                        displayColors: false,
+                        intersect: false,
+                        mode: 'index',
+                        caretPadding: 10,
+                        callbacks: {
+                            label: function (tooltipItem, chart) {
+                                var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                                return datasetLabel + ' ' + number_format(tooltipItem.yLabel);
+                            }
+                        }
+                    }
+                }
+            });
+
 
             xhr.send();
         }
 
-    
+
 
     </script>
 

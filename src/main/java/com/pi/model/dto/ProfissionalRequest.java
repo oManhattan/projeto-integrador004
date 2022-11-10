@@ -16,7 +16,7 @@ public class ProfissionalRequest {
     @JsonProperty(namespace = "email")
     private String email;
 
-    @JsonProperty(namespace = "senha")
+    @JsonProperty(namespace = "senha", required = false)
     private String senha;
 
     @JsonProperty(namespace = "nome")

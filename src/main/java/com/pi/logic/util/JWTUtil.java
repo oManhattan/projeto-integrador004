@@ -1,6 +1,7 @@
 package com.pi.logic.util;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Map;
 import java.util.function.Function;
@@ -18,7 +19,7 @@ public class JWTUtil implements Serializable {
 
     private static final long serialVersionUID = 234234523523L;
     private static final String SECRET_KEY = "secretKey123";
-    public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
+    public static final LocalDate TOKEN_VALIDITY = LocalDate.now().plusDays(30);
 
     public Claims getAllClaimsFromToken(String token) {
         return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
@@ -84,8 +85,8 @@ public class JWTUtil implements Serializable {
         return Jwts.builder()
                 .addClaims(claims)
                 .setSubject(subject)
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
+                .setIssuedAt(DateUtil.toDate(LocalDate.now()))
+                .setExpiration(DateUtil.toDate(TOKEN_VALIDITY))
                 .signWith(SignatureAlgorithm.HS512, SECRET_KEY)
                 .compact();
     }

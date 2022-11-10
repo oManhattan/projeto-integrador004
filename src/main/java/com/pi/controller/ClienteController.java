@@ -6,18 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pi.logic.service.ClienteService;
 import com.pi.model.dto.ClienteRequest;
 import com.pi.model.dto.ClienteResponse;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1/cliente")
 public class ClienteController {
@@ -55,6 +59,27 @@ public class ClienteController {
             return ResponseEntity.ok().body("Informações alteradas");
         } catch (Exception e) {
             System.out.println(e);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/buscar")
+    public ResponseEntity<?> buscarClientePorID(@RequestHeader(name = "Authorization") String token, @RequestParam(name = "id") Long id) {
+        try {
+            ClienteResponse response = clienteService.buscarPerfil(id);
+            return ResponseEntity.ok().body(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/apagar-perfil")
+    @PreAuthorize("hasAuthority('ROLE_CLIENTE')")
+    public ResponseEntity<?> apagarPerfil(@RequestHeader(name = "Authorization") String token) {
+        try {
+            clienteService.apagarPerfil(token);
+            return ResponseEntity.ok().body("Perfil deletado.");
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }

@@ -121,11 +121,32 @@ public class ClienteService {
     public void alterarPerfilCliente(String token, ClienteRequest request) throws Exception {
         String formattedToken = jwtUtil.formatToken(token);
         Long id = jwtUtil.getIdFromToken(formattedToken);
+        String tokenEmail = jwtUtil.getUsernameFromToken(formattedToken);
 
-        if (clienteRepository.emailExiste(request.getEmail())) {
-            System.out.println("EMAIL CADASTRADO");
+        if (clienteRepository.emailExiste(request.getEmail()) && !request.getEmail().equals(tokenEmail)) {
+            throw new Exception("E-mail já cadastrado");
         }
 
         clienteRepository.alterarPerfil(request.getEmail(), request.getNome(), request.getSobrenome(), request.getGenero().name(), request.getDataNascimento(), id);
+    }
+
+    public ClienteResponse buscarPerfil(Long id) throws Exception {
+        Optional<ClienteEntity> optionalCliente = clienteRepository.encontrarPorId(id);
+
+        if (optionalCliente.isEmpty()) {
+            throw new Exception("Perfil não encontrado.");
+        }
+        
+        return ClienteConverter.toResponse(optionalCliente.get());
+    }
+
+    public void apagarPerfil(String token) throws Exception {
+        String formattedToken = jwtUtil.formatToken(token);
+        Long id = jwtUtil.getIdFromToken(formattedToken);
+        int affectedRows = clienteRepository.deletarPerfil(id);
+
+        if (affectedRows <= 0) {
+            throw new Exception("Não foi possível apagar o perfil.");
+        }
     }
 }

@@ -42,4 +42,8 @@ public interface ClienteRepository extends JpaRepository<ClienteEntity, Long> {
     @Modifying
     @Query(nativeQuery = true, value = "UPDATE Cliente c SET c.email = :email, c.nome = :nome, c.sobrenome = :sobrenome, genero = :genero, c.data_nascimento = :dataNascimento WHERE c.id = :id")
     Integer alterarPerfil(@Param("email") String email, @Param("nome") String nome, @Param("sobrenome") String sobrenome, @Param("genero") String genero, @Param("dataNascimento") LocalDate dataNascimento, @Param("id") Long id);
+
+    @Modifying
+    @Query(nativeQuery = true, value = "delete from cliente c where c.id = :id")
+    Integer deletarPerfil(@Param("id") Long id);
 }

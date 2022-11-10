@@ -43,8 +43,10 @@ public class AccountController {
                 ProfissionalResponse profissional = ProfissionalConverter
                         .toResponse((ProfissionalEntity) response.getA());
                 Cookie authorization = new Cookie("Authorization", response.getB());
+
                 httpResponse.addCookie(authorization);
                 return ResponseEntity.ok()
+                        .header("Authorization", response.getB())
                         .header("CustomerType", "Profissional")
                         .body(profissional);
             }
@@ -54,6 +56,7 @@ public class AccountController {
                 Cookie authorization = new Cookie("Authorization", response.getB());
                 httpResponse.addCookie(authorization);
                 return ResponseEntity.ok()
+                        .header("Authorization", response.getB())
                         .header("CustomerType", "Cliente")
                         .body(cliente);
             }

@@ -48,7 +48,7 @@ public class AvaliacaoCorporalEntity {
     private Float musculoEsqueletico;
 
     @Column(name = "idade_corporal")
-    private Integer idadeCorporal;
+    private Integer idadeCorporal;//pesquisar calculo
 
     @Column(name = "gordura_corporal")
     private Float gorduraCorporal;
@@ -57,7 +57,7 @@ public class AvaliacaoCorporalEntity {
     private Integer gorduraVisceral;
 
     @Column(name = "metabolismo_basal")
-    private Integer metabolismoBasal;
+    private Integer metabolismoBasal;//pesquisar calculo
 
     // Medidas do tronco
 

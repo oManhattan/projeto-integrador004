@@ -24,7 +24,7 @@ import com.pi.model.entity.ClienteEntity;
 import com.pi.model.entity.ProfissionalEntity;
 import com.pi.model.entity.UserAccount;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", exposedHeaders = "*")
 @RestController
 @RequestMapping("/api/v1")
 public class AccountController {

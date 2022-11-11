@@ -36,15 +36,12 @@ public class AccountController {
     private AccountService accountService;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest request, HttpServletResponse httpResponse) {
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
         try {
             Pair<UserAccount, String> response = accountService.authenticateUser(request);
             if (response.getA() instanceof ProfissionalEntity) {
                 ProfissionalResponse profissional = ProfissionalConverter
                         .toResponse((ProfissionalEntity) response.getA());
-                Cookie authorization = new Cookie("Authorization", response.getB());
-
-                httpResponse.addCookie(authorization);
                 return ResponseEntity.ok()
                         .header("Authorization", response.getB())
                         .header("CustomerType", "Profissional")
@@ -53,8 +50,6 @@ public class AccountController {
 
             if (response.getA() instanceof ClienteEntity) {
                 ClienteResponse cliente = ClienteConverter.toResponse((ClienteEntity) response.getA());
-                Cookie authorization = new Cookie("Authorization", response.getB());
-                httpResponse.addCookie(authorization);
                 return ResponseEntity.ok()
                         .header("Authorization", response.getB())
                         .header("CustomerType", "Cliente")

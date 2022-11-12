@@ -262,72 +262,84 @@
                                 </div>
                                 <div class="card-body text-center d-flex align-items-center justify-content-center">
 
+
                                     <!-- CRIAR CAMPOS PARA NOVO CADASTRO  -->
-                                    <form class="user" action="" id="dadosForm" method="post">
+                                    <form class="user" id="dadosForm" method="POST"
+                                        action="http://192.168.15.16:8080/api/v1/cliente/register">
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                <input type="text" class="form-control form-control-user"
-                                                    id="primeiroNome" placeholder="Primeiro nome">
+                                                <input required type="text" class="form-control form-control-user"
+                                                    name="nome" id="primeiroNome" placeholder="Primeiro nome">
                                             </div>
                                             <div class="col-sm-6">
-                                                <input type="text" class="form-control form-control-user"
-                                                    id="ultimoNome" placeholder="Sobrenome">
+                                                <input type="text" required class="form-control form-control-user"
+                                                    name="sobrenome" id="ultimoNome" placeholder="Sobrenome">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="text" name="dataNascimento" id="dataNascimento"
-                                                class="form-control form-control-user" placeholder="Data de nascimento">
+                                            <input type="text" required name="dataNascimento" id="dataNascimento"
+                                                name="dataNascimento" class="form-control form-control-user"
+                                                placeholder="Data de nascimento">
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="text" name="genero" id="genero"
+                                            <input type="text" required name="genero" id="genero" name="genero"
                                                 class="form-control form-control-user" placeholder="Gênero">
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="text" name="cpf" id="cpf"
+                                            <input type="text" required name="cpf" id="cpf" name="cpf"
                                                 class="form-control form-control-user" placeholder="CPF">
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" placeholder="Endereço de e-mail">
+                                            <input type="email" required class="form-control form-control-user"
+                                                name="email" id="exampleInputEmail" placeholder="Endereço de e-mail">
+                                        </div>
+                                        <div class="form-control-user">
+
+                                            <button type="submit" class="btn-lg" id="cadastro">Cadastrar</button>
+
+
+
                                         </div>
                                         <div>
-                                            <input type="submit" value="Submit">
+                                            <div class="card-footer text-center">
+                                                <a class="btn btn-primary btn-icon-split btn-lg mt-3 mb-3">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-plus"></i>
+                                                    </span>
+                                                    <span class="text">Cadastrar</span>
+                                                </a>
+                                            </div>
                                         </div>
-                                        <div class="card-footer text-center">
-                                            <a class="btn btn-primary btn-icon-split btn-lg mt-3 mb-3">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                                <span class="text">Cadastrar</span>
-                                            </a>
-                                        </div>
-                                    </form>
+
                                 </div>
 
+                                </form>
                             </div>
-                            <!-- / Fim do Card-->
-                        </div>
-                    </div>
 
+                        </div>
+                        <!-- / Fim do Card-->
+                    </div>
                 </div>
-                <!-- /.container-fluid -->
 
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                </div>
-            </footer>
-            <!-- End of Footer -->
+            <!-- /.container-fluid -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
@@ -359,36 +371,36 @@
         </div>
     </div>
 
+
     <script>
-        URL = 'http://localhost:8080/api/v1/'
-
-        function form() {
-
-            // Vincula o evento 'submit' do form à função salvar()
-            document.getElementById('dadosForm').addEventListener('submit', function (evt) {
-                evt.preventDefault(); // Evita o submit padrão do <form>
-                const dados = {
-                    email: document.getElementById('exampleInputEmail').value,
-                    nome: document.getElementById('primeiroNome').value,
-                    sobrenome: document.getElementById('ultimoNome').value,
-                    cpf: document.getElementById('cpf').value,
-                    dataNascimento: document.getElementById('dataNascimento').value,
-                    genero: document.getElementById('genero').value,
-                }
-                console.log(dados)
-                cadastrar_cliente();
-            });
-
-        }
 
 
-        function cadastrar_cliente() {
+        document.getElementById('dadosForm').addEventListener("submit", function (event) {
+            event.preventDefault()
+
+            URL = 'http://192.168.15.16:8080/api/v1/'
+
+            const dados = {
+                email: document.getElementById('exampleInputEmail').value,
+                nome: document.getElementById('primeiroNome').value,
+                sobrenome: document.getElementById('ultimoNome').value,
+                cpf: document.getElementById('cpf').value,
+                // dataNascimento: document.getElementById('dataNascimento').value,
+                dataNascimento: '2000-11-21',
+                genero: document.getElementById('genero').value,
+            }
+
+            console.log(dados)
 
             const xhr = new XMLHttpRequest();
 
             xhr.open('POST', `${URL}cliente/register`, true);
 
-            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInVzZXJfaWQiOjEsInN1YiI6Im1hbmhhdHRhbkBlbWFpbC5jb20iLCJpYXQiOjE2NjgwMzMyMDksImV4cCI6MTY2ODA1MTIwOX0._MXNPWHk9Jvm5TU42dF5WMiy2iqy-5pvUBFkNmtw0IqugrABGmHmrooe2mhzOOC66fXHOK_VSTP8z_F2VLipgA');
+            // PEGAR O TOKEN PARA AS REQUISIÇÕES ATRAVÉS DO SESSION STORAGE
+            // xhr.setRequestHeader('Authorization', sessionStorage.getItem('Authorization'))
+
+            // VALOR TRAVADO DO TOKEN PARA AS REQUISIÇÕES 
+            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInVzZXJfaWQiOjMsInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODEzNTYwMCwiZXhwIjoxNjcwNzI3NjAwfQ.aVnNeNxBcvrSKcE4da2i3ZqciLjKSp7JuachA4fWJW-tWGsSlF_hMjo_MSnfDavE2b7eoKSlvIZ2p2myyn7DfQ');
 
             xhr.setRequestHeader('Content-type', 'application/json');
             xhr.setRequestHeader('Accept', 'application/json');
@@ -398,60 +410,64 @@
             xhr.onload = function () {
                 if (xhr.status === 200) {
 
-                    alert("Deu bomm")
-                };
-
-                const dados2 = {
-                    email: document.getElementById('exampleInputEmail').value,
-                    nome: document.getElementById('primeiroNome').value,
-                    sobrenome: document.getElementById('ultimoNome').value,
-                    cpf: document.getElementById('cpf').value,
-                    dataNascimento: document.getElementById('dataNascimento').value,
-                    genero: document.getElementById('genero').value,
+                    alert("Cadastro com sucesso")
                 }
+                else {
+                    alert(xhr.status)
+                };
 
 
             }
 
-            xhr.send(JSON.stringify(dados2))
-        }
+            xhr.send(JSON.stringify(dados))
+
+        })
+
+
+
+
 
     </script>
 
-<script>
-    function teste() {
+    <!-- EXEMPLO REQUISIÇÃO PARA SALVAR O TOKEN DA SESSÃO DURANTE O LOGIN-->
+    <script>
+        function teste() {
 
-        const xhr = new XMLHttpRequest();
+            const xhr = new XMLHttpRequest();
 
-        xhr.open('POST', 'http://localhost:8080/api/v1/login', true)
-        xhr.setRequestHeader('Content-type', 'application/json');
-        xhr.setRequestHeader('Accept', 'application/json');
-        
-
-
-        xhr.onload = function () {
+            //CHAMADA DO MÉTODO COM O ENDPOINT E OS CABEÇALHOS NECESSÁRIOS
+            xhr.open('POST', 'http://localhost:8080/api/v1/login', true)
+            xhr.setRequestHeader('Content-type', 'application/json');
+            xhr.setRequestHeader('Accept', 'application/json');
 
 
-            console.log(xhr.getResponseHeader('Authorization'))
-            sessionStorage.setItem("Authorization",xhr.getResponseHeader('Authorization'))
+            // AO RETORNO DA CHAMADA FAZ :
+            xhr.onload = function () {
+
+
+                console.log(xhr.getResponseHeader('Authorization'))
+                // SALVA A AUTORIZAÇAO NA SESSÃO DO NAVEGADOR
+                sessionStorage.setItem("Authorization", xhr.getResponseHeader('Authorization'))
+            }
+
+            // BODY DE ENVIO NA REQUISIÇÃO
+            const login = {
+                email: "teste@teste.com",
+                password: "senha123"
+            }
+
+            // PROCESSO DE ENVIO DA REQUISIÇÃO PASSANDO O COPRO 
+            xhr.send(JSON.stringify(login))
+
+
+
+
+
+
         }
 
-        const login = {
-            email: "teste@teste.com", 
-            password: "senha123"
-        }
 
-        xhr.send(JSON.stringify(login))
-
-      
-
-     
-
-
-    }
-
-   
-</script>
+    </script>
 
 </body>
 

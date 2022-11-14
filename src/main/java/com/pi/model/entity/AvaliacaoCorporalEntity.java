@@ -45,16 +45,16 @@ public class AvaliacaoCorporalEntity {
     private Float peso;
     
     @Column(name = "musculo_esqueletico")
-    private Float musculoEsqueletico;
+    private Float musculoEsqueletico;//via bioimpedancia
 
     @Column(name = "idade_corporal")
-    private Integer idadeCorporal;//pesquisar calculo
+    private Integer idadeCorporal;//via bioimpedancia
 
     @Column(name = "gordura_corporal")
     private Float gorduraCorporal;
 
     @Column(name = "gordura_visceral")
-    private Integer gorduraVisceral;
+    private Float gorduraVisceral;
 
     @Column(name = "metabolismo_basal")
     private Integer metabolismoBasal;//pesquisar calculo
@@ -62,43 +62,43 @@ public class AvaliacaoCorporalEntity {
     // Medidas do tronco
 
     @Column(name = "torax")
-    private Integer torax;
+    private Float torax;
 
     @Column(name = "cintura")
-    private Integer cintura;
+    private Float cintura;
     
     @Column(name = "abdome")
-    private Integer abdome;
+    private Float abdome;
 
     @Column(name = "quadril")
-    private Integer quadril;
+    private Float quadril;
 
     // Medidas membros superiores
 
     @Column(name = "biceps_esquerdo")
-    private Integer bicepsEsquerdo;
+    private Float bicepsEsquerdo;
 
     @Column(name = "antebraco_esquerdo")
-    private Integer antebracoEsquerdo;
+    private Float antebracoEsquerdo;
     
     @Column(name = "biceps_direito")
-    private Integer bicepsDireito;
+    private Float bicepsDireito;
     
     @Column(name = "antebraco_direito")
-    private Integer antebracoDireito;
+    private Float antebracoDireito;
 
     // Medidas membros inferiores
 
     @Column(name = "coxa_esquerda")
-    private Integer coxaEsquerda;
+    private Float coxaEsquerda;
     
     @Column(name = "panturrilha_esquerda")
-    private Integer panturrilhaEsquerda;
+    private Float panturrilhaEsquerda;
     
     @Column(name = "coxa_direita")
-    private Integer coxaDireita;
+    private Float coxaDireita;
     
     @Column(name = "panturrilha_direita")
-    private Integer panturrilhaDireita;
+    private Float panturrilhaDireita;
 
 }

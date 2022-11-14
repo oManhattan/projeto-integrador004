@@ -41,7 +41,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Login</h1>
                                     </div>
-                                    <form class="user" onsubmit="realizarLogin">
+                                    <form class="user" id="dadosForm" onsubmit="realizarLogin">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
@@ -101,10 +101,15 @@
         function realizarLogin() {
             const xhr = new XMLHttpRequest();
 
-            xhr.open('POST', `${URL}qual url eu pego jesus`, true);
+            xhr.open('POST', 'http://localhost:8080/api/v1/login', true)
+            xhr.setRequestHeader('Content-type', 'application/json');
+            xhr.setRequestHeader('Accept', 'application/json');
 
             xhr.onload = function () {
- 
+
+                console.log(xhr.getResponseHeader('Authorization'))
+                sessionStorage.setItem("Authorization",xhr.getResponseHeader('Authorization'))
+        
                 if (xhr.status === 200) {
                     alert("Sucesso no login")
                 } else {
@@ -116,12 +121,9 @@
                 email: document.getElementById('exampleInputEmail').value,
                 senha: document.getElementById('exampleInputPassword').value
             }
-
-            
-        }
-
         xhr.send(JSON.stringify(login));
-
+        }
+        
     </script>
 
 </body>

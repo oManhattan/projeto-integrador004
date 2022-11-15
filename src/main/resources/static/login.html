@@ -51,12 +51,12 @@
                                             <input type="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Senha">
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
                                                 <label class="custom-control-label" for="customCheck">Lembre de mim</label>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!-- criar um botao aqui  -->
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
                                          Entrar
@@ -121,6 +121,8 @@
                 email: document.getElementById('exampleInputEmail').value,
                 senha: document.getElementById('exampleInputPassword').value
             }
+
+            
         xhr.send(JSON.stringify(login));
         }
         

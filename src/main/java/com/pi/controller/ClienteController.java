@@ -21,7 +21,7 @@ import com.pi.logic.service.ClienteService;
 import com.pi.model.dto.ClienteRequest;
 import com.pi.model.dto.ClienteResponse;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", exposedHeaders = "*")
 @RestController
 @RequestMapping("/api/v1/cliente")
 public class ClienteController {

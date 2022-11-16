@@ -18,7 +18,7 @@ import com.pi.logic.service.ProfissionalService;
 import com.pi.model.dto.ProfissionalRequest;
 import com.pi.model.dto.ProfissionalResponse;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", exposedHeaders = "*")
 @RestController
 @RequestMapping("/api/v1/profissional")
 public class ProfissionalController {

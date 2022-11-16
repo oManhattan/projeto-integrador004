@@ -420,23 +420,120 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Treinos</h6>
                                 </div>
 
-                                
+                                <!-- NAVBAR INDICANDO OS TREINOS **LEMBRAR DOS IDs E ROLES -->
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="treino-a-tab" data-toggle="tab" href="#treino-a"
+                                            role="tab" aria-controls="treino-a" aria-selected="true">A</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="treino-b-tab" data-toggle="tab" href="#treino-b"
+                                            role="tab" aria-controls="treino-b" aria-selected="true">B</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="treino-c-tab" data-toggle="tab" href="#treino-c"
+                                            role="tab" aria-controls="treino-c" aria-selected="false">C</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="treino-a" role="tabpanel"
+                                        aria-labelledby="treino-a-tab">
 
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        
+                                        <div class="list-group">
+                                            <!-- CONJUNTO DE INFORMAÇÕES DOS TREINOS -->
+                                            <a
+                                                class="list-group-item list-group-item-action flex-column align-items-start">
+                                                <div class="d-flex w-100 justify-content-between ">
+                                                    <h5 class="mb-1">List group item heading</h5>
+                                                    <small>3 days ago</small>
+                                                </div>
+                                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus.
+                                                    Maecenas sed
+                                                    diam eget risus varius blandit.</p>
+                                                <small>Donec id elit non mi porta.</small>
+                                            </a>
+                                            <a
+                                                class="list-group-item list-group-item-action flex-column align-items-start">
+                                                <div class="d-flex w-100 justify-content-between ">
+                                                    <h5 class="mb-1">List group item heading</h5>
+                                                    <small>3 days ago</small>
+                                                </div>
+                                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus.
+                                                    Maecenas sed
+                                                    diam eget risus varius blandit.</p>
+                                                <small>Donec id elit non mi porta.</small>
+                                            </a>
+                                            <a
+                                                class="list-group-item list-group-item-action flex-column align-items-start">
+                                                <div class="d-flex w-100 justify-content-between ">
+                                                    <h5 class="mb-1">List group item heading</h5>
+                                                    <small>3 days ago</small>
+                                                </div>
+                                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus.
+                                                    Maecenas sed
+                                                    diam eget risus varius blandit.</p>
+                                                <small>Donec id elit non mi porta.</small>
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="treino-b" role="tabpanel"
+                                        aria-labelledby="treino-b-tab">
+                                        <div class="list-group">
+                                            <a
+                                                class="list-group-item list-group-item-action flex-column align-items-start">
+                                                <div class="d-flex w-100 justify-content-between ">
+                                                    <h5 class="mb-1">List group item heading</h5>
+                                                    <small>3 days ago</small>
+                                                </div>
+                                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus.
+                                                    Maecenas sed
+                                                    diam eget risus varius blandit.</p>
+                                                <small>Donec id elit non mi porta.</small>
+                                            </a>
+                                            <a
+                                                class="list-group-item list-group-item-action flex-column align-items-start">
+                                                <div class="d-flex w-100 justify-content-between ">
+                                                    <h5 class="mb-1">List group item heading</h5>
+                                                    <small>3 days ago</small>
+                                                </div>
+                                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus.
+                                                    Maecenas sed
+                                                    diam eget risus varius blandit.</p>
+                                                <small>Donec id elit non mi porta.</small>
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="treino-c" role="tabpanel"
+                                        aria-labelledby="treino-c-tab">
+                                        <div class="list-group">
+                                            <a class="list-group-item list-group-item-action flex-column align-items-start">
+                                                <div class="d-flex w-100 justify-content-between ">
+                                                    <h5 class="mb-1">List group item heading</h5>
+                                                    <small>3 days ago</small>
+                                                </div>
+                                                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed
+                                                    diam eget risus varius blandit.</p>
+                                                <small>Donec id elit non mi porta.</small>
+                                            </a>
+        
+                                        </div>
                                     </div>
                                 </div>
 
-                                
-                               
+
+                              
+
+
+
+
                             </div>
                         </div>
 
                     </div>
 
-                    
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -447,11 +544,6 @@
 
     </div>
     <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -499,7 +591,7 @@
         URL = 'http://192.168.15.16:8080/api/v1/'
 
         function dashClientes() {
-            
+
             console.log(localStorage.getItem('id'))
 
             const xhr = new XMLHttpRequest();

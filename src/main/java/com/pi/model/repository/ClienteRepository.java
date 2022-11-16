@@ -26,6 +26,9 @@ public interface ClienteRepository extends JpaRepository<ClienteEntity, Long> {
     @Query(nativeQuery = true, value = "SELECT * FROM Cliente c WHERE c.id = ?1")
     Optional<ClienteEntity> encontrarPorId(Long id);
 
+    @Query(nativeQuery = true, value = "select * from Cliente c where c.id = :id and c.profissional_id = :profissional_id")
+    Optional<ClienteEntity> encontrarPorIdComProfissional(@Param("id") Long id, @Param("profissional_id") Long profissionalID);
+
     @Query(nativeQuery = true, value = "select if(count(email) > 0, 'true', 'false') from cliente c where c.email = :email")
     Boolean emailExiste(@Param("email") String email);
 

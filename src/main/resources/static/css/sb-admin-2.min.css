@@ -11920,7 +11920,7 @@ a:focus {
 }
 
 .btn-icon-split {
-    padding: 0;
+    padding: 2;
     overflow: hidden;
     display: inline-flex;
     align-items: center;

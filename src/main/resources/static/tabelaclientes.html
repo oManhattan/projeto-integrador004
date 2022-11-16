@@ -496,7 +496,7 @@
 
     <script>
 
-        URL = 'http://192.168.15.16:8080/api/v1/'
+        URL = 'http://localhost:8080/api/v1/'
 
         function dashClientes() {
             
@@ -506,7 +506,7 @@
 
             xhr.open('GET', `${URL}cliente/buscar?id=${localStorage.getItem('id')}`, true);
 
-            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInVzZXJfaWQiOjMsInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODEzNTYwMCwiZXhwIjoxNjcwNzI3NjAwfQ.aVnNeNxBcvrSKcE4da2i3ZqciLjKSp7JuachA4fWJW-tWGsSlF_hMjo_MSnfDavE2b7eoKSlvIZ2p2myyn7DfQ');
+            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODQ4MTIwMCwiZXhwIjoxNjcxMDczMjAwfQ.mEuUovehMv5Bw7Oq_uAluJ-hLpbWTGYEUn0EtIBzdcoJ4O4uPuGzPOH3PL38sVV6xpqJ8o3grNpp_a96iuc2Tw');
 
             xhr.onload = function () {
                 if (xhr.status === 200) {

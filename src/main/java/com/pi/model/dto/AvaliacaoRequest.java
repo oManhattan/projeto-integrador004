@@ -2,8 +2,6 @@ package com.pi.model.dto;
 
 import java.time.LocalDate;
 
-
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -22,9 +20,6 @@ import lombok.ToString;
 	"coxaDireita","panturrilhaDireita"})
 public class AvaliacaoRequest {
 
-	/*Verificar se as medidas não serão melhores em Float do que Integer
-	 * */
-	
 	@JsonProperty(namespace = "dataRealizacao")
 	private LocalDate dataRealizacao;
 	

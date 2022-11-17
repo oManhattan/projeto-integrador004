@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pi.logic.service.ClienteService;
 import com.pi.model.dto.ClienteRequest;
 import com.pi.model.dto.ClienteResponse;
+import com.pi.model.dto.PaginaClienteResponse;
 
 @CrossOrigin(origins = "*", exposedHeaders = "*")
 @RestController
@@ -71,6 +72,16 @@ public class ClienteController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
+    }
+
+    @GetMapping("/pagina-cliente")
+    public ResponseEntity<?> buscarPaginaCliente(@RequestHeader(name = "Authorization") String token, @RequestParam("cliente-id") Long clienteID) {
+        try {
+            PaginaClienteResponse response = clienteService.carregarPaginaCliente(token, clienteID);
+            return ResponseEntity.ok().body(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }    
     }
 
     @DeleteMapping("/apagar-perfil")

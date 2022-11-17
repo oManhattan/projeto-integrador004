@@ -41,19 +41,19 @@ public class AvaliacaoCorporalEntity {
     @Column(name = "altura")
     private Integer altura;
 
-    @Column(name = "peso")
+    @Column(name = "peso", scale = 2)
     private Float peso;
     
-    @Column(name = "musculo_esqueletico")
+    @Column(name = "musculo_esqueletico", scale = 2)
     private Float musculoEsqueletico;//via bioimpedancia
 
     @Column(name = "idade_corporal")
     private Integer idadeCorporal;//via bioimpedancia
 
-    @Column(name = "gordura_corporal")
+    @Column(name = "gordura_corporal", scale = 2)
     private Float gorduraCorporal;
 
-    @Column(name = "gordura_visceral")
+    @Column(name = "gordura_visceral", scale = 2)
     private Float gorduraVisceral;
 
     @Column(name = "metabolismo_basal")
@@ -61,44 +61,44 @@ public class AvaliacaoCorporalEntity {
 
     // Medidas do tronco
 
-    @Column(name = "torax")
+    @Column(name = "torax", scale = 2)
     private Float torax;
 
-    @Column(name = "cintura")
+    @Column(name = "cintura", scale = 2)
     private Float cintura;
     
-    @Column(name = "abdome")
+    @Column(name = "abdome", scale = 2)
     private Float abdome;
 
-    @Column(name = "quadril")
+    @Column(name = "quadril", scale = 2)
     private Float quadril;
 
     // Medidas membros superiores
 
-    @Column(name = "biceps_esquerdo")
+    @Column(name = "biceps_esquerdo", scale = 2)
     private Float bicepsEsquerdo;
 
-    @Column(name = "antebraco_esquerdo")
+    @Column(name = "antebraco_esquerdo", scale = 2)
     private Float antebracoEsquerdo;
     
-    @Column(name = "biceps_direito")
+    @Column(name = "biceps_direito", scale = 2)
     private Float bicepsDireito;
     
-    @Column(name = "antebraco_direito")
+    @Column(name = "antebraco_direito", scale = 2)
     private Float antebracoDireito;
 
     // Medidas membros inferiores
 
-    @Column(name = "coxa_esquerda")
+    @Column(name = "coxa_esquerda", scale = 2)
     private Float coxaEsquerda;
     
-    @Column(name = "panturrilha_esquerda")
+    @Column(name = "panturrilha_esquerda", scale = 2)
     private Float panturrilhaEsquerda;
     
-    @Column(name = "coxa_direita")
+    @Column(name = "coxa_direita", scale = 2)
     private Float coxaDireita;
     
-    @Column(name = "panturrilha_direita")
+    @Column(name = "panturrilha_direita", scale = 2)
     private Float panturrilhaDireita;
 
 }

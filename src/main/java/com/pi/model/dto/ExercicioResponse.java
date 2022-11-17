@@ -15,18 +15,21 @@ import lombok.Setter;
 @Setter
 @Getter
 @JsonPropertyOrder({"nome", "musculo", "serie", "repeticao"})
-public class ExercicioRequest {
+public class ExercicioResponse {
     
-    @JsonProperty(namespace = "nome")
+    @JsonProperty("id")
+    private Long id;
+
+    @JsonProperty("nome")
     private String nome;
 
-    @JsonProperty(namespace = "musculo")
+    @JsonProperty("musculo")
     private String musculo;
 
-    @JsonProperty(namespace = "serie")
+    @JsonProperty("serie")
     private Integer serie;
 
-    @JsonProperty(namespace = "repeticao")
+    @JsonProperty("repeticao")
     private Integer repeticao;
 
 }

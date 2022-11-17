@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,6 +32,7 @@ public class AvaliacaoController {
     @PreAuthorize("hasAuthority('ROLE_PROFISSIONAL')")
     public ResponseEntity<?> criarAvaliacao(@RequestHeader(name = "Authorization", required = true) String token, @RequestParam("cliente-id") Long clienteID, @RequestBody AvaliacaoRequest request) {
         try {
+            System.out.println(request.toString());
             AvaliacaoResponse response = avaliacaoService.criarAvaliacao(token, clienteID, request);
             return ResponseEntity.ok().body(response);
         } catch (Exception e) {
@@ -38,12 +40,25 @@ public class AvaliacaoController {
         }
     }
 
-    @GetMapping("/get")
+    @GetMapping("/all")
     @PreAuthorize("hasAuthority('ROLE_CLIENTE')")
     public ResponseEntity<?> encontrarListaAvaliacaoCliente(@RequestHeader(name = "Authorization") String token) {
         try {
             List<AvaliacaoResponse> response = avaliacaoService.encontrarListaAvaliacoes(token);
             return ResponseEntity.ok().body(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+
+
+    @DeleteMapping("/delete")
+    @PreAuthorize("hasAuthority('ROLE_PROFISSIONAL')")
+    public ResponseEntity<?> apagarAvaliacao(@RequestParam("id") Long id) {
+        try {
+            avaliacaoService.apagarAvaliacao(id);
+            return ResponseEntity.ok().body("Avaliação Corporal apagada com sucesso.");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }

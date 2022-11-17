@@ -15,12 +15,6 @@ import com.pi.model.entity.ClienteEntity;
 import com.pi.model.repository.AvaliacaoRepository;
 import com.pi.model.repository.ClienteRepository;
 
-/**
- * Criar uma avaliação (token do profissional, id do cliente, avaliacao request)
- * Buscar todas as avaliações do cliente
- * Apagar uma avaliação
- * 
- */
 @Service
 public class AvaliacaoService {
     
@@ -61,4 +55,11 @@ public class AvaliacaoService {
         return AvaliacaoConverter.toResponseList(entityList);
     }
 
-}
+    public void apagarAvaliacao(Long id) throws Exception {
+        int affectedRows = avaliacaoRepository.apagarAvaliacao(id);
+        if (affectedRows < 1) {
+            throw new Exception("Não foi possível apagar a avaliação corporal");
+        }
+    }
+
+}   

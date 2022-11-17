@@ -1,5 +1,6 @@
 package com.pi.logic.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -14,14 +15,19 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.pi.logic.converter.AvaliacaoConverter;
 import com.pi.logic.converter.ClienteConverter;
 import com.pi.logic.util.JWTUtil;
+import com.pi.logic.util.Pair;
 import com.pi.logic.util.PasswordGeneratorUtil;
+import com.pi.model.dto.AvaliacaoResponse;
 import com.pi.model.dto.ClienteRequest;
 import com.pi.model.dto.ClienteResponse;
 import com.pi.model.dto.LoginRequest;
+import com.pi.model.dto.PaginaClienteResponse;
 import com.pi.model.entity.ClienteEntity;
 import com.pi.model.entity.ProfissionalEntity;
+import com.pi.model.repository.AvaliacaoRepository;
 import com.pi.model.repository.ClienteRepository;
 import com.pi.model.repository.ProfissionalRepository;
 
@@ -30,16 +36,25 @@ public class ClienteService {
 
     @Autowired
     private ClienteRepository clienteRepository;
+
     @Autowired
     private ProfissionalRepository profissionalRepository;
+
+    @Autowired
+    private AvaliacaoRepository avaliacaoRepository;
+
     @Autowired
     private AuthenticationManager authenticationManager;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     @Autowired
     private JWTUtil jwtUtil;
+
     @Autowired
     private PasswordGeneratorUtil passwordGenerator;
+
     @Autowired
     private JavaMailSender javaMailSender;
 
@@ -86,7 +101,9 @@ public class ClienteService {
         message.setFrom("manhattandummymail@gmail.com");
         message.setTo(email);
         message.setSubject("Cadastro ");
-        message.setText(String.format("Olá, %s\n\nSeu cadastro foi criado com sucesso.\n\nSua senha é %s\n\nFaça login e altera-a.", nome, senha));
+        message.setText(String.format(
+                "Olá, %s\n\nSeu cadastro foi criado com sucesso.\n\nSua senha é %s\n\nFaça login e altera-a.", nome,
+                senha));
         javaMailSender.send(message);
     }
 
@@ -127,7 +144,8 @@ public class ClienteService {
             throw new Exception("E-mail já cadastrado");
         }
 
-        clienteRepository.alterarPerfil(request.getEmail(), request.getNome(), request.getSobrenome(), request.getGenero().name(), request.getDataNascimento(), id);
+        clienteRepository.alterarPerfil(request.getEmail(), request.getNome(), request.getSobrenome(),
+                request.getGenero().name(), request.getDataNascimento(), id);
     }
 
     public ClienteResponse buscarPerfil(Long id) throws Exception {
@@ -136,7 +154,7 @@ public class ClienteService {
         if (optionalCliente.isEmpty()) {
             throw new Exception("Perfil não encontrado.");
         }
-        
+
         return ClienteConverter.toResponse(optionalCliente.get());
     }
 
@@ -148,5 +166,29 @@ public class ClienteService {
         if (affectedRows <= 0) {
             throw new Exception("Não foi possível apagar o perfil.");
         }
+    }
+
+    public PaginaClienteResponse carregarPaginaCliente(String token, Long clienteID) throws Exception {
+
+        Optional<ClienteEntity> optionalCliente = clienteRepository.encontrarPorId(clienteID);
+
+        if (optionalCliente.isEmpty()) {
+            throw new Exception("Cliente não encontrado.");
+        }
+
+        List<AvaliacaoResponse> listaAvaliacao = AvaliacaoConverter.toResponseList(avaliacaoRepository.encontrarTodasAvaliacoesDoCliente(clienteID));
+
+        List<Pair<Float, LocalDate>> graficoPeso = listaAvaliacao
+        .stream()
+        .map((avaliacao) -> new Pair<Float, LocalDate>(avaliacao.getPeso(), avaliacao.getDataRealizacao()))
+        .collect(Collectors.toList());
+
+        AvaliacaoResponse ultimaAvaliacao = listaAvaliacao.stream().findFirst().orElse(null);
+
+        return PaginaClienteResponse.builder()
+        .cliente(ClienteConverter.toResponse(optionalCliente.get()))
+        .ultimaAvaliacao(ultimaAvaliacao)
+        .graficoPeso(graficoPeso)
+        .build();
     }
 }

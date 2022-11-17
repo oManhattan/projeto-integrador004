@@ -18,6 +18,7 @@ public class ExercicioService {
     private TreinoRepository treinoRepository;
 
     public ExercicioResponse criarExercicio(Long clienteID, Long treinoID, ExercicioRequest request) {
+        return null;
         
     }
 }

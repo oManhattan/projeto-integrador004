@@ -24,6 +24,58 @@
     })
     </script>
 
+    
+<!--Confirmação de senha-->
+    <script>
+        function confereSenha(){
+
+            const senha = document.querySelector('input[name=senha]');
+            const confirma = document.querySelector('input[name=confirma]');
+
+          if(confirma.value === senha.value){
+               confirma.setCustomValidity('');
+            }else{
+                confirma.setCustomValidity('As senhas não conferem');
+             }
+         } 
+    </script>
+
+<!------
+    <script type="text/javascript">
+        function validarSenha(){
+            var campo1 = document.getElementById('exampleInputPassword').value;
+            var campo2 = document.getElementById('exampleRepeatPassword').value;
+            if(campo1 != campo2){
+               campo2.setCustomValidity("Senhas diferentes");
+               return false;
+            }else{
+                return true;
+            }
+        }
+    </script>
+-->
+
+<!--Visualização de senha-->
+    <script>
+        function mouseoverPass(obj) {
+         var obj = document.getElementById('exampleInputPassword');
+        obj.type = "text";
+    }
+        function mouseoutPass(obj) {
+        var obj = document.getElementById('exampleInputPassword');
+        obj.type = "password";
+    }
+
+    function mouseoverPass2(obj) {
+         var obj = document.getElementById('exampleRepeatPassword');
+        obj.type = "text";
+    }
+        function mouseoutPass2(obj) {
+        var obj = document.getElementById('exampleRepeatPassword');
+        obj.type = "password";
+    }
+   </script>
+
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
@@ -56,26 +108,26 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Área de cadastro</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Cadastro de Profissional</h1>
                             </div>
                             <form class="user">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="Primeiro nome">
+                                        <input type="text" class="form-control form-control-user" id="exampleFirstName" required
+                                            placeholder="Nome">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
+                                        <input type="text" class="form-control form-control-user" id="exampleLastName" required
                                             placeholder="Sobrenome">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" required
                                         placeholder="Endereço de e-mail">
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" name="cpf" id="cpf" class="form-control form-control-user"
+                                    <input type="text" name="cpf" id="cpf" required class="form-control form-control-user"
                                         placeholder="CPF">
                                 </div>
 
@@ -89,19 +141,22 @@
                                         placeholder="Número de registro - CREF">
                                 </div>
 
-
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Senha">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"> 
+                                        <img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png" onclick="mouseoverPass();" onmouseout="mouseoutPass();"  id="olho" class="olho"/>                        
+                                        <input type="password" name="senha" class="form-control form-control-user"
+                                            id="exampleInputPassword" required placeholder="Senha" onchange='confereSenha();' >
+                                            
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Confirme a senha">
-                                    </div>
+                                        <img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png" onclick="mouseoverPass2();" onmouseout="mouseoutPass2();"  id="olho2" class="olho"/>
+                                        <input type="password" name="confirma" class="form-control form-control-user"
+                                            id="exampleRepeatPassword" required placeholder="Confirma Senha" onchange='confereSenha();' >
+                                    </div> 
                                 </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                    Cadastrar
+                                <button class="btn btn-primary btn-user btn-block" type="submit" onclick="return confereSenha()">Cadastrar</button>
+                                <a href="cadastroSucesso.html"></a>
+                                 
                                 </a>
                                 <hr>
                             </form>

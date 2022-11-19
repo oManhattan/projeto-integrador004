@@ -20,7 +20,7 @@ import com.pi.logic.service.AvaliacaoService;
 import com.pi.model.dto.AvaliacaoRequest;
 import com.pi.model.dto.AvaliacaoResponse;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", exposedHeaders = "*")
 @RestController
 @RequestMapping("/api/v1/avaliacao")
 public class AvaliacaoController {

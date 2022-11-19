@@ -21,9 +21,9 @@ import com.pi.logic.service.TreinoService;
 import com.pi.model.dto.TreinoRequest;
 import com.pi.model.dto.TreinoResponse;
 
+@CrossOrigin(origins = "*", exposedHeaders = "*")
 @RestController
 @RequestMapping("/api/v1/treino")
-@CrossOrigin(origins = "*", exposedHeaders = "*")
 public class TreinoController {
     
     @Autowired

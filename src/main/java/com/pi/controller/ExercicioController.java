@@ -15,9 +15,9 @@ import com.pi.logic.service.ExercicioService;
 import com.pi.model.dto.ExercicioRequest;
 import com.pi.model.dto.ExercicioResponse;
 
+@CrossOrigin(origins = "*", exposedHeaders = "*")
 @RestController
 @RequestMapping("/api/v1/exercicio")
-@CrossOrigin(origins = "*", exposedHeaders = "*")
 public class ExercicioController {
     
     @Autowired

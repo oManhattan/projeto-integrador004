@@ -479,7 +479,7 @@
                     if (xhr.status === 200) {
                         const dados = JSON.parse(xhr.responseText);
 
-                        document.getElementById('nome').value = dados.cliente.nome + ' ' + dados.cliente.sobrenome;
+                        document.getElementById('nomecompleto').value = dados.cliente.nome + ' ' + dados.cliente.sobrenome;
                     }
                 }
 

@@ -175,6 +175,94 @@
 
     </div>
 
+    <script>
+
+
+        document.getElementById('dadosForm').addEventListener("submit", function (event) {
+            event.preventDefault()
+
+            URL = 'http://192.168.15.16:8080/api/v1/'
+
+            const dados = {
+                email: document.getElementById('exampleInputEmail').value,
+                nome: document.getElementById('primeiroNome').value,
+                sobrenome: document.getElementById('ultimoNome').value,
+                cpf: document.getElementById('cpf').value,
+                // dataNascimento: document.getElementById('dataNascimento').value,
+                dataNascimento: '2000-11-21',
+                genero: document.getElementById('genero').value,
+            }
+
+            console.log(dados)
+
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('POST', `${URL}cliente/register`, true);
+
+            // PEGAR O TOKEN PARA AS REQUISIÇÕES ATRAVÉS DO SESSION STORAGE
+            // xhr.setRequestHeader('Authorization', sessionStorage.getItem('Authorization'))
+
+            // VALOR TRAVADO DO TOKEN PARA AS REQUISIÇÕES 
+            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInVzZXJfaWQiOjMsInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODEzNTYwMCwiZXhwIjoxNjcwNzI3NjAwfQ.aVnNeNxBcvrSKcE4da2i3ZqciLjKSp7JuachA4fWJW-tWGsSlF_hMjo_MSnfDavE2b7eoKSlvIZ2p2myyn7DfQ');
+
+            xhr.setRequestHeader('Content-type', 'application/json');
+            xhr.setRequestHeader('Accept', 'application/json');
+
+
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+
+                    alert("Cadastro com sucesso")
+                    location.href = './login.html'
+                }
+                else {
+                    alert(xhr.status)
+                };
+
+
+            }
+
+            xhr.send(JSON.stringify(dados))
+
+        })
+
+
+
+    </script>
+
+    <!-- EXEMPLO REQUISIÇÃO PARA SALVAR O TOKEN DA SESSÃO DURANTE O LOGIN-->
+    <script>
+        function teste() {
+
+            const xhr = new XMLHttpRequest();
+
+            //CHAMADA DO MÉTODO COM O ENDPOINT E OS CABEÇALHOS NECESSÁRIOS
+            xhr.open('POST', 'http://localhost:8080/api/v1/login', true)
+            xhr.setRequestHeader('Content-type', 'application/json');
+            xhr.setRequestHeader('Accept', 'application/json');
+
+
+            // AO RETORNO DA CHAMADA FAZ :
+            xhr.onload = function () {
+
+
+                console.log(xhr.getResponseHeader('Authorization'))
+                // SALVA A AUTORIZAÇAO NA SESSÃO DO NAVEGADOR
+                sessionStorage.setItem("Authorization", xhr.getResponseHeader('Authorization'))
+            }
+
+            // BODY DE ENVIO NA REQUISIÇÃO
+            const login = {
+                email: "teste@teste.com",
+                password: "senha123"
+            }
+
+            // PROCESSO DE ENVIO DA REQUISIÇÃO PASSANDO O COPRO 
+            xhr.send(JSON.stringify(login))
+        }
+    </script>
+
 </body>
 
 </html>

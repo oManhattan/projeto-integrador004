@@ -1,5 +1,7 @@
 package com.pi.model.dto;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import lombok.AllArgsConstructor;
@@ -18,8 +20,9 @@ public class TreinoResponse {
     
     private Long id;
 
-    private Long titulo;
+    private Character titulo;
 
-    private Long subtitulo;
+    private String subtitulo;
 
+    private List<ExercicioResponse> exercicios;
 }

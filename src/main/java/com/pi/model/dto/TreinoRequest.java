@@ -14,7 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
-@JsonPropertyOrder({"titulo", "substitulo"})
+@JsonPropertyOrder({"titulo", "subtitulo"})
 public class TreinoRequest {
     
     @JsonProperty(namespace = "titulo")

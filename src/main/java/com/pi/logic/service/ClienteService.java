@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import com.pi.logic.converter.AvaliacaoConverter;
 import com.pi.logic.converter.ClienteConverter;
+import com.pi.logic.converter.TreinoConverter;
 import com.pi.logic.util.JWTUtil;
 import com.pi.logic.util.Pair;
 import com.pi.logic.util.PasswordGeneratorUtil;
@@ -27,9 +28,12 @@ import com.pi.model.dto.LoginRequest;
 import com.pi.model.dto.PaginaClienteResponse;
 import com.pi.model.entity.ClienteEntity;
 import com.pi.model.entity.ProfissionalEntity;
+import com.pi.model.entity.TreinoEntity;
 import com.pi.model.repository.AvaliacaoRepository;
 import com.pi.model.repository.ClienteRepository;
+import com.pi.model.repository.ExercicioRepository;
 import com.pi.model.repository.ProfissionalRepository;
+import com.pi.model.repository.TreinoRepository;
 
 @Service
 public class ClienteService {
@@ -57,6 +61,12 @@ public class ClienteService {
 
     @Autowired
     private JavaMailSender javaMailSender;
+    
+    @Autowired
+    private TreinoRepository treinoRepository;
+
+    @Autowired
+    private ExercicioRepository exercicioRepository;
 
     public Boolean emailExiste(String email) {
         return clienteRepository.encontrarPorEmail(email).isPresent();
@@ -185,10 +195,17 @@ public class ClienteService {
 
         AvaliacaoResponse ultimaAvaliacao = listaAvaliacao.stream().findFirst().orElse(null);
 
+        List<TreinoEntity> treinos = treinoRepository.treinosDoCliente(clienteID);
+
+        treinos.stream()
+                .forEach((treino) -> treino
+                        .setExercicios(exercicioRepository.encontrarTodosComTreinoID(treino.getId())));
+
         return PaginaClienteResponse.builder()
         .cliente(ClienteConverter.toResponse(optionalCliente.get()))
         .ultimaAvaliacao(ultimaAvaliacao)
         .graficoPeso(graficoPeso)
+        .treinos(TreinoConverter.toResponseList(treinos))
         .build();
     }
 }

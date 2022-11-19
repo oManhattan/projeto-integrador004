@@ -18,7 +18,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-@JsonPropertyOrder({"cliente", "ultima_avaliacao", "grafico_peso"})
+@JsonPropertyOrder({"cliente", "ultima_avaliacao", "grafico_peso", "treinos"})
 public class PaginaClienteResponse {
     
     @JsonProperty("cliente")
@@ -30,4 +30,6 @@ public class PaginaClienteResponse {
     @JsonProperty("grafico_peso")
     private List<Pair<Float, LocalDate>> graficoPeso;
 
+    @JsonProperty("treinos")
+    private List<TreinoResponse> treinos;
 }

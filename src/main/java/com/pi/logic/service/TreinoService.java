@@ -1,5 +1,6 @@
 package com.pi.logic.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +14,7 @@ import com.pi.model.dto.TreinoResponse;
 import com.pi.model.entity.ClienteEntity;
 import com.pi.model.entity.TreinoEntity;
 import com.pi.model.repository.ClienteRepository;
+import com.pi.model.repository.ExercicioRepository;
 import com.pi.model.repository.TreinoRepository;
 
 @Service
@@ -27,11 +29,15 @@ public class TreinoService {
     @Autowired
     private TreinoRepository treinoRepository;
 
+    @Autowired
+    private ExercicioRepository exercicioRepository;
+
     public TreinoResponse createTreino(String token, Long clienteID, TreinoRequest request) throws Exception {
         String formattedToken = jwtUtil.formatToken(token);
         Long profissionalID = jwtUtil.getIdFromToken(formattedToken);
 
-        Optional<ClienteEntity> optionalCliente = clienteRepository.encontrarPorIdComProfissional(clienteID, profissionalID);
+        Optional<ClienteEntity> optionalCliente = clienteRepository.encontrarPorIdComProfissional(clienteID,
+                profissionalID);
 
         if (optionalCliente.isEmpty()) {
             throw new Exception("Cliente não encontrado ou não vinculado ao profissional.");
@@ -42,6 +48,7 @@ public class TreinoService {
                 .cliente(optionalCliente.get())
                 .titulo(request.getTitulo())
                 .subtitulo(request.getSubtitulo())
+                .exercicios(new ArrayList<>())
                 .build();
 
         return TreinoConverter.toResponse(treinoRepository.save(novoTreino));
@@ -60,10 +67,15 @@ public class TreinoService {
             throw new Exception("Não foi possível atualizar nenhum treino.");
         }
     }
-    
-        public List<TreinoResponse> getTreinos(String token, Long clienteID) throws Exception {
-            jwtUtil.formatToken(token);
-            List<TreinoEntity> treinos = treinoRepository.treinosDoCliente(clienteID);
-            return TreinoConverter.toResponseList(treinos);
-        }
+
+    public List<TreinoResponse> getTreinos(String token, Long clienteID) throws Exception {
+        jwtUtil.formatToken(token);
+        List<TreinoEntity> treinos = treinoRepository.treinosDoCliente(clienteID);
+
+        treinos.stream()
+                .forEach((treino) -> treino
+                        .setExercicios(exercicioRepository.encontrarTodosComTreinoID(treino.getId())));
+
+        return TreinoConverter.toResponseList(treinos);
+    }
 }

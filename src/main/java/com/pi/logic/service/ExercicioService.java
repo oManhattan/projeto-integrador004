@@ -62,4 +62,8 @@ public class ExercicioService {
 
         return ExercicioConverter.toResponse(exercicioRepository.save(entity));
     }
+
+    public void excluirExercicio(Long exercicioID) {
+        exercicioRepository.deleteById(exercicioID);
+    }
 }

@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +22,8 @@ import com.pi.model.dto.TreinoRequest;
 import com.pi.model.dto.TreinoResponse;
 
 @RestController
-@RequestMapping("/api/v1/exercicio")
+@RequestMapping("/api/v1/treino")
+@CrossOrigin(origins = "*", exposedHeaders = "*")
 public class TreinoController {
     
     @Autowired
@@ -28,18 +31,20 @@ public class TreinoController {
 
     @PostMapping("/create")
     @PreAuthorize("hasAuthority('ROLE_PROFISSIONAL')")
-    public ResponseEntity<?> criarTreino(@RequestHeader("Authorization") String token, @RequestParam("/cliente-id") Long id, @RequestBody TreinoRequest request) {
+    public ResponseEntity<?> criarTreino(@RequestHeader("Authorization") String token, @RequestParam("clienteid") Long id, @RequestBody TreinoRequest request) {
         try {
             TreinoResponse response = treinoService.createTreino(token, id, request);
             return ResponseEntity.ok().body(response);
         } catch (Exception e) {
+            System.out.println(e);
+            System.out.println(e.getLocalizedMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 
     @PutMapping("/update")
     @PreAuthorize("hasAuthority('ROLE_PROFISSIONAL')")
-    public ResponseEntity<?> updateTreino(@RequestHeader("Authorization") String token, @RequestParam("treino-id") Long id, @RequestBody TreinoRequest request) {
+    public ResponseEntity<?> updateTreino(@RequestHeader("Authorization") String token, @RequestParam("treinoid") Long id, @RequestBody TreinoRequest request) {
         try {
             treinoService.updateTreino(id, request);
             return ResponseEntity.ok().body("Treino atualizado com sucesso");
@@ -50,7 +55,7 @@ public class TreinoController {
 
     @DeleteMapping("/delete")
     @PreAuthorize("hasAuthority('ROLE_PROFISSIONAL')")
-    public ResponseEntity<?> deleteTreino(@RequestHeader("Authorization") String token, @RequestParam("treino-id") Long id) {
+    public ResponseEntity<?> deleteTreino(@RequestHeader("Authorization") String token, @RequestParam("treinoid") Long id) {
         try {
             treinoService.deleteTreino(id);
             return ResponseEntity.ok().body("Treino apagado com sucesso");
@@ -59,7 +64,8 @@ public class TreinoController {
         }
     }
 
-    public ResponseEntity<?> getTreinoList(@RequestHeader("Authorization") String token, @RequestParam("cliente-id") Long id) {
+    @GetMapping("/all")
+    public ResponseEntity<?> getTreinoList(@RequestHeader("Authorization") String token, @RequestParam("clienteid") Long id) {
         try {
             List<TreinoResponse> response = treinoService.getTreinos(token, id);
             return ResponseEntity.ok().body(response);

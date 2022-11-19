@@ -2715,6 +2715,12 @@ fieldset:disabled a.btn {
     border-color: #14213D
 }
 
+.btn-exercicio {
+    color: #fff;
+    background-color: #00740a;
+    border-color: #00740a;
+}
+
 .btn-primary:hover {
     color: #fff;
     background-color: #fca311;
@@ -3297,7 +3303,7 @@ fieldset:disabled a.btn {
 .btn-group-lg>.btn,
 .btn-lg {
     padding: .5rem 1rem;
-    font-size: 1.25rem;
+    font-size: 1rem;
     line-height: 1.5;
     border-radius: .3rem
 }

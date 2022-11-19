@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Smart Trainer</title>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+
+    <script src="vendor/jquery/jquery.mask.min.js"></script>
+
+    <!-- Máscaras JQUERY -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#cpf").mask("000.000.000-00")
+            $("#cnpj").mask("00.000.000/0000-00")
+            $("#telefone").mask("(00) 00000-0000")
+            $("#dataNascimento").mask("00/00/0000")
+        })
+    </script>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/Trevo.png" type="image/x-icon">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion no-print" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                </div>
+                <div class="sidebar-brand-text mx-3">Smart Trainer</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <div class="sidebar-heading">
+                Painel profissional
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Meus clientes</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="branco.html">
+                    <i class="fas fa-fw fa-user-plus"></i>
+                    <span>Novo cliente</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>Meus treinos</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-plus-circle"></i>
+                    <span>Criar treino</span></a>
+            </li>
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">João Vitor Richard</span>
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Perfil
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Configurações
+                                </a>
+
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Sair
+                                </a>
+                            </div>
+                        </li>
+
+                </nav>
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-4 text-gray-800 text-center">Avaliação corporal</h1>
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Inicio da avaliação -->
+                            <div class="card shadow mb-4 card-novaaposta mx-auto">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary text-center">Preencha as informações
+                                        conforme solicitado abaixo. </h6>
+                                </div>
+                                <div class="card-body text-left d-flex align-items-center justify-content-center">
+
+                                    <form class="user" id="dadosForm" method="POST"
+                                        action="http://192.168.15.16:8080/api/v1/cliente/register">
+
+                                        <div class="form-group">
+                                            <span><b>Nome completo</b></span>
+                                            <input type="text" required name="nomecompleto" id="nomecompleto"
+                                                name="nomecompleto" class="form-control" placeholder="Nome completo">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <span><b>Data da avaliação</b></span>
+                                            <input type="date" class="form-control" placeholder="Data de realização">
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                <span><b>Altura</b></span>
+                                                <input required type="text" class="form-control" name="altura"
+                                                    id="altura" placeholder="Altura">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <span><b>Peso atual</b></span>
+                                                <input type="text" required class="form-control" name="pesoAtual"
+                                                    id="pesoAtual" placeholder="Peso atual">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <span><b>Músculo esqueletico</b></span>
+                                            <input type="text" required name="musculoEsqueletico"
+                                                id="musculoEsqueletico" name="musculoEsqueletico" class="form-control"
+                                                placeholder="Músculo esquelético">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <span><b>Massa muscular</b></span>
+                                            <input type="text" required name="massaMuscular" id="massaMuscular"
+                                                name="massaMuscular" class="form-control" placeholder="Massa muscular">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <span><b>Idade corporal</b></span>
+                                            <input type="text" required name="idadeCorporal" id="idadeCorporal"
+                                                name="idadeCorporal" class="form-control" placeholder="Idade corporal">
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                <span><b>Gordura corporal</b></span>
+                                                <input required type="text" class="form-control" name="gorduraCorporal"
+                                                    id="gorduraCorporal" placeholder="Gordura corporal">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <span><b>Gordura visceral</b></span>
+                                                <input type="text" required class="form-control" name="gorduraVisceral"
+                                                    id="gorduraVisceral" placeholder="Gordura visceral">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <span><b>Metabolismo basal</b></span>
+                                            <input type="text" required name="metabolismoBasal" id="metabolismoBasal"
+                                                name="metabolismoBasal" class="form-control"
+                                                placeholder="Metabolismo basal">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <span><b>Torax</b></span>
+                                            <input type="text" required name="torax" id="torax" name="torax"
+                                                class="form-control" placeholder="Torax">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <span><b>Cintura</b></span>
+                                            <input type="text" required name="cintura" id="cintura" name="cintura"
+                                                class="form-control" placeholder="Cintura">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <span><b>Abdômen</b></span>
+                                            <input type="text" required name="abdomem" id="abdomem" name="abdomem"
+                                                class="form-control" placeholder="Abdômen">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <span><b>Quadril</b></span>
+                                            <input type="text" required name="quadril" id="quadril" name="quadril"
+                                                class="form-control" placeholder="Quadril">
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                <span><b>Bíceps esquerdo</b></span>
+                                                <input required type="text" class="form-control" name="bicepsEsquerdo"
+                                                    id="bicepsEsquerdo" placeholder="Bíceps esquerdo">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <span><b>Bíceps direito</b></span>
+                                                <input type="text" required class="form-control" name="bicepsDireito"
+                                                    id="bicepsDireito" placeholder="Bíceps direito">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                <span><b>Antebraço esquerdo</b></span>
+                                                <input required type="text" class="form-control"
+                                                    name="antebracoEsquerdo" id="antebracoEsquerdo"
+                                                    placeholder="Antebraço esquerdo">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <span><b>Antebraço direito</b></span>
+                                                <input type="text" required class="form-control" name="antebracoDireito"
+                                                    id="antebracoDireito" placeholder="Antebraço direto">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                <span><b>Coxa esquerda</b></span>
+                                                <input required type="text" class="form-control" name="coxaEsquerda"
+                                                    id="coxaEsquerda" placeholder="Coxa esquerda">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <span><b>Coxa direita</b></span>
+                                                <input type="text" required class="form-control" name="coxaDireita"
+                                                    id="coxaDireita" placeholder="Coxa direita">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                <span><b>Panturilha esquerda</b></span>
+                                                <input required type="text" class="form-control"
+                                                    name="panturrilhaEsquerda" id="panturrilhaEsquerda"
+                                                    placeholder="Panturilha esquerda">
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <span><b>Panturilha direita</b></span>
+                                                <input type="text" required class="form-control"
+                                                    name="panturrilhaDireita" id="panturrilhaDireita"
+                                                    placeholder="Panturilha direita">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-control-user text-center">
+
+                                            <button type="submit" onclick="acao()"
+                                                class="btn btn-primary btn-icon-split btn-lg mt-3 mb-3"
+                                                id="cadastro">Salvar informações</button>
+                                        </div>
+                                </div>
+
+                                </form>
+                            </div>
+
+                            <!-- Inicio do Treino -->
+
+                            <h1 class="h3 mb-4 text-gray-800 text-center">Treino personalizado</h1>
+                            <div class="row">
+                                <div class="col-12">
+
+                                    <div class="card shadow mb-4 card-novaaposta mx-auto">
+                                        <div class="card-header py-3">
+                                            <h6 class="m-0 font-weight-bold text-primary text-center">Preencha as
+                                                informações do treino personalizado.</h6>
+                                        </div>
+                                        <div
+                                            class="card-body text-left d-flex align-items-center justify-content-center">
+
+                                            <form class="user" id="dadosForm" method="POST"
+                                                action="http://192.168.15.16:8080/api/v1/cliente/register">
+
+                                                <div class="form-group row">
+                                                    <div class="col-sm-6">
+                                                        <span><b>Tipo de treino</b></span>
+                                                        <select name="tituloTreino" id="tituloTreino"
+                                                            class="form-control" placeholder="Título do treino">
+                                                            <option value="" disabled selected hidden>Treino</option>
+                                                            <option value="A">Treino A</option>
+                                                            <option value="B">Treino B</option>
+                                                            <option value="C">Treino C</option>
+                                                            <option value="D">Treino D</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <span><b>Subtítulo</b></span>
+                                                        <input type="text" required class="form-control"
+                                                            name="subtituloExercicio" id="subtituloExercicio"
+                                                            placeholder="Subtítulo">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col-sm-6">
+                                                        <span><b>Nome exercicio</b></span>
+                                                        <input type="text" required class="form-control"
+                                                            name="nomeExercicio" id="nomeExercicio"
+                                                            placeholder="Nome exercicio">
+                                                    </div>
+                                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                                        <span><b>Muscúlo</b></span>
+                                                        <input required type="text" class="form-control"
+                                                            name="musculoExercicio" id="musculoExercicio"
+                                                            placeholder="Muscúlo">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col-sm-6">
+                                                        <span><b>Séries</b></span>
+                                                        <input type="text" required class="form-control"
+                                                            name="serieExercicio" id="serieExercicio"
+                                                            placeholder="Quantidade de séries">
+                                                    </div>
+                                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                                        <span><b>Repetições</b></span>
+                                                        <input required type="text" class="form-control"
+                                                            name="repeticaoExercicio" id="repeticaoExercicio"
+                                                            placeholder="Quantidade de repetições">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-control-user text-center">
+
+                                                    <button type="submit" onclick="acao()"
+                                                        class="btn btn-exercicio btn-icon-split btn-lg mt-3 mb-3"
+                                                        id="cadastro">Adicionar exercicio</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.container-fluid -->
+
+                    </div>
+                    <!-- End of Main Content -->
+
+
+
+                </div>
+                <!-- End of Content Wrapper -->
+
+            </div>
+            <!-- End of Page Wrapper -->
+
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
+
+            <!-- Logout Modal-->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Deseja realmente sair?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- TEXTO -->
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                            <a class="btn btn-primary" href="login.html">Sair</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <script>
+                URL = 'http://localhost:8080/api/v1/'
+
+                console.log(localStorage.getItem('id'))
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', `${URL}cliente/pagina-cliente?cliente-id=${localStorage.getItem('id')}`, true);
+
+                xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODgyNjgwMCwiZXhwIjoxNjcxNDE4ODAwfQ.kegITyKHV7JDHQqprlmdZNkDqBo85muvFWwTfel0QjSbC1V_rAngBkq_l3mJZgXP6MpeIpvJlUueO6kQUfDa4w');
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        const dados = JSON.parse(xhr.responseText);
+
+                        document.getElementById('nome').value = dados.cliente.nome + ' ' + dados.cliente.sobrenome;
+                    }
+                }
+
+                xhr.send()
+
+            </script>
+
+</body>
+
+</html>

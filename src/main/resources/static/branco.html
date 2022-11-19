@@ -185,7 +185,7 @@
                                     <h6 class="m-0 font-weight-bold text-primary text-center">Preencha as informações
                                         conforme solicitado abaixo. </h6>
                                 </div>
-                                <div class="card-body text-center d-flex align-items-center justify-content-center">
+                                <div class="card-body text-left d-flex align-items-center justify-content-center">
 
 
                                     <!-- CRIAR CAMPOS PARA NOVO CADASTRO  -->
@@ -193,20 +193,24 @@
                                         action="http://192.168.15.16:8080/api/v1/cliente/register">
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
+                                                <span><b>Primeiro nome</b></span>
                                                 <input required type="text" class="form-control"
                                                     name="nome" id="primeiroNome" placeholder="Primeiro nome">
                                             </div>
                                             <div class="col-sm-6">
+                                                <span><b>Sobrenome</b></span>
                                                 <input type="text" required class="form-control"
                                                     name="sobrenome" id="ultimoNome" placeholder="Sobrenome">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
+                                            <span><b>Data de nascimento</b></span>
                                             <input type="date" class="form-control" placeholder="Data de nascimento">
                                         </div>
 
-                                        <div class="form-group">  
+                                        <div class="form-group"> 
+                                            <span><b>Genêro</b></span> 
                                             <select name="genero" id="genero" class="form-control" placeholder="Gênero">
                                                 <option value="" disabled selected hidden>Gênero</option>
                                                 <option value="MASCULINO">MASCULINO</option>
@@ -215,15 +219,17 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <span><b>CPF</b></span>
                                             <input type="text" required name="cpf" id="cpf" name="cpf"
                                                 class="form-control" placeholder="CPF">
                                         </div>
 
                                         <div class="form-group">
+                                            <span><b>Endereço de e-mail</b></span>
                                             <input type="email" required class="form-control"
                                                 name="email" id="exampleInputEmail" placeholder="Endereço de e-mail">
                                         </div>
-                                        <div class="form-control-user ">
+                                        <div class="form-control-user text-center">
 
                                             <button type="submit" onclick="acao()" class="btn btn-primary btn-icon-split btn-lg mt-3 mb-3" id="cadastro">Cadastrar
                                                 

@@ -26,7 +26,7 @@
 
 </head>
 
-<body id="page-top" onload="listaClientes();">
+<body id="page-top" onload="listaTreinos();">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -154,18 +154,18 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Meus clientes</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Meus treinos</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3"
                             style="display: flex;align-items: center;justify-content: space-between;">
                             <h6 class="m-0 font-weight-bold text-primary">Lista completa</h6>
-                            <a href="branco.html" class="btn btn-primary btn-icon-split btn-lg mt-3 mb-3"
+                            <a href="treino.html" class="btn btn-primary btn-icon-split btn-lg mt-3 mb-3"
                                 style="height: 35px; font-size: medium; ">
                                 <span class="icon text-white-50">
                                     <i class="fa fa-solid fa-plus"></i>
                                 </span>
-                                <span class="text">Novo cliente</span>
+                                <span class="text">Novo treino</span>
                             </a>
                         </div>
                         <div class="card-body">
@@ -250,16 +250,15 @@
 
         URL = 'http://192.168.15.16:8080/api/v1/'
 
-        function listaClientes() {
+        function listaTreinos() {
 
             const xhr = new XMLHttpRequest();
 
             xhr.open('GET',  `${URL}cliente/all`, true);
 
 
-            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInVzZXJfaWQiOjMsInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODgyNjgwMCwiZXhwIjoxNjcxMDczMjAwfQ.2_GacEApu6g4cw2rRZvD6lh-XWwSjuIudY506WfNOabT_M9w851-ozp3gOcsPYbISKUEDONOZ0VsVxOS_KNkPQ');
+            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInVzZXJfaWQiOjMsInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODEzNTYwMCwiZXhwIjoxNjcwNzI3NjAwfQ.aVnNeNxBcvrSKcE4da2i3ZqciLjKSp7JuachA4fWJW-tWGsSlF_hMjo_MSnfDavE2b7eoKSlvIZ2p2myyn7DfQ');
 
-            // xhr.setRequestHeader('Access-Control-Allow-Origin','http://201.52.85.36')
 
             xhr.onload = function () {
                 if (xhr.status === 200) {

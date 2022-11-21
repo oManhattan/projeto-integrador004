@@ -20,6 +20,9 @@ public interface TreinoRepository extends JpaRepository<TreinoEntity, Long> {
     @Query(nativeQuery = true, value = "select * from treino where id = :treino_id and cliente_id = :cliente_id")
     Optional<TreinoEntity> encontrarTreinoPorIdComCliente(@Param("treino_id") Long id, @Param("cliente_id") Long clienteID);
 
+    @Query(nativeQuery = true, value = "select if(count(titulo) > 0, 'true', 'false') from treino t where t.titulo = :titulo and t.cliente_id = :cliente_id")
+    Boolean treinoJaCadastrado(@Param("titulo") Character character, @Param("cliente_id") Long clienteID);
+
     @Modifying
     @Query(nativeQuery = true, value = "update treino t set t.titulo = :titulo, t.subtitulo = :subtitulo where t.id = :id")
     Integer atualizarTreino(@Param("titulo") Character titulo, @Param("subtitulo") String subtitulo, @Param("id") Long id);

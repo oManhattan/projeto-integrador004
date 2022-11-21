@@ -43,6 +43,10 @@ public class TreinoService {
             throw new Exception("Cliente não encontrado ou não vinculado ao profissional.");
         }
 
+        if (treinoRepository.treinoJaCadastrado(request.getTitulo(), clienteID)) {
+            throw new Exception("Treino já cadastrado");
+        }
+
         TreinoEntity novoTreino = TreinoEntity
                 .builder()
                 .cliente(optionalCliente.get())

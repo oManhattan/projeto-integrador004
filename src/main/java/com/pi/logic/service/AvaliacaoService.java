@@ -45,6 +45,20 @@ public class AvaliacaoService {
         return response;
     }
 
+    public List<AvaliacaoResponse> encontrarListAvaliacoesPorID(String token, Long id) throws Exception {
+        String formattedToken = jwtUtil.formatToken(token);
+        Long profissionalID = jwtUtil.getIdFromToken(formattedToken);
+
+        Optional<ClienteEntity> optionalCliente = clienteRepository.encontrarPorIdComProfissional(id, profissionalID);
+
+        if (optionalCliente.isEmpty()) {
+            throw new Exception("Cliente não encontrado ou não vinculado ao profissional.");
+        }
+
+        List<AvaliacaoCorporalEntity> entities = avaliacaoRepository.encontrarTodasAvaliacoesDoCliente(id);
+        return AvaliacaoConverter.toResponseList(entities);
+    }
+
     public List<AvaliacaoResponse> encontrarListaAvaliacoes(String token) throws Exception {
 
         String formattedToken = jwtUtil.formatToken(token);

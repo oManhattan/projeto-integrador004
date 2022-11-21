@@ -51,7 +51,16 @@ public class AvaliacaoController {
         }
     }
 
-
+    @GetMapping("all/cliente")
+    @PreAuthorize("hasAuthority('ROLE_PROFISSIONAL')")
+    public ResponseEntity<?> encontrarListaAvaliacaoProfissional(@RequestHeader(name = "Authorization") String token, @RequestParam("id") Long id) {
+        try {
+            List<AvaliacaoResponse> response = avaliacaoService.encontrarListAvaliacoesPorID(token, id);
+            return ResponseEntity.ok().body(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
 
     @DeleteMapping("/delete")
     @PreAuthorize("hasAuthority('ROLE_PROFISSIONAL')")

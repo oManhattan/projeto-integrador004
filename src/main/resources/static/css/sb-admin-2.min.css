@@ -64,7 +64,6 @@ html {
    
 }
 
-
 .dot {
     height: 12px;
     width: 12px;
@@ -2716,6 +2715,18 @@ fieldset:disabled a.btn {
     border-color: #14213D
 }
 
+.btn-exercicio {
+    color: #fff;
+    background-color: #00740a;
+    border-color: #00740a;
+}
+
+.btn-excluir {
+    color: #fff;
+    background-color: red;
+    border-color: red;
+}
+
 .btn-primary:hover {
     color: #fff;
     background-color: #fca311;
@@ -3298,7 +3309,7 @@ fieldset:disabled a.btn {
 .btn-group-lg>.btn,
 .btn-lg {
     padding: .5rem 1rem;
-    font-size: 1.25rem;
+    font-size: 1rem;
     line-height: 1.5;
     border-radius: .3rem
 }
@@ -4418,7 +4429,6 @@ input[type=submit].btn-block {
 .nav-tabs .nav-link:focus,
 .nav-tabs .nav-link:hover {
     border-color: #eaecf4 #eaecf4 #dddfeb
-
 }
 
 .nav-tabs .nav-link.disabled {

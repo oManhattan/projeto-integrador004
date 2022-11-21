@@ -11179,6 +11179,10 @@ a:focus {
     border-left: .25rem solid #14213D !important
 }
 
+.borda-medida{
+    border-left: .25rem solid #fd7e14 !important
+}
+
 .border-bottom-primary {
     border-bottom: .25rem solid #14213D !important
 }

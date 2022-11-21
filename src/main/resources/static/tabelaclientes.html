@@ -252,7 +252,11 @@
 
 
                     <div class="form-group row">
-                        <div class="col-sm-3 mb-3 mb-sm-0">
+                        <div class="col-sm-2 mb-3 mb-sm-0">
+                            <span>Nome</span>
+                            <input type="text" disabled class="form-control form-control-user" id="nome">
+                        </div>
+                        <div class="col-sm-2 mb-3 mb-sm-0">
                             <span>Data de nascimento</span>
                             <input type="text" disabled class="form-control form-control-user" id="dtnascimento">
                         </div>
@@ -264,12 +268,13 @@
                             <span>E-mail</span>
                             <input type="text" disabled class="form-control form-control-user" id="email">
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-2">
                             <span>CPF</span>
                             <input type="text" disabled class="form-control form-control-user" id="cpf">
                         </div>
                     </div>
 
+                    <h1 class="h3 mr-auto text-gray-800">Informações gerais</h1>
                     <!-- Content Row -->
                     <div class="row">
                         <h1 class="h3 mr-auto text-gray-800" id="dtConsulta"></h1>
@@ -402,6 +407,287 @@
 
                     </div>
 
+                    <h1 class="h3 mr-auto text-gray-800">Medidas</h1>
+                    <!-- Content Row -->
+                    <div class="row">
+                       
+
+                        
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Torax</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="torax">
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                      
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Cintura</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="cintura"></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-balance-scale fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Abdomem</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="abdomem"></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-male fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Quadril
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="quadril">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-heart fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Biceps Esquerdo</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="bicepsesquerdo">
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-cubes fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Biceps Direito</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="bicepsdireito">
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-cubes fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Coxa Esquerda
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="coxaesquerda">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-cart-plus fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Coxa Direita
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="coxadireita">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-cart-plus fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Antebraço Esquerdo
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="anteesquerdo">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-cart-plus fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Antebraço Direito
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="antedireito">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-cart-plus fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                     
+                       
+
+
+                  
+                        
+                       
+
+                        
+                     
+                       
+                
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Panturrilha Esquerda
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="pantesquerda">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-cart-plus fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                     
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Panturrilha Direita
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="pantdireita">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-cart-plus fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                       
+
+                    </div>
                     
 
                
@@ -578,11 +864,13 @@
                 if (xhr.status === 200) {
                     const dados = JSON.parse(xhr.responseText);
                     if (dados.ultima_avaliacao == null) {
-                        // $("#clienteSemTreino").modal()
+                        $("#clienteSemTreino").modal()
                     }
                     else {
                         document.getElementById('dtConsulta').innerHTML = `Dashboard - Última avaliação: ${dados.ultima_avaliacao.dataRealizacao.split("-")[2]}/${dados.ultima_avaliacao.dataRealizacao.split("-")[1]}/${dados.ultima_avaliacao.dataRealizacao.split("-")[0]}`;
 
+                        
+                        document.getElementById('nome').value = dados.cliente.nome + ' ' +dados.cliente.sobrenome;
                         document.getElementById('dtnascimento').value = `${dados.cliente.dataNascimento.split("-")[2]}/${dados.cliente.dataNascimento.split("-")[1]}/${dados.cliente.dataNascimento.split("-")[0]}`;
                         document.getElementById('genero').value = dados.cliente.genero;
                         document.getElementById('email').value = dados.cliente.email;
@@ -591,17 +879,37 @@
                         document.getElementById('idade metabolica').innerHTML = dados.ultima_avaliacao.idadeCorporal
                         document.getElementById('peso atual').innerHTML = dados.ultima_avaliacao.peso + ' Kg'
                         document.getElementById('altura').innerHTML = dados.ultima_avaliacao.altura + ' cm'
-                        document.getElementById('massa muscular').innerHTML = dados.ultima_avaliacao.musculoEsqueletico + ' Kg'
-                        document.getElementById('gordura corporal').innerHTML = dados.ultima_avaliacao.gorduraCorporal + ' Kg'
+                        document.getElementById('massa muscular').innerHTML = dados.ultima_avaliacao.musculoEsqueletico + ' %'
+                        document.getElementById('gordura corporal').innerHTML = dados.ultima_avaliacao.gorduraCorporal + ' %'
                         document.getElementById('metabolismo').innerHTML = dados.ultima_avaliacao.metabolismoBasal + ' kcal'
+
+                        document.getElementById('torax').innerHTML = dados.ultima_avaliacao.torax + ' cm'
+                        document.getElementById('cintura').innerHTML = dados.ultima_avaliacao.cintura + ' cm'
+                        document.getElementById('abdomem').innerHTML = dados.ultima_avaliacao.abdomem + ' cm'
+                        document.getElementById('quadril').innerHTML = dados.ultima_avaliacao.quadril + ' cm'
+
+                        
+                        document.getElementById('bicepsdireito').innerHTML = dados.ultima_avaliacao.bicepsDireito + ' cm'
+                        document.getElementById('antedireito').innerHTML = dados.ultima_avaliacao.antebracoDireito + ' cm'
+                        document.getElementById('bicepsesquerdo').innerHTML = dados.ultima_avaliacao.bicepsEsquerdo + ' cm'
+                        document.getElementById('anteesquerdo').innerHTML = dados.ultima_avaliacao.antebracoEsquerdo + ' cm'
+
+
+                        document.getElementById('coxadireita').innerHTML = dados.ultima_avaliacao.coxaDireita + ' cm'
+                        document.getElementById('pantdireita').innerHTML = dados.ultima_avaliacao.panturrilhaDireita + ' cm'
+                        document.getElementById('coxaesquerda').innerHTML = dados.ultima_avaliacao.coxaEsquerda + ' cm'
+                        document.getElementById('pantesquerda').innerHTML = dados.ultima_avaliacao.panturrilhaEsquerda + ' cm'
 
                         let treinos_data = []
                         let treinos_valores = []
 
                         dados.grafico_peso.forEach(element => {
                             treinos_valores.push(element.a)
-                            treinos_data.push(element.b)
+                            treinos_data.push(element.b.split("-")[1]+"/"+element.b.split("-")[0])
                         });
+
+                        treinos_data.reverse()
+                        treinos_valores.reverse()
                         
                         let massa = dados.ultima_avaliacao.musculoEsqueletico
                         let gordura = dados.ultima_avaliacao.gorduraCorporal
@@ -686,9 +994,9 @@
                                             maxTicksLimit: 5,
                                             padding: 10,
                                             // Include a dollar sign in the ticks
-                                            callback: function (value, index, values) {
-                                                return '' + number_format(value);
-                                            }
+                                            // callback: function (value, index, values) {
+                                            //     return '' + number_format(value);
+                                            // }
                                         },
                                         gridLines: {
                                             color: "rgb(234, 236, 244)",
@@ -717,10 +1025,10 @@
                                     mode: 'index',
                                     caretPadding: 10,
                                     callbacks: {
-                                        label: function (tooltipItem, chart) {
-                                            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-                                            return datasetLabel + ' ' + number_format(tooltipItem.yLabel);
-                                        }
+                                        // label: function (tooltipItem, chart) {
+                                        //     var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                                        //     return datasetLabel + ' ' + number_format(tooltipItem.yLabel);
+                                        // }
                                     }
                                 }
                             }

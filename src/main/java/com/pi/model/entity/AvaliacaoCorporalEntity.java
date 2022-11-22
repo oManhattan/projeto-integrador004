@@ -2,7 +2,6 @@ package com.pi.model.entity;
 
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,7 +26,7 @@ import lombok.Setter;
 @Table(name = "AvaliacaoCorporal")
 public class AvaliacaoCorporalEntity {
     
-    @ManyToOne(targetEntity = ClienteEntity.class, fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @ManyToOne(targetEntity = ClienteEntity.class, fetch = FetchType.LAZY)
     private ClienteEntity cliente;
 
     @Id

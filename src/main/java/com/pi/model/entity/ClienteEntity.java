@@ -34,10 +34,13 @@ import lombok.ToString;
 @Table(name = "Cliente")
 public class ClienteEntity implements UserAccount {
     
-    @OneToMany(targetEntity = TreinoEntity.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = TreinoEntity.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<TreinoEntity> treinos;
 
-    @ManyToOne(targetEntity = ProfissionalEntity.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = AvaliacaoCorporalEntity.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<AvaliacaoCorporalEntity> avaliacoes;
+
+    @ManyToOne(targetEntity = ProfissionalEntity.class, fetch = FetchType.LAZY)
     private ProfissionalEntity profissional;
 
     @Transient

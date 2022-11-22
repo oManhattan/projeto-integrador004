@@ -66,10 +66,13 @@ public class TreinoService {
     }
 
     public void deleteTreino(Long id) throws Exception {
-        int affectedRows = treinoRepository.apagarTreino(id);
-        if (affectedRows < 1) {
-            throw new Exception("Não foi possível atualizar nenhum treino.");
+        Optional<TreinoEntity> entity = treinoRepository.findById(id);
+
+        if (entity.isEmpty()) {
+            throw new Exception("Treino não encontrado.");
         }
+
+        treinoRepository.delete(entity.get());
     }
 
     public List<TreinoResponse> getTreinos(String token, Long clienteID) throws Exception {
@@ -81,5 +84,13 @@ public class TreinoService {
                         .setExercicios(exercicioRepository.encontrarTodosComTreinoID(treino.getId())));
 
         return TreinoConverter.toResponseList(treinos);
+    }
+
+
+
+    public List<TreinoResponse> salvarListaTreinos(String token, Long clienteID, List<TreinoRequest> treinos) {
+
+        
+        return null;
     }
 }

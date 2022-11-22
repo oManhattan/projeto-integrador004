@@ -30,7 +30,7 @@ import lombok.ToString;
 @Table(name = "Profissional")
 public class ProfissionalEntity implements UserAccount {
 
-    @OneToMany(targetEntity = ClienteEntity.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = ClienteEntity.class, fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private List<ClienteEntity> clientes;
 
     @Transient

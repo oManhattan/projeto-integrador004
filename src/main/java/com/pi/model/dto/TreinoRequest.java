@@ -1,5 +1,7 @@
 package com.pi.model.dto;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -17,10 +19,13 @@ import lombok.Setter;
 @JsonPropertyOrder({"titulo", "subtitulo"})
 public class TreinoRequest {
     
-    @JsonProperty(namespace = "titulo")
+    @JsonProperty("titulo")
     private Character titulo;
 
-    @JsonProperty(namespace = "subtitulo")
+    @JsonProperty("subtitulo")
     private String subtitulo;
 
-}
+    @JsonProperty("exercicios")
+    private List<ExercicioRequest> exercicios;
+
+}   

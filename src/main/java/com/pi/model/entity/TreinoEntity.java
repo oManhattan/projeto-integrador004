@@ -28,10 +28,10 @@ import lombok.Setter;
 @Table(name = "Treino")
 public class TreinoEntity {
     
-    @ManyToOne(targetEntity = ClienteEntity.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = ClienteEntity.class, fetch = FetchType.LAZY)
     private ClienteEntity cliente;
 
-    @OneToMany(targetEntity = ExercicioEntity.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY) 
+    @OneToMany(targetEntity = ExercicioEntity.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY) 
     private List<ExercicioEntity> exercicios;
 
     @Id

@@ -83,4 +83,14 @@ public class TreinoController {
             return ResponseEntity.status(400).body(e.getMessage());
         }
     }
+
+    @DeleteMapping("/delete/all")
+    public ResponseEntity<?> apagarTodosTreinos(@RequestHeader("Authorization") String token, @RequestParam("clienteid") Long clienteID) {
+        try {
+            treinoService.apagarTodosTreinosCliente(token, clienteID);
+            return ResponseEntity.ok().body("Listas de exercícios apagadas com sucesso.");
+        } catch (Exception e) {
+            return ResponseEntity.status(400).body(e.getMessage());
+        }
+    }
 }

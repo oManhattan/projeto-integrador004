@@ -90,6 +90,26 @@ public class TreinoService {
         return TreinoConverter.toResponseList(treinos);
     }
 
+    public void apagarTodosTreinosCliente(String token, Long clienteID) throws Exception {
+
+        String formattedToken = jwtUtil.formatToken(token);
+        Long profissionalID = jwtUtil.getIdFromToken(formattedToken);
+
+        Optional<ClienteEntity> optionalCliente = clienteRepository.encontrarPorIdComProfissional(clienteID,
+                profissionalID);
+
+        if (optionalCliente.isEmpty()) {
+            throw new Exception("Cliente não encontrado ou não vinculado ao profissional.");
+        }
+
+        List<TreinoEntity> treinos = treinoRepository.treinosDoCliente(profissionalID);
+
+        treinos.forEach((treino) -> {
+            treinoRepository.delete(treino);
+        });
+
+    }
+
     public List<TreinoResponse> salvarListaTreinos(String token, Long clienteID, List<TreinoRequest> treinos)
             throws Exception {
 

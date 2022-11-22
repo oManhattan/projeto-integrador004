@@ -73,4 +73,14 @@ public class TreinoController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
+
+    @PostMapping("/create/list")
+    public ResponseEntity<?> saveTreinoList(@RequestHeader("Authorization") String token, @RequestParam("clienteid") Long clienteID, @RequestBody List<TreinoRequest> requests) {
+        try {
+            List<TreinoResponse> response = treinoService.salvarListaTreinos(token, clienteID, requests);
+            return ResponseEntity.ok().body(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(400).body(e.getMessage());
+        }
+    }
 }

@@ -63,7 +63,13 @@ public class ExercicioService {
         return ExercicioConverter.toResponse(exercicioRepository.save(entity));
     }
 
-    public void excluirExercicio(Long exercicioID) {
-        exercicioRepository.deleteById(exercicioID);
+    public void excluirExercicio(Long exercicioID) throws Exception {
+        Optional<ExercicioEntity> exercicioOptional = exercicioRepository.findById(exercicioID);
+
+        if (exercicioOptional.isEmpty()) {
+            throw new Exception("Não foi possível apagar o exercício.");
+        }
+
+        exercicioRepository.delete(exercicioOptional.get());
     }
 }

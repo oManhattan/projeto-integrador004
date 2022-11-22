@@ -3,15 +3,18 @@ package com.pi.logic.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pi.logic.converter.ExercicioConverter;
 import com.pi.logic.converter.TreinoConverter;
 import com.pi.logic.util.JWTUtil;
 import com.pi.model.dto.TreinoRequest;
 import com.pi.model.dto.TreinoResponse;
 import com.pi.model.entity.ClienteEntity;
+import com.pi.model.entity.ExercicioEntity;
 import com.pi.model.entity.TreinoEntity;
 import com.pi.model.repository.ClienteRepository;
 import com.pi.model.repository.ExercicioRepository;
@@ -77,6 +80,7 @@ public class TreinoService {
 
     public List<TreinoResponse> getTreinos(String token, Long clienteID) throws Exception {
         jwtUtil.formatToken(token);
+
         List<TreinoEntity> treinos = treinoRepository.treinosDoCliente(clienteID);
 
         treinos.stream()
@@ -86,11 +90,55 @@ public class TreinoService {
         return TreinoConverter.toResponseList(treinos);
     }
 
+    public List<TreinoResponse> salvarListaTreinos(String token, Long clienteID, List<TreinoRequest> treinos)
+            throws Exception {
 
+        String formattedToken = jwtUtil.formatToken(token);
+        Long profissionalID = jwtUtil.getIdFromToken(formattedToken);
 
-    public List<TreinoResponse> salvarListaTreinos(String token, Long clienteID, List<TreinoRequest> treinos) {
+        Optional<ClienteEntity> optionalCliente = clienteRepository.encontrarPorIdComProfissional(clienteID,
+                profissionalID);
 
-        
-        return null;
+        if (optionalCliente.isEmpty()) {
+            throw new Exception("Cliente não encontrado ou não vinculado ao profissional.");
+        }
+
+        for (TreinoRequest r : treinos) {
+            if (treinoRepository.treinoJaCadastrado(r.getTitulo(), clienteID)) {
+                throw new Exception(String.format("Treino %S já cadastrado.", r.getTitulo()));
+            }
+        }
+
+        List<TreinoEntity> entities = treinos.stream().map((treinoRequest) -> {
+            TreinoEntity treinoEntity = TreinoEntity
+                    .builder()
+                    .cliente(optionalCliente.get())
+                    .titulo(treinoRequest.getTitulo())
+                    .subtitulo(treinoRequest.getSubtitulo())
+                    .build();
+
+            if (treinoRequest.getExercicios() != null) {
+                List<ExercicioEntity> exercicios = treinoRequest.getExercicios()
+                        .stream()
+                        .map((exercicioRequest) -> {
+                            ExercicioEntity exercicioEntity = ExercicioConverter.toEntity(exercicioRequest);
+                            exercicioEntity.setTreino(treinoEntity);
+                            return exercicioEntity;
+                        })
+                        .collect(Collectors.toList());
+                treinoEntity.setExercicios(exercicios);
+            } else {
+                treinoEntity.setExercicios(new ArrayList<>());
+            }
+
+            return treinoEntity;
+        }).collect(Collectors.toList());
+
+        List<TreinoResponse> responses = treinoRepository.saveAllAndFlush(entities)
+                .stream()
+                .map((entity) -> TreinoConverter.toResponse(entity))
+                .collect(Collectors.toList());
+
+        return responses;
     }
 }

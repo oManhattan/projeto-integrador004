@@ -16,7 +16,7 @@ import com.pi.model.entity.TreinoEntity;
 @Repository
 @Transactional
 public interface TreinoRepository extends JpaRepository<TreinoEntity, Long> {
-    
+
     @Query(nativeQuery = true, value = "select * from treino t where cliente_id = :id")
     List<TreinoEntity> treinosDoCliente(@Param("id") Long id);
 

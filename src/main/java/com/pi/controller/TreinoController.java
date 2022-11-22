@@ -75,6 +75,7 @@ public class TreinoController {
     }
 
     @PostMapping("/create/list")
+    @PreAuthorize("hasAuthority('ROLE_PROFISSIONAL')")
     public ResponseEntity<?> saveTreinoList(@RequestHeader("Authorization") String token, @RequestParam("clienteid") Long clienteID, @RequestBody List<TreinoRequest> requests) {
         try {
             List<TreinoResponse> response = treinoService.salvarListaTreinos(token, clienteID, requests);
@@ -85,6 +86,7 @@ public class TreinoController {
     }
 
     @DeleteMapping("/delete/all")
+    @PreAuthorize("hasAuthority('ROLE_PROFISSIONAL')")
     public ResponseEntity<?> apagarTodosTreinos(@RequestHeader("Authorization") String token, @RequestParam("clienteid") Long clienteID) {
         try {
             treinoService.apagarTodosTreinosCliente(token, clienteID);

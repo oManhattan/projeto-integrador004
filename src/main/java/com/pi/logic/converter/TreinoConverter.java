@@ -12,7 +12,6 @@ public class TreinoConverter {
     public static TreinoEntity toEntity(TreinoRequest request) {
         return TreinoEntity.builder()
                 .titulo(request.getTitulo())
-                .subtitulo(request.getSubtitulo())
                 .build();
     }
 
@@ -20,7 +19,6 @@ public class TreinoConverter {
         return TreinoResponse.builder()
                 .id(entity.getId())
                 .titulo(entity.getTitulo())
-                .subtitulo(entity.getSubtitulo())
                 .exercicios(ExercicioConverter.toResponseList(entity.getExercicios()))
                 .build();
     }

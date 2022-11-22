@@ -41,8 +41,4 @@ public class TreinoEntity {
 
     @Column(name = "titulo")
     private Character titulo;
-
-    @Column(name = "subtitulo")
-    private String subtitulo;
-
 }

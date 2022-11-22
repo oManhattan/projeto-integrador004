@@ -16,14 +16,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
-@JsonPropertyOrder({"titulo", "subtitulo"})
+@JsonPropertyOrder({"titulo", "exercicios"})
 public class TreinoRequest {
     
     @JsonProperty("titulo")
     private Character titulo;
-
-    @JsonProperty("subtitulo")
-    private String subtitulo;
 
     @JsonProperty("exercicios")
     private List<ExercicioRequest> exercicios;

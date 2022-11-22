@@ -54,7 +54,6 @@ public class TreinoService {
                 .builder()
                 .cliente(optionalCliente.get())
                 .titulo(request.getTitulo())
-                .subtitulo(request.getSubtitulo())
                 .exercicios(new ArrayList<>())
                 .build();
 
@@ -62,7 +61,7 @@ public class TreinoService {
     }
 
     public void updateTreino(Long id, TreinoRequest request) throws Exception {
-        int affectedRows = treinoRepository.atualizarTreino(request.getTitulo(), request.getSubtitulo(), id);
+        int affectedRows = treinoRepository.atualizarTreino(request.getTitulo(), id);
         if (affectedRows < 1) {
             throw new Exception("Não foi possível apagar o treino.");
         }
@@ -134,7 +133,6 @@ public class TreinoService {
                     .builder()
                     .cliente(optionalCliente.get())
                     .titulo(treinoRequest.getTitulo())
-                    .subtitulo(treinoRequest.getSubtitulo())
                     .build();
 
             if (treinoRequest.getExercicios() != null) {

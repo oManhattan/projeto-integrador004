@@ -17,7 +17,7 @@ import com.pi.model.repository.ClienteRepository;
 
 @Service
 public class AvaliacaoService {
-    
+
     @Autowired
     private AvaliacaoRepository avaliacaoRepository;
 
@@ -27,12 +27,13 @@ public class AvaliacaoService {
     @Autowired
     private JWTUtil jwtUtil;
 
-    public AvaliacaoResponse criarAvaliacao(String token, Long clienteID, AvaliacaoRequest request) throws Exception{
+    public AvaliacaoResponse criarAvaliacao(String token, Long clienteID, AvaliacaoRequest request) throws Exception {
 
         String formattedToken = jwtUtil.formatToken(token);
         Long profissionalID = jwtUtil.getIdFromToken(formattedToken);
 
-        Optional<ClienteEntity> optionalCliente = clienteRepository.encontrarPorIdComProfissional(clienteID, profissionalID);
+        Optional<ClienteEntity> optionalCliente = clienteRepository.encontrarPorIdComProfissional(clienteID,
+                profissionalID);
 
         if (optionalCliente.isEmpty()) {
             throw new Exception("Cliente não encontrado ou não vinculao ao profissional.");
@@ -75,5 +76,4 @@ public class AvaliacaoService {
             throw new Exception("Não foi possível apagar a avaliação corporal");
         }
     }
-
-}   
+}

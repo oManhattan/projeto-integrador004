@@ -20,12 +20,12 @@ public class PaginasController {
     @Autowired
     private JWTUtil jwtUtil;
 
-    @GetMapping("/")
+    @GetMapping("/login")
     public ModelAndView login() {
         return new ModelAndView("login");
     }
 
-    @GetMapping("/usuario-logado")
+    @GetMapping("/")
     public ModelAndView usuarioLogado(HttpServletRequest request) throws Exception {
         String authorization = "";
         Cookie authorizationCookie = Arrays.asList(request.getCookies()).stream().filter((cookie) -> cookie.getName().equals("Authorization")).findFirst().orElse(null);
@@ -39,7 +39,7 @@ public class PaginasController {
         } else if (customerType.equals("ROLE_CLIENTE")) {
             return new ModelAndView("cliente");
         } else {
-            return new ModelAndView("falhaNaVerificacao");
+            return new ModelAndView("login");
         }
     }
 

@@ -13,6 +13,18 @@ public class PaginasController {
     public ModelAndView login() {
         return new ModelAndView("login");
     }
+    
+    @GetMapping("/tela-profissional")
+    public ModelAndView tela_profissional() {
+        return new ModelAndView("profissional");
+    }
+    
+    @GetMapping("/tela-cliente")
+    public ModelAndView tela_cliente() {
+        return new ModelAndView("cliente");
+    }
+    
+    
 
     // @GetMapping("/perfil-cliente")
     // @PreAuthorize("hasAuthority('ROLE_CLIENTE')")

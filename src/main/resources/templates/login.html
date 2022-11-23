@@ -95,11 +95,11 @@
     <script src="js/sb-admin-2.min.js"></script>
 
     <script>
-        URL = "http://localhost:8080/api/v1/"
-
+        
         document.getElementById('dadosForm').addEventListener("submit", function (event) {
             event.preventDefault()
-
+            
+            URL = "http://localhost:8080/api/v1/"
 
             const xhr = new XMLHttpRequest();
 
@@ -111,15 +111,18 @@
 
 
                 if (xhr.status === 200) {
+                    
+                    localStorage.setItem("nome",JSON.parse(xhr.responseText).nome + ' ' + JSON.parse(xhr.responseText).sobrenome)
+                    document.cookie = "Authorization=Bearer$"+xhr.getResponseHeader('Authorization')
+                    console.log(localStorage.getItem('nome'))
+                    
                     alert("Sucesso no login")
-                    // xhr.getResponseHeader('Authorization')
-                    sessionStorage.setItem("Authorization", xhr.getResponseHeader('Authorization'))
-
                     if (xhr.getResponseHeader('CustomerType') == "Profissional") {
-                        window.location.replace('/tela-profissional')
+
+                        window.location.href = 'http://localhost:8080/tela-profissional'
                     }
                     else {
-                        window.location.replace('/tela-cliente')
+                        window.location.href = 'http://localhost:8080/tela-cliente'
 
                     }
 
@@ -139,6 +142,8 @@
         })
 
     </script>
+
+ 
 
 </body>
 

@@ -101,7 +101,7 @@ public class TreinoService {
             throw new Exception("Cliente não encontrado ou não vinculado ao profissional.");
         }
 
-        List<TreinoEntity> treinos = treinoRepository.treinosDoCliente(profissionalID);
+        List<TreinoEntity> treinos = treinoRepository.treinosDoCliente(clienteID);
 
         treinos.forEach((treino) -> {
             treinoRepository.delete(treino);

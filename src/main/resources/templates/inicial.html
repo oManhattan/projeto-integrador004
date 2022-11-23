@@ -12,17 +12,17 @@
     <title>Smart Trainer</title>
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link th:href="@{vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link th:href="@{css/sb-admin-2.min.css}" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="img/logo.svg" type="image/x-icon">
+    <link th:href="@{vendor/datatables/dataTables.bootstrap4.min.css}" rel="stylesheet">
+    <link rel="shortcut icon" th:href="@{img/logo.svg}" type="image/x-icon">
 
 </head>
 
@@ -52,13 +52,13 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="inicial.html">
+                <a class="nav-link" th:href="@{inicial.html}">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Meus clientes</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="novocliente.html">
+                <a class="nav-link" th:href="@{novocliente.html}">
                     <i class="fas fa-fw fa-user-plus"></i>
                     <span>Novo cliente</span></a>
             </li>
@@ -225,25 +225,25 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script th:src="@{vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script th:src="@{vendor/jquery-easing/jquery.easing.min.js}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script th:src="@{js/sb-admin-2.min.js}"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script th:src="@{vendor/datatables/jquery.dataTables.min.js}"></script>
+    <script th:src="@{vendor/datatables/dataTables.bootstrap4.min.js}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
+    <script th:src="@{js/demo/datatables-demo.js}"></script>
 
     <script>
 
-        URL = 'http://192.168.15.16:8080/api/v1/'
+        URL = 'http://localhost:8080/api/v1/'
 
         function listaClientes() {
 

@@ -41,7 +41,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Login</h1>
                                     </div>
-                                    <form class="user" id="dadosForm" method="POST" >
+                                    <form class="user" id="dadosForm" method="POST">
                                         <div class="form-group">
                                             <input type="email" required class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
@@ -58,7 +58,7 @@
                                             </div>
                                         </div> -->
                                         <!-- criar um botao aqui  -->
-                                        <button type="submit"  class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Entrar
                                         </button>
                                         <hr>
@@ -95,7 +95,7 @@
     <script src="js/sb-admin-2.min.js"></script>
 
     <script>
-        URL = "http://192.168.15.16:8080/api/v1/"
+        URL = "http://localhost:8080/api/v1/"
 
         document.getElementById('dadosForm').addEventListener("submit", function (event) {
             event.preventDefault()
@@ -109,13 +109,21 @@
 
             xhr.onload = function () {
 
-                
+
                 if (xhr.status === 200) {
                     alert("Sucesso no login")
-                    xhr.getResponseHeader('Authorization')
+                    // xhr.getResponseHeader('Authorization')
                     sessionStorage.setItem("Authorization", xhr.getResponseHeader('Authorization'))
-                    location.href = './inicial.html'
-                    
+
+                    if (xhr.getResponseHeader('CustomerType') == "Profissional") {
+                        window.location.replace('/tela-profissional')
+                    }
+                    else {
+                        window.location.replace('/tela-cliente')
+
+                    }
+
+
                 } else {
                     alert("Erro ao logar")
                 }

@@ -42,7 +42,7 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="img/Trevo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/logo.svg" type="image/x-icon">
 
 </head>
 
@@ -369,24 +369,23 @@
 
                                             <div class="row-sm-3 p-2">
                                                 <span><b>Nome exercicio</b></span>
-                                                <input type="text"  class="form-control" name="nomeExercicio"
+                                                <input type="text" class="form-control" name="nomeExercicio"
                                                     id="nomeExercicio" placeholder="Nome exercicio">
                                             </div>
                                             <div class="col-sm-2   p-2">
                                                 <span><b>Muscúlo</b></span>
-                                                <input  type="text" class="form-control" name="musculoExercicio"
+                                                <input type="text" class="form-control" name="musculoExercicio"
                                                     id="musculoExercicio" placeholder="Muscúlo">
                                             </div>
                                             <div class="col-sm-2  p-2">
                                                 <span><b>Séries</b></span>
-                                                <input type="text"  class="form-control" name="serieExercicio"
+                                                <input type="text" class="form-control" name="serieExercicio"
                                                     id="serieExercicio" placeholder="Qtd. de séries">
                                             </div>
                                             <div class="col-sm-2  p-2">
                                                 <span><b>Repetições</b></span>
-                                                <input  type="text" class="form-control"
-                                                    name="repeticaoExercicio" id="repeticaoExercicio"
-                                                    placeholder="Qtd. de repetições">
+                                                <input type="text" class="form-control" name="repeticaoExercicio"
+                                                    id="repeticaoExercicio" placeholder="Qtd. de repetições">
                                             </div>
                                             <div class="col-sm-2 text-center p-2">
 
@@ -418,8 +417,8 @@
 
                                         <div class="form-control-user text-center m-2 p-0">
 
-                                            <button type="submit"
-                                                class="btn btn-primary  btn-lg mt-3 mb-3" id="cadastro">Salvar
+                                            <button type="submit" class="btn btn-primary  btn-lg mt-3 mb-3"
+                                                id="cadastro">Salvar
                                                 informações</button>
                                         </div>
 
@@ -602,7 +601,7 @@
                         const xhr = new XMLHttpRequest();
                         xhr.open('GET', `${URL}cliente/pagina-cliente?cliente-id=${localStorage.getItem('id')}`, true);
 
-                        xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjozLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODgyNjgwMCwiZXhwIjoxNjcxNDE4ODAwfQ.KZDlgKuGyXkwKJTqCcGQEcprNOJFzKgBEBLYwZEHjzJdBJ2T7WAT7c4MQySjo-UiDdhEM4g0JQiIeeQhgZ_G_w');
+                        xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2OTA4NjAwMCwiZXhwIjoxNjcxNjc4MDAwfQ.hwqMsIGrwHHCvq320foQwJbpMu44ERkQLI_xMJP1qILqyqUZxCJP-KwUuAfa6NqEjc3qIlvh_fgHWYWt1BZu3Q');
                         xhr.onload = function () {
                             if (xhr.status === 200) {
                                 const dados = JSON.parse(xhr.responseText);
@@ -619,57 +618,186 @@
                         document.getElementById('dadosForm').addEventListener("submit", function (event) {
                             event.preventDefault()
 
+                            if (document.getElementsByClassName('tp_linha').length == 0) {
+                                alert("Preencha todos os campos do treino personalizado")
+                            }
+                            else {
+
+                                URL = 'http://192.168.15.16:8080/api/v1/'
+
+                                const dados = {
+                                    dataRealizacao: document.getElementById('dt_avaliacao').value,
+                                    altura: document.getElementById('altura').value,
+                                    peso: document.getElementById('pesoAtual').value,
+                                    musculoEsqueletico: document.getElementById('musculoEsqueletico').value,
+                                    idadeCorporal: document.getElementById('idadeCorporal').value,
+                                    gorduraCorporal: document.getElementById('gorduraCorporal').value,
+                                    gorduraVisceral: document.getElementById('gorduraVisceral').value,
+                                    metabolismoBasal: document.getElementById('metabolismoBasal').value,
+                                    torax: document.getElementById('torax').value,
+                                    cintura: document.getElementById('cintura').value,
+                                    abdomem: document.getElementById('abdomem').value,
+                                    quadril: document.getElementById('quadril').value,
+                                    bicepsEsquerdo: document.getElementById('bicepsEsquerdo').value,
+                                    antebracoEsquerdo: document.getElementById('antebracoEsquerdo').value,
+                                    bicepsDireito: document.getElementById('bicepsDireito').value,
+                                    antebracoDireito: document.getElementById('antebracoDireito').value,
+                                    coxaEsquerda: document.getElementById('coxaEsquerda').value,
+                                    panturrilhaEsquerda: document.getElementById('panturrilhaEsquerda').value,
+                                    coxaDireita: document.getElementById('coxaDireita').value,
+                                    panturrilhaDireita: document.getElementById('panturrilhaDireita').value,
+                                }
+
+                                const xhr = new XMLHttpRequest();
+
+                                xhr.open('POST', `${URL}avaliacao/create?cliente-id=${localStorage.getItem('id')}`, true);
+
+                                // VALOR TRAVADO DO TOKEN PARA AS REQUISIÇÕES 
+                                xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2OTA4NjAwMCwiZXhwIjoxNjcxNjc4MDAwfQ.hwqMsIGrwHHCvq320foQwJbpMu44ERkQLI_xMJP1qILqyqUZxCJP-KwUuAfa6NqEjc3qIlvh_fgHWYWt1BZu3Q');
+
+                                xhr.setRequestHeader('Content-type', 'application/json');
+                                xhr.setRequestHeader('Accept', 'application/json');
+
+                                xhr.onload = function () {
+                                    if (xhr.status === 200) {
+                                        add_treinos()
+
+                                    }
+                                    else {
+                                        alert("Erro no cadastro da avaliação")
+                                    };
+
+
+                                }
+
+                                xhr.send(JSON.stringify(dados))
+                            }
+                        })
+                    </script>
+
+                    <script>
+                        function add_treinos() {
+
                             URL = 'http://192.168.15.16:8080/api/v1/'
 
-                            const dados = {
-                                dataRealizacao: document.getElementById('dt_avaliacao').value,
-                                altura: document.getElementById('altura').value,
-                                peso: document.getElementById('pesoAtual').value,
-                                musculoEsqueletico: document.getElementById('musculoEsqueletico').value,
-                                idadeCorporal: document.getElementById('idadeCorporal').value,
-                                gorduraCorporal: document.getElementById('gorduraCorporal').value,
-                                gorduraVisceral: document.getElementById('gorduraVisceral').value,
-                                metabolismoBasal: document.getElementById('metabolismoBasal').value,
-                                torax: document.getElementById('torax').value,
-                                cintura: document.getElementById('cintura').value,
-                                abdomem: document.getElementById('abdomem').value,
-                                quadril: document.getElementById('quadril').value,
-                                bicepsEsquerdo: document.getElementById('bicepsEsquerdo').value,
-                                antebracoEsquerdo: document.getElementById('antebracoEsquerdo').value,
-                                bicepsDireito: document.getElementById('bicepsDireito').value,
-                                antebracoDireito: document.getElementById('antebracoDireito').value,
-                                coxaEsquerda: document.getElementById('coxaEsquerda').value,
-                                panturrilhaEsquerda: document.getElementById('panturrilhaEsquerda').value,
-                                coxaDireita: document.getElementById('coxaDireita').value,
-                                panturrilhaDireita: document.getElementById('panturrilhaDireita').value,
+                            let dados = []
+                            let linha = document.getElementsByClassName('tp_linha')
+
+                            for (const dado of linha) {
+
+                                let temp = {
+                                    titulo: "",
+                                    nome: "",
+                                    musculo: "",
+                                    serie: "",
+                                    repeticao: "",
+                                }
+
+                                temp.titulo = dado.innerText.split('\t')[0]
+                                temp.nome = dado.innerText.split('\t')[1]
+                                temp.musculo = dado.innerText.split('\t')[2]
+                                temp.serie = dado.innerText.split('\t')[3]
+                                temp.repeticao = dado.innerText.split('\t')[4]
+                                dados.push(temp)
                             }
+
+                            let tituloA = []
+                            let tituloB = []
+                            let tituloC = []
+                            let tituloD = []
+
+
+                            for (const t of dados) {
+
+                                if (t.titulo == "A") {
+                                    // tituloA.push(Object.fromEntries(Object.entries(t).slice(1)))
+                                    tituloA.push(t)
+                                }
+                                else if (t.titulo == "B") {
+
+                                    tituloB.push(t)
+                                }
+                                else if (t.titulo == "C") {
+
+                                    tituloC.push(t)
+                                }
+                                else if (t.titulo == "D") {
+                                    tituloD.push(t)
+
+                                }
+                            }
+
+                            let lista = [tituloA, tituloB, tituloC, tituloD]
+                            let lista_treino = []
+
+
+                            for (const x of lista) {
+                                if (x.length != 0) {
+                                    let exerc = []
+
+                                    for (const j of x) {
+                                        exerc.push(Object.fromEntries(Object.entries(j).slice(1)))
+                                    }
+
+                                    let temp = {
+                                        titulo: x[0].titulo,
+                                        exercicios: exerc
+                                    }
+
+
+
+                                    lista_treino.push(temp)
+                                }
+                            }
+
 
                             const xhr = new XMLHttpRequest();
 
-                            xhr.open('POST', `${URL}avaliacao/create?cliente-id=${localStorage.getItem('id')}`, true);
+                            xhr.open('DELETE', `${URL}treino/delete/all?clienteid=${localStorage.getItem('id')}`, true);
 
-                            // VALOR TRAVADO DO TOKEN PARA AS REQUISIÇÕES 
-                            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjozLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODk5OTYwMCwiZXhwIjoxNjcxNTkxNjAwfQ.Wvsh8bETcn_e_HaN-lHUJZw44UVIAjA23dcgwg76SMf5i-DFKHLpneczJ8-BSZl3O8PVpUROFmRPLU7zVSf1TA');
 
-                            xhr.setRequestHeader('Content-type', 'application/json');
-                            xhr.setRequestHeader('Accept', 'application/json');
+                            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInVzZXJfaWQiOjEsInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2OTA4NjAwMCwiZXhwIjoxNjcxNjc4MDAwfQ.5NFtMtIF2aMn7g7NBDS4bIbG6mZmMkICfhKUmbh7SleW1nl7VC8Udj8KIdbcvhAOuYA98Rmx4GGKbEhnWn7M0w');
+
+
 
                             xhr.onload = function () {
                                 if (xhr.status === 200) {
 
-                                    alert("Avaliação cadastrada com sucesso!")
-                                    location.href = './tabelaclientes.html'
+                                    xhr.open('POST', `${URL}treino/create/list?clienteid=${localStorage.getItem('id')}`, true);
+
+                                    xhr.setRequestHeader('Content-type', 'application/json');
+                                    xhr.setRequestHeader('Accept', 'application/json');
+
+                                    xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInVzZXJfaWQiOjEsInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2OTA4NjAwMCwiZXhwIjoxNjcxNjc4MDAwfQ.5NFtMtIF2aMn7g7NBDS4bIbG6mZmMkICfhKUmbh7SleW1nl7VC8Udj8KIdbcvhAOuYA98Rmx4GGKbEhnWn7M0w');
+
+
+                                    xhr.onload = function () {
+                                        if (xhr.status === 200) {
+                                            console.log("Cadastro lista de treinos com sucesso")
+                                            alert("Avaliação cadastrada com sucesso!")
+                                            location.href = './tabelaclientes.html'
+
+                                        }
+                                        else {
+                                            alert("Erro no cadastro dos treinos")
+                                        };
+
+
+                                    }
+
+                                    // CRIAR NOVOS TREINOS
+                                    xhr.send(JSON.stringify(lista_treino))
+
                                 }
-                                else {
-                                    alert(xhr.status)
-                                };
+
 
 
                             }
 
-                            xhr.send(JSON.stringify(dados))
+                            // DELETAR TREINOS ANTIGOS
+                            xhr.send()
 
-                        })
+                        }
                     </script>
 
                     <script>
@@ -711,103 +839,11 @@
 
 
 
-                                let dados = []
-                                let linha = document.getElementsByClassName('tp_linha')
 
-                                for (const dado of linha) {
-
-                                    let temp = {
-                                        titulo: "",
-                                        nome: "",
-                                        musculo: "",
-                                        serie: "",
-                                        repeticao: "",
-                                    }
-
-                                    temp.titulo = dado.innerText.split('\t')[0]
-                                    temp.nome = dado.innerText.split('\t')[1]
-                                    temp.musculo = dado.innerText.split('\t')[2]
-                                    temp.serie = dado.innerText.split('\t')[3]
-                                    temp.repeticao = dado.innerText.split('\t')[4]
-                                    dados.push(temp)
-                                }
-
-                                let tituloA = []
-                                let tituloB = []
-                                let tituloC = []
-                                let tituloD = []
-
-
-                                for (const t of dados) {
-
-                                    if (t.titulo == "A") {
-                                        tituloA.push(Object.fromEntries(Object.entries(t).slice(1)))
-                                    }
-                                    else if (t.titulo == "B") {
-
-                                        tituloB.push(Object.fromEntries(Object.entries(t).slice(1)))
-                                    }
-                                    else if (t.titulo == "C") {
-
-                                        tituloC.push(Object.fromEntries(Object.entries(t).slice(1)))
-                                    }
-                                    else if (t.titulo == "D") {
-                                        tituloD.push(Object.fromEntries(Object.entries(t).slice(1)))
-
-                                    }
-                                }
-
-
-
-                                console.log(tituloA, tituloB, tituloC, tituloD)
 
                             }
 
-                            // $("#modalConfirma").modal()
 
-                            // URL = 'http://192.168.15.16:8080/api/v1/'
-
-                            // const dados = {
-                            //     email: document.getElementById('exampleInputEmail').value,
-                            //     nome: document.getElementById('primeiroNome').value,
-                            //     sobrenome: document.getElementById('ultimoNome').value,
-                            //     cpf: document.getElementById('cpf').value,
-                            //     // dataNascimento: document.getElementById('dataNascimento').value,
-                            //     dataNascimento: '2000-11-21',
-                            //     genero: document.getElementById('genero').value,
-                            // }
-
-                            // console.log(dados)
-
-                            // const xhr = new XMLHttpRequest();
-
-                            // xhr.open('POST', `${URL}cliente/register`, true);
-
-                            // // PEGAR O TOKEN PARA AS REQUISIÇÕES ATRAVÉS DO SESSION STORAGE
-                            // // xhr.setRequestHeader('Authorization', sessionStorage.getItem('Authorization'))
-
-                            // // VALOR TRAVADO DO TOKEN PARA AS REQUISIÇÕES 
-                            // xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInVzZXJfaWQiOjMsInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODEzNTYwMCwiZXhwIjoxNjcwNzI3NjAwfQ.aVnNeNxBcvrSKcE4da2i3ZqciLjKSp7JuachA4fWJW-tWGsSlF_hMjo_MSnfDavE2b7eoKSlvIZ2p2myyn7DfQ');
-
-                            // xhr.setRequestHeader('Content-type', 'application/json');
-                            // xhr.setRequestHeader('Accept', 'application/json');
-
-
-
-                            // xhr.onload = function () {
-                            //     if (xhr.status === 200) {
-
-                            //         alert("Cadastro com sucesso")
-                            //         location.href = './login.html'
-                            //     }
-                            //     else {
-                            //         alert(xhr.status)
-                            //     };
-
-
-                            // }
-
-                            // xhr.send(JSON.stringify(dados))
 
                         })
 

@@ -103,9 +103,11 @@ public class TreinoService {
 
         List<TreinoEntity> treinos = treinoRepository.treinosDoCliente(clienteID);
 
-        treinos.forEach((treino) -> {
-            treinoRepository.delete(treino);
-        });
+        if (!treinos.isEmpty()) {
+            treinos.forEach((treino) -> {
+                treinoRepository.delete(treino);
+            });
+        }
 
     }
 

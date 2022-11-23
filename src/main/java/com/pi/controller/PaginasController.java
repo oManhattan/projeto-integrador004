@@ -76,6 +76,24 @@ public class PaginasController {
         return new ModelAndView("avaliacao");
     }
     
-    
+    @GetMapping("/novo-cadastro-profissional")
+    public ModelAndView cadastrarProfissional() {
+        return new ModelAndView("registro");
+    }
+
+    @GetMapping("/esqueceu-senha")
+    public ModelAndView esqueceuSenha() {
+        return new ModelAndView("esqueci-senha");
+    }
+
+    @GetMapping("/cadastro-sucesso")
+    public ModelAndView cadastroSucesso() {
+        return new ModelAndView("cadastroSucesso");
+    }
+
+    @GetMapping("/email-sucesso")
+    public ModelAndView emailSucesso() {
+        return new ModelAndView();
+    }
 
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class ValidacaoService {
 
 	private String removeSpecialCharacterFromDocument(String document) {
-		return document.replace(".", "").replace("-", "").trim();
+		return document.replace(".", "").replace("-", "").replace("/", "").trim();
 	}
 
 	private int[] stringToIntegerArray(String document) {

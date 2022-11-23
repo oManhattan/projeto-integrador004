@@ -106,17 +106,12 @@
 
             xhr.open('PUT', `${URL}esqueceu-senha`, true);
 
-            // PEGAR O TOKEN PARA AS REQUISIÇÕES ATRAVÉS DO SESSION STORAGE
-            // xhr.setRequestHeader('Authorization', sessionStorage.getItem('Authorization'))
-            // VALOR TRAVADO DO TOKEN PARA AS REQUISIÇÕES 
-            //xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInVzZXJfaWQiOjMsInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODEzNTYwMCwiZXhwIjoxNjcwNzI3NjAwfQ.aVnNeNxBcvrSKcE4da2i3ZqciLjKSp7JuachA4fWJW-tWGsSlF_hMjo_MSnfDavE2b7eoKSlvIZ2p2myyn7DfQ');
-
             xhr.setRequestHeader('Content-type', 'application/json');
             xhr.setRequestHeader('Accept', 'application/json');
 
             xhr.onload = function () {
                 if (xhr.status === 200) {
-                    location.href = './emailSucesso.html'
+                    location.href = 'http://localhost:8080/email-sucesso'
                 }
                 else {
                     alert(xhr.status)

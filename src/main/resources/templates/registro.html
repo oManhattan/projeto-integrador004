@@ -16,31 +16,31 @@
 
     <!-- Máscaras JQUERY -->
     <script type="text/javascript">
-    $(document).ready(function() {
-           $("#cpf").mask("000.000.000-00")
-           $("#cnpj").mask("00.000.000/0000-00")
-           $("#telefone").mask("(00) 00000-0000")
-           $("#dataNascimento").mask("00/00/0000")
-    })
+        $(document).ready(function () {
+            $("#cpf").mask("000.000.000-00")
+            $("#cnpj").mask("00.000.000/0000-00")
+            $("#telefone").mask("(00) 00000-0000")
+            $("#dataNascimento").mask("00/00/0000")
+        })
     </script>
 
-    
-<!--Confirmação de senha-->
+
+    <!--Confirmação de senha-->
     <script>
-        function confereSenha(){
+        function confereSenha() {
 
             const senha = document.querySelector('input[name=senha]');
             const confirma = document.querySelector('input[name=confirma]');
 
-          if(confirma.value === senha.value){
-               confirma.setCustomValidity('');
-            }else{
+            if (confirma.value === senha.value) {
+                confirma.setCustomValidity('');
+            } else {
                 confirma.setCustomValidity('As senhas não conferem');
-             }
-         } 
+            }
+        } 
     </script>
 
-<!------
+    <!------
     <script type="text/javascript">
         function validarSenha(){
             var campo1 = document.getElementById('exampleInputPassword').value;
@@ -55,26 +55,26 @@
     </script>
 -->
 
-<!--Visualização de senha-->
+    <!--Visualização de senha-->
     <script>
         function mouseoverPass(obj) {
-         var obj = document.getElementById('exampleInputPassword');
-        obj.type = "text";
-    }
+            var obj = document.getElementById('exampleInputPassword');
+            obj.type = "text";
+        }
         function mouseoutPass(obj) {
-        var obj = document.getElementById('exampleInputPassword');
-        obj.type = "password";
-    }
+            var obj = document.getElementById('exampleInputPassword');
+            obj.type = "password";
+        }
 
-    function mouseoverPass2(obj) {
-         var obj = document.getElementById('exampleRepeatPassword');
-        obj.type = "text";
-    }
+        function mouseoverPass2(obj) {
+            var obj = document.getElementById('exampleRepeatPassword');
+            obj.type = "text";
+        }
         function mouseoutPass2(obj) {
-        var obj = document.getElementById('exampleRepeatPassword');
-        obj.type = "password";
-    }
-   </script>
+            var obj = document.getElementById('exampleRepeatPassword');
+            obj.type = "password";
+        }
+    </script>
 
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -113,22 +113,22 @@
                             <form class="user" id="cadastroForm" method="POST">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName" required
-                                            placeholder="Nome">
+                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                            required placeholder="Nome">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName" required
-                                            placeholder="Sobrenome">
+                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
+                                            required placeholder="Sobrenome">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" required
-                                        placeholder="Endereço de e-mail">
+                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                        required placeholder="Endereço de e-mail">
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" name="cpf" id="cpf" required class="form-control form-control-user"
-                                        placeholder="CPF">
+                                    <input type="text" name="cpf" id="cpf" required
+                                        class="form-control form-control-user" placeholder="CPF">
                                 </div>
 
                                 <div class="form-group">
@@ -136,32 +136,39 @@
                                         placeholder="CNPJ">
                                 </div>
 
-             
+
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"> 
-                                        <img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png" onclick="mouseoverPass();" onmouseout="mouseoutPass();"  id="olho" class="olho"/>                        
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png"
+                                            onclick="mouseoverPass();" onmouseout="mouseoutPass();" id="olho"
+                                            class="olho" />
                                         <input type="password" name="senha" class="form-control form-control-user"
-                                            id="exampleInputPassword" required placeholder="Senha" onchange='confereSenha();' >
-                                            
+                                            id="exampleInputPassword" required placeholder="Senha"
+                                            onchange='confereSenha();'>
+
                                     </div>
                                     <div class="col-sm-6">
-                                        <img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png" onclick="mouseoverPass2();" onmouseout="mouseoutPass2();"  id="olho2" class="olho"/>
+                                        <img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png"
+                                            onclick="mouseoverPass2();" onmouseout="mouseoutPass2();" id="olho2"
+                                            class="olho" />
                                         <input type="password" name="confirma" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" required placeholder="Confirma Senha" onchange='confereSenha();' >
-                                    </div> 
+                                            id="exampleRepeatPassword" required placeholder="Confirma Senha"
+                                            onchange='confereSenha();'>
+                                    </div>
                                 </div>
-                                <button class="btn btn-primary btn-user btn-block" type="submit" onclick="return confereSenha()">Cadastrar</button>
-                                <a href="cadastroSucesso.html"></a>
-                                 
+                                <button class="btn btn-primary btn-user btn-block" type="submit"
+                                    onclick="return confereSenha()">Cadastrar</button>
+                                <a href="http://localhost:8080/cadastro-sucesso"></a>
+
                                 </a>
                                 <hr>
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="esqueci-senha.html">Esqueceu sua senha?</a>
+                                <a class="small" href="http://localhost:8080/esqueceu-senha">Esqueceu sua senha?</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="login.html">Já tem uma conta? Login!</a>
+                                <a class="small" href="http://localhost:8080">Já tem uma conta? Login!</a>
                             </div>
                         </div>
                     </div>
@@ -179,16 +186,30 @@
 
             URL = 'http://localhost:8080/api/v1/'
 
-            const dados = {
-                nome: document.getElementById('exampleFirstName').value,
-                sobrenome: document.getElementById('exampleLastName').value,
-                email: document.getElementById('exampleInputEmail').value,
-                cpf: document.getElementById('cpf').value,
-                cnpj: document.getElementById('cnpj').value,
-                senha: document.getElementById('exampleInputPassword').value,
-                // dataNascimento: document.getElementById('dataNascimento').value,
-                //dataNascimento: '2000-11-21',
-                //genero: document.getElementById('genero').value,
+            let dados
+
+            const cnpj = document.querySelector('#cnpj').value.trim() 
+
+            if (cnpj.length === 0) {
+                console.log('A condição está correta')
+                dados = {
+                    nome: document.getElementById('exampleFirstName').value,
+                    sobrenome: document.getElementById('exampleLastName').value,
+                    email: document.getElementById('exampleInputEmail').value,
+                    cpf: document.getElementById('cpf').value,
+                    cnpj: null,
+                    senha: document.getElementById('exampleInputPassword').value,
+                }
+            } else {
+                console.log('Entrei aqui porran')
+                dados = {
+                    nome: document.getElementById('exampleFirstName').value,
+                    sobrenome: document.getElementById('exampleLastName').value,
+                    email: document.getElementById('exampleInputEmail').value,
+                    cpf: document.getElementById('cpf').value,
+                    cnpj: cnpj,
+                    senha: document.getElementById('exampleInputPassword').value,
+                }
             }
 
             console.log(dados)
@@ -197,28 +218,23 @@
 
             xhr.open('POST', `${URL}profissional/register`, true);
 
-            // PEGAR O TOKEN PARA AS REQUISIÇÕES ATRAVÉS DO SESSION STORAGE
-            // xhr.setRequestHeader('Authorization', sessionStorage.getItem('Authorization'))
-            // VALOR TRAVADO DO TOKEN PARA AS REQUISIÇÕES 
-            //xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInVzZXJfaWQiOjMsInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODEzNTYwMCwiZXhwIjoxNjcwNzI3NjAwfQ.aVnNeNxBcvrSKcE4da2i3ZqciLjKSp7JuachA4fWJW-tWGsSlF_hMjo_MSnfDavE2b7eoKSlvIZ2p2myyn7DfQ');
-
             xhr.setRequestHeader('Content-type', 'application/json');
             xhr.setRequestHeader('Accept', 'application/json');
 
             xhr.onload = function () {
                 if (xhr.status === 200) {
-                    location.href = './cadastroSucesso.html'
+                    location.href = 'http://localhost:8080/cadastro-sucesso'
                 }
                 else {
-                    alert(xhr.status)
+                    alert(`Erorr: ${xhr.status}\n${xhr.responseText}`)
                 };
 
             }
             xhr.send(JSON.stringify(dados))
         })
 
-        </script>   
-    
+    </script>
+
 
 </body>
 

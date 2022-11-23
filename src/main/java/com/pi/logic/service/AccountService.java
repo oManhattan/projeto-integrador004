@@ -80,19 +80,23 @@ public class AccountService {
         System.out.println(String.format("Nova senha -> %s", novaSenha));
         String senhaCriptografa = passwordEncoder.encode(novaSenha);
 
-        int profissionalRows = profissionalRepository.alterarSenha(senhaCriptografa, email);
-        System.out.println(String.format("%d linhas de profissional afetadas", profissionalRows));
-        if (profissionalRows > 0) {
-            sendMail(email, "Alterar Senha - SmartTraining", String.format("Olá\n\nSua nova senha é %s\n\nAcesse sua conta para alterá-la.", novaSenha));
-            return;
+        if (profissionalRepository.emailExiste(email)) {
+            int profissionalRows = profissionalRepository.alterarSenha(senhaCriptografa, email);
+            System.out.println(String.format("%d linhas de profissional afetadas", profissionalRows));
+            if (profissionalRows > 0) {
+                sendMail(email, "Alterar Senha - SmartTraining", String.format("Olá\n\nSua nova senha é %s\n\nAcesse sua conta para alterá-la.", novaSenha));
+                return;
+            }
         }
-        
-        int clienteRows = clienteRepository.alterarSenha(senhaCriptografa, email);
-        System.out.println(String.format("%d linhas de cliente afetadas", clienteRows));
-        if (clienteRows > 0) {
-            sendMail(email, "Alterar Senha - SmartTraining", String.format("Olá\n\nSua nova senha é %s\n\nAcesse sua conta para alterá-la.", novaSenha));
+
+        if (clienteRepository.emailExiste(email)) {
+            int clienteRows = clienteRepository.alterarSenha(senhaCriptografa, email);
+            System.out.println(String.format("%d linhas de cliente afetadas", clienteRows));
+            if (clienteRows > 0) {
+                sendMail(email, "Alterar Senha - SmartTraining", String.format("Olá\n\nSua nova senha é %s\n\nAcesse sua conta para alterá-la.", novaSenha));
+            }
         }
-        
+
         throw new Exception("E-mail não encontrado.");
     }
 

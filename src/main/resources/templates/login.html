@@ -62,13 +62,13 @@
                                             Entrar
                                         </button>
                                         <hr>
-                                        <a href="registro.html" class="btn btn-google btn-user btn-block">
+                                        <a href="http://localhost:8080/novo-cadastro-profissional" class="btn btn-google btn-user btn-block">
                                             Cadastrar
                                         </a>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="esqueci-senha.html">Esqueci minha senha</a>
+                                        <a class="small" href="http://localhost:8080/esqueceu-senha">Esqueci minha senha</a>
                                     </div>
                                 </div>
                             </div>
@@ -117,14 +117,15 @@
                     console.log(localStorage.getItem('nome'))
                     
                     alert("Sucesso no login")
-                    if (xhr.getResponseHeader('CustomerType') == "Profissional") {
+                    window.location.href = 'http://localhost:8080/'
+                    // if (xhr.getResponseHeader('CustomerType') == "Profissional") {
 
-                        window.location.href = 'http://localhost:8080/tela-profissional'
-                    }
-                    else {
-                        window.location.href = 'http://localhost:8080/tela-cliente'
+                    //     window.location.href = 'http://localhost:8080/tela-profissional'
+                    // }
+                    // else {
+                    //     window.location.href = 'http://localhost:8080/tela-cliente'
 
-                    }
+                    // }
 
 
                 } else {

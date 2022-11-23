@@ -1,9 +1,11 @@
 package com.pi.configuration;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -31,11 +33,19 @@ public class JWTFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
-        String authorizarion = request.getHeader("Authorization");
+        String authorization = request.getHeader("Authorization");
+
+        if (authorization == null) {
+            Cookie authorizationCookie = Arrays.asList(request.getCookies()).stream().filter((cookie) -> cookie.getName().equals("Authorization")).findFirst().orElse(null);
+            if (authorizationCookie != null) {
+                authorization = authorizationCookie.getValue().replace("$", " ");
+            }
+        }
+
         String token = null, username = null;
 
-        if (authorizarion != null && authorizarion.startsWith("Bearer ")) {
-            token = authorizarion.substring(7);
+        if (authorization != null && authorization.startsWith("Bearer ")) {
+            token = authorization.substring(7);
             username = jwtUtil.getUsernameFromToken(token);
         }
 

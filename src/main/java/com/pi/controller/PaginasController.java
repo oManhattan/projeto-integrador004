@@ -24,11 +24,4 @@ public class PaginasController {
         return new ModelAndView("cliente");
     }
     
-    
-
-    // @GetMapping("/perfil-cliente")
-    // @PreAuthorize("hasAuthority('ROLE_CLIENTE')")
-    // public ModelAndView telaCliente() {
-    // return new ModelAndView("perfil-cliente");
-    // }
 }

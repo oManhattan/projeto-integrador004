@@ -29,9 +29,10 @@ public class PaginasController {
     public ModelAndView usuarioLogado(HttpServletRequest request) throws Exception {
         String authorization = "";
         Cookie authorizationCookie = Arrays.asList(request.getCookies()).stream().filter((cookie) -> cookie.getName().equals("Authorization")).findFirst().orElse(null);
-        if (authorizationCookie != null) {
-            authorization = authorizationCookie.getValue().replace("$", " ");
+        if (authorizationCookie == null) {
+            return new ModelAndView("login");
         }
+        authorization = authorizationCookie.getValue().replace("$", " ");
         String formattedToken = jwtUtil.formatToken(authorization);
         String customerType = jwtUtil.getUserAuthorityFromToken(formattedToken);
         if (customerType.equals("ROLE_PROFISSIONAL")) {

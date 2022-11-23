@@ -48,16 +48,16 @@
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Digite seu e-mail">
                                         </div>
-                                        <button type="submit" href="emailSucesso.html" class="btn btn-primary btn-user btn-block">
+                                        <button id="sendButton" type="submit" href="http://localhost:8080/email-sucesso" class="btn btn-primary btn-user btn-block">
                                             Redefinir senha
                                         </button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="registro.html">Criar uma nova conta</a>
+                                        <a class="small" href="http://localhost:8080/novo-cadastro-profissional">Criar uma nova conta</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="login.html">Já tem uma conta? Acesse aqui!</a>
+                                        <a class="small" href="http://localhost:8080">Já tem uma conta? Acesse aqui!</a>
                                     </div>
                                 </div>
                             </div>
@@ -80,27 +80,38 @@
 
     <script>
 
+        function sendForgotPasswordRequest() {
+            const inputedEmail = document.querySelector('#exampleInputEmail').value.trim()
+            if (inputedEmail.length == 0) {
+                alert("É necessário possuir um e-mail válido")
+            }
+            URL = 'http://localhost:8080/api/v1/'
+            const xhr = new XMLHttpRequest()
+            xhr.open('PUT', `${URL}esqueceu-senha`, true)
+            xhr.setRequestHeader('Content-type', 'application/json')
+            xhr.setRequestHeader('Accept', 'application/json')
+            xhr.onload = (response, event) => {
+                if (response.status === 200) {
+                    location.href = 'http://localhost:8080/email-sucesso'
+                } else {
+                    alert(response.responseText)
+                }
+            }
+            xhr.send(JSON.stringify({
+                email:inputedEmail
+            }))
+        }
 
         document.getElementById('esqueciSenhaForm').addEventListener("submit", function (event) {
             event.preventDefault()
 
+            document.querySelector('#sendButton').disabled = true
+
             URL = 'http://localhost:8080/api/v1/'
 
             const dados = {
-                
                 email: document.getElementById('exampleInputEmail').value
-
-                //nome: document.getElementById('exampleFirstName').value,
-                // sobrenome: document.getElementById('exampleLastName').value,  
-                // cpf: document.getElementById('cpf').value,
-                // cnpj: document.getElementById('cnpj').value,
-                // senha: document.getElementById('exampleInputPassword').value,
-                // dataNascimento: document.getElementById('dataNascimento').value,
-                //dataNascimento: '2000-11-21',
-                //genero: document.getElementById('genero').value,
             }
-
-            console.log(dados)
 
             const xhr = new XMLHttpRequest();
 
@@ -114,9 +125,9 @@
                     location.href = 'http://localhost:8080/email-sucesso'
                 }
                 else {
-                    alert(xhr.status)
+                    alert(`${xhr.responseText}`)
+                    document.querySelector('#sendButton').disabled = false
                 };
-
             }
             xhr.send(JSON.stringify(dados))
         })

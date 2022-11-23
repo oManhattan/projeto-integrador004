@@ -60,22 +60,22 @@ public class PaginasController {
     public ModelAndView tela_cliente() {
         return new ModelAndView("cliente");
     }
-    
+
     @GetMapping("/tela-tabela-cliente")
     public ModelAndView tabela_cliente() {
         return new ModelAndView("tabelaclientes");
     }
-    
-      @GetMapping("/novo-cliente")
+
+    @GetMapping("/novo-cliente")
     public ModelAndView novo_cliente() {
         return new ModelAndView("novocliente");
     }
-    
-      @GetMapping("/avaliacao")
+
+    @GetMapping("/avaliacao")
     public ModelAndView avaliacao() {
         return new ModelAndView("avaliacao");
     }
-    
+
     @GetMapping("/novo-cadastro-profissional")
     public ModelAndView cadastrarProfissional() {
         return new ModelAndView("registro");
@@ -93,7 +93,7 @@ public class PaginasController {
 
     @GetMapping("/email-sucesso")
     public ModelAndView emailSucesso() {
-        return new ModelAndView();
+        return new ModelAndView("emailSucesso.html");
     }
 
 }

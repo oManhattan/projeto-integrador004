@@ -29,6 +29,9 @@ public class ProfissionalService {
     @Autowired
     private JWTUtil jwtUtil;
 
+    @Autowired
+    private ValidacaoService validacaoService;
+
     public boolean emailExiste(String email) {
         return profissionalRepository.encontrarPorEmail(email).isPresent();
     }
@@ -67,6 +70,14 @@ public class ProfissionalService {
             throw new Exception("CNPJ já cadastrado.");
         }
 
+        if (!validacaoService.CPFisValid(request.getCpf())) {
+            throw new Exception("CPF inválido.");
+        }
+
+        if (request.getCnpj() != null && !validacaoService.CNPJisValid(request.getCnpj())) {
+            throw new Exception("CNPJ inválido.");
+        }
+
         ProfissionalEntity entity = ProfissionalConverter.toEntity(request);
         entity.setEmail(request.getEmail().toLowerCase());
         entity.setSenha(passwordEncoder.encode(request.getSenha()));
@@ -76,6 +87,14 @@ public class ProfissionalService {
     public void alterarPerfil(String token, ProfissionalRequest request) throws Exception {
         String formattedToken = jwtUtil.formatToken(token);
         String emailToken = jwtUtil.getUsernameFromToken(formattedToken);
+
+        if (!validacaoService.CPFisValid(request.getCpf())) {
+            throw new Exception("CPF inválido.");
+        }
+
+        if (request.getCnpj() != null && !validacaoService.CNPJisValid(request.getCnpj())) {
+            throw new Exception("CNPJ inválido.");
+        }
 
         if (profissionalRepository.emailExiste(request.getEmail()) && !request.getEmail().equals(emailToken)) {
             throw new Exception("E-mail já cadastrado.");

@@ -68,6 +68,9 @@ public class ClienteService {
     @Autowired
     private ExercicioRepository exercicioRepository;
 
+    @Autowired
+    private ValidacaoService validacaoService;
+
     public Boolean emailExiste(String email) {
         return clienteRepository.encontrarPorEmail(email).isPresent();
     }
@@ -85,6 +88,10 @@ public class ClienteService {
 
         if (optionalProfissional.isEmpty()) {
             throw new Exception("Token inválido. Faça login novamente.");
+        }
+
+        if (!validacaoService.CPFisValid(request.getCpf())) {
+            throw new Exception("CPF inválido.");
         }
 
         if (emailExiste(request.getEmail())

@@ -30,12 +30,13 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-        
+
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion no-print" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="inicial.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center"
+                href='http://localhost:8080/tela-profissional'>
                 <div class="sidebar-brand-icon rotate-n-15">
                 </div>
                 <div class="sidebar-brand-text mx-3">Smart Trainer</div>
@@ -55,18 +56,18 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="inicial.html">
+                <a class="nav-link" href='http://localhost:8080/tela-profissional'>
                     <i class="fas fa-fw fa-users"></i>
                     <span>Meus clientes</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="novocliente.html">
+                <a class="nav-link" href="http://localhost:8080/novo-cliente">
                     <i class="fas fa-fw fa-user-plus"></i>
                     <span>Novo cliente</span></a>
             </li>
-            
-            
+
+
 
         </ul>
         <!-- End of Sidebar -->
@@ -190,13 +191,13 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">João Vitor Richard</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="nome-user"></span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <!-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
                                 </a>
@@ -204,7 +205,7 @@
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Configurações
                                 </a>
-                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-divider"></div> -->
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Sair
@@ -228,9 +229,9 @@
                         <h1 class="h3 mr-auto text-gray-800" id="dtConsulta"></h1>
 
 
-                        <button onclick="location.href = 'avaliacao.html'"
+                        <button onclick=" window.location.href = 'http://localhost:8080/avaliacao'"
                             class="d-none mr-3 d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fa fa-solid fa-plus"></i> Nova avaliação</a></button>
+                                class="fa fa-solid fa-plus"></i> Nova avaliação</button>
 
                         <button onclick="window.print()"
                             class="d-none  d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
@@ -271,7 +272,7 @@
                     <div class="row">
                         <h1 class="h3 mr-auto text-gray-800" id="dtConsulta"></h1>
 
-                        
+
                         <div class="col-xl-2 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
@@ -290,7 +291,7 @@
                             </div>
                         </div>
 
-                      
+
                         <div class="col-xl-2 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
@@ -325,7 +326,7 @@
                             </div>
                         </div>
 
-                       
+
                         <div class="col-xl-2 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
@@ -370,13 +371,14 @@
                             </div>
                         </div>
 
-                        
+
                         <div class="col-xl-2 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Metabolismo basal
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                Metabolismo basal
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
@@ -395,16 +397,16 @@
                             </div>
                         </div>
 
-                
+
 
                     </div>
 
                     <h1 class="h3 mr-auto text-gray-800">Medidas</h1>
                     <!-- Content Row -->
                     <div class="row">
-                       
 
-                        
+
+
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card borda-medida shadow h-100 py-2">
                                 <div class="card-body">
@@ -423,7 +425,7 @@
                             </div>
                         </div>
 
-                      
+
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card borda-medida shadow h-100 py-2">
                                 <div class="card-body">
@@ -523,7 +525,8 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Coxa Esquerda
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Coxa
+                                                Esquerda
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
@@ -547,7 +550,8 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Coxa Direita
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Coxa
+                                                Direita
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
@@ -565,13 +569,14 @@
                                 </div>
                             </div>
                         </div>
-                
+
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card borda-medida shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Antebraço Esquerdo
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                Antebraço Esquerdo
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
@@ -589,14 +594,15 @@
                                 </div>
                             </div>
                         </div>
-                
+
 
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card borda-medida shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Antebraço Direito
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                Antebraço Direito
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
@@ -615,24 +621,25 @@
                             </div>
                         </div>
 
-                     
-                       
 
 
-                  
-                        
-                       
 
-                        
-                     
-                       
-                
+
+
+
+
+
+
+
+
+
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card borda-medida shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Panturrilha Esquerda
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                Panturrilha Esquerda
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
@@ -651,13 +658,14 @@
                             </div>
                         </div>
 
-                     
+
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card borda-medida shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Panturrilha Direita
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                Panturrilha Direita
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
@@ -676,13 +684,13 @@
                             </div>
                         </div>
 
-                        
-                       
+
+
 
                     </div>
-                    
 
-               
+
+
 
                     <!-- Content Row -->
 
@@ -794,7 +802,8 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="login.html">Sair</a>
+                    <a class="btn btn-primary" href="http://localhost:8080"
+                        onclick='document.cookie = "Authorization=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/"'>Sair</a>
                 </div>
             </div>
         </div>
@@ -812,8 +821,8 @@
                     Cliente sem avaliação. Deseja realizar uma avaliação?
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <a class="btn btn-primary" href="inicial.html">Cancelar</a>
-                    <a class="btn btn-primary" href="avaliacao.html">Nova avaliação</a>
+                    <a class="btn btn-primary" href="http://localhost:8080/tela-profissional">Cancelar</a>
+                    <a class="btn btn-primary" href="http://localhost:8080/avaliacao">Nova avaliação</a>
                 </div>
             </div>
         </div>
@@ -840,17 +849,23 @@
 
     <script>
 
-        URL = 'http://192.168.15.16:8080/api/v1/'
+        URL = 'http://localhost:8080/api/v1/'
 
         function dashClientes() {
 
-            console.log(localStorage.getItem('id'))
+
 
             const xhr = new XMLHttpRequest();
 
             xhr.open('GET', `${URL}cliente/pagina-cliente?cliente-id=${localStorage.getItem('id')}`, true);
 
-            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2OTA4NjAwMCwiZXhwIjoxNjcxNjc4MDAwfQ.hwqMsIGrwHHCvq320foQwJbpMu44ERkQLI_xMJP1qILqyqUZxCJP-KwUuAfa6NqEjc3qIlvh_fgHWYWt1BZu3Q');
+            let token = document.cookie.split(";").filter(cookie => {
+                if (cookie.split("=")[0] == "Authorization") {
+                    return cookie.split("=")[1]
+                }
+            })[0].split('=')[1].replace("$", " ")
+
+            xhr.setRequestHeader('Authorization', token);
 
             xhr.onload = function () {
                 if (xhr.status === 200) {
@@ -861,8 +876,8 @@
                     else {
                         document.getElementById('dtConsulta').innerHTML = `Dashboard - Última avaliação: ${dados.ultima_avaliacao.dataRealizacao.split("-")[2]}/${dados.ultima_avaliacao.dataRealizacao.split("-")[1]}/${dados.ultima_avaliacao.dataRealizacao.split("-")[0]}`;
 
-                        
-                        document.getElementById('nome').value = dados.cliente.nome + ' ' +dados.cliente.sobrenome;
+
+                        document.getElementById('nome').value = dados.cliente.nome + ' ' + dados.cliente.sobrenome;
                         document.getElementById('dtnascimento').value = `${dados.cliente.dataNascimento.split("-")[2]}/${dados.cliente.dataNascimento.split("-")[1]}/${dados.cliente.dataNascimento.split("-")[0]}`;
                         document.getElementById('genero').value = dados.cliente.genero;
                         document.getElementById('email').value = dados.cliente.email;
@@ -880,7 +895,7 @@
                         document.getElementById('abdomem').innerHTML = dados.ultima_avaliacao.abdomem + ' cm'
                         document.getElementById('quadril').innerHTML = dados.ultima_avaliacao.quadril + ' cm'
 
-                        
+
                         document.getElementById('bicepsdireito').innerHTML = dados.ultima_avaliacao.bicepsDireito + ' cm'
                         document.getElementById('antedireito').innerHTML = dados.ultima_avaliacao.antebracoDireito + ' cm'
                         document.getElementById('bicepsesquerdo').innerHTML = dados.ultima_avaliacao.bicepsEsquerdo + ' cm'
@@ -897,12 +912,12 @@
 
                         dados.grafico_peso.forEach(element => {
                             treinos_valores.push(element.a)
-                            treinos_data.push(element.b.split("-")[1]+"/"+element.b.split("-")[0])
+                            treinos_data.push(element.b.split("-")[1] + "/" + element.b.split("-")[0])
                         });
 
                         treinos_data.reverse()
                         treinos_valores.reverse()
-                        
+
                         let massa = dados.ultima_avaliacao.musculoEsqueletico
                         let gordura = dados.ultima_avaliacao.gorduraCorporal
 
@@ -1071,8 +1086,15 @@
 
             xhr.open('GET', `${URL}treino/all?clienteid=${localStorage.getItem('id')}`, true);
 
+            let token = document.cookie.split(";").filter(cookie => {
+                if (cookie.split("=")[0] == "Authorization") {
+                    return cookie.split("=")[1]
+                }
+            })[0].split('=')[1].replace("$", " ")
 
-            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2OTA4NjAwMCwiZXhwIjoxNjcxNjc4MDAwfQ.hwqMsIGrwHHCvq320foQwJbpMu44ERkQLI_xMJP1qILqyqUZxCJP-KwUuAfa6NqEjc3qIlvh_fgHWYWt1BZu3Q');
+
+
+            xhr.setRequestHeader('Authorization', token);
 
             xhr.onload = function () {
                 if (xhr.status === 200) {
@@ -1106,6 +1128,16 @@
             }
             xhr.send();
         }
+
+
+    </script>
+
+
+    <script>
+
+        $(document).ready(function () {
+            document.getElementById('nome-user').innerHTML = localStorage.getItem('nome')
+        })
 
 
     </script>

@@ -35,7 +35,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion no-print" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="inicial.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href = 'http://localhost:8080/tela-profissional'>
                 <div class="sidebar-brand-icon rotate-n-15">
                 </div>
                 <div class="sidebar-brand-text mx-3">Smart Trainer</div>
@@ -51,14 +51,14 @@
                 Painel profissional
             </div>
 
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{inicial.html}">
+            <li class="nav-item ">
+                <a class="nav-link" href = 'http://localhost:8080/tela-profissional'>
                     <i class="fas fa-fw fa-users"></i>
                     <span>Meus clientes</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" th:href="@{novocliente.html}">
+                <a class="nav-link" href="http://localhost:8080/novo-cliente">
                     <i class="fas fa-fw fa-user-plus"></i>
                     <span>Novo cliente</span></a>
             </li>
@@ -114,7 +114,8 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">João Vitor Richard</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="nome-user">João Vitor
+                                    Richard</span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -155,7 +156,7 @@
                         <div class="card-header py-3"
                             style="display: flex;align-items: center;justify-content: space-between;">
                             <h6 class="m-0 font-weight-bold text-primary">Lista completa</h6>
-                            <a href="novocliente.html" class="btn btn-primary btn-icon-split btn-lg mt-3 mb-3"
+                            <a onclick="window.location.href = 'http://localhost:8080/novo-cliente'" class="btn btn-primary btn-icon-split btn-lg mt-3 mb-3"
                                 style="height: 35px; font-size: medium; ">
                                 <span class="icon text-white-50">
                                     <i class="fa fa-solid fa-plus"></i>
@@ -218,7 +219,8 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="login.html">Sair</a>
+                    <a class="btn btn-primary" href="http://localhost:8080"
+                        onclick='document.cookie = "Authorization=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/"'>Sair</a>
                 </div>
             </div>
         </div>
@@ -247,14 +249,22 @@
 
         function listaClientes() {
 
+            document.getElementById('nome-user').innerHTML = localStorage.getItem('nome')
+
             const xhr = new XMLHttpRequest();
 
             xhr.open('GET', `${URL}cliente/all`, true);
 
+            let token = document.cookie.split(";").filter(cookie => {
+                if (cookie.split("=")[0] == "Authorization") {
+                    return cookie.split("=")[1]
+                }
+            })[0].split('=')[1].replace("$"," ")
 
-            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInVzZXJfaWQiOjEsInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2OTA4NjAwMCwiZXhwIjoxNjcxNjc4MDAwfQ.5NFtMtIF2aMn7g7NBDS4bIbG6mZmMkICfhKUmbh7SleW1nl7VC8Udj8KIdbcvhAOuYA98Rmx4GGKbEhnWn7M0w');
+           
 
-            // xhr.setRequestHeader('Access-Control-Allow-Origin','http://201.52.85.36')
+            xhr.setRequestHeader('Authorization', token);
+
 
             xhr.onload = function () {
                 if (xhr.status === 200) {
@@ -284,7 +294,7 @@
             $('#dataTable').on('click', 'tbody tr', function () {
                 var row = table.row($(this)).data();
                 localStorage.setItem('id', row[0]);
-                location.href = "tabelaclientes.html"
+                window.location.href = 'http://localhost:8080/tela-tabela-cliente'
             });
         });
     </script>

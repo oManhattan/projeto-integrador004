@@ -60,5 +60,22 @@ public class PaginasController {
     public ModelAndView tela_cliente() {
         return new ModelAndView("cliente");
     }
+    
+    @GetMapping("/tela-tabela-cliente")
+    public ModelAndView tabela_cliente() {
+        return new ModelAndView("tabelaclientes");
+    }
+    
+      @GetMapping("/novo-cliente")
+    public ModelAndView novo_cliente() {
+        return new ModelAndView("novocliente");
+    }
+    
+      @GetMapping("/avaliacao")
+    public ModelAndView avaliacao() {
+        return new ModelAndView("avaliacao");
+    }
+    
+    
 
 }

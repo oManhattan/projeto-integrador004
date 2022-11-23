@@ -93,7 +93,7 @@ public class PaginasController {
 
     @GetMapping("/email-sucesso")
     public ModelAndView emailSucesso() {
-        return new ModelAndView("emailSucesso.html");
+        return new ModelAndView("emailSucesso");
     }
 
 }

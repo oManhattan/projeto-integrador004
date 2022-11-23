@@ -1,0 +1,13 @@
+{
+    "id": 1,
+    "email": "cliente01@email.com",
+    "nome": "Cleitin",
+    "sobrenome": "do Cross",
+    "cpf": "456.123.789-10",
+    "dataNascimento": "1999-06-11",
+    "genero": "MASCULINO",
+    "idademeta": 34,
+    "peso": 323,
+    "massa": 221,
+    "gordura": 32
+}

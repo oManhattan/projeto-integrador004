@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <title>Smart Trainer</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/print-dashboard.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/logo.svg" type="image/x-icon">
+
+
+
+</head>
+
+<body id="page-top" onload="dashClientes();">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion no-print" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="inicial.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                </div>
+                <div class="sidebar-brand-text mx-3">Smart Trainer</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Painel profissional
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link" href="inicial.html">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Meus clientes</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="novocliente.html">
+                    <i class="fas fa-fw fa-user-plus"></i>
+                    <span>Novo cliente</span></a>
+            </li>
+            
+            
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Barra de Busca -->
+                    <!-- <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Procurando por.."
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form> -->
+
+                    <!-- Ícones de Mensagens e Alertas -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+
+                        <!-- <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a> -->
+                        <!-- Dropdown - Messages -->
+                        <!-- <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Procurando por..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li> -->
+
+                        <!-- Nav Item - Alerts -->
+                        <!-- <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i> -->
+                        <!-- Counter - Alerts -->
+                        <!-- <span class="badge badge-danger badge-counter">1+</span>
+                            </a> -->
+
+                        <!-- Dropdown - Alerts -->
+
+                        <!-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                   Dicas
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-success">
+                                            <i class="fas fa-donate text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">Hoje</div>
+                                        Aumente a carga no próximo treino!
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Ver mais dicas</a>
+                            </div> -->
+                        <!-- </li> -->
+
+                        <!-- Nav Item - Messages -->
+                        <!-- <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-envelope fa-fw"></i> -->
+                        <!-- Counter - Messages -->
+                        <!-- <span class="badge badge-danger badge-counter">1</span>
+                            </a> -->
+                        <!-- Dropdown - Messages -->
+                        <!-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="messagesDropdown">
+                                <h6 class="dropdown-header">
+                                    Mensagens
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                            alt="...">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Caso precise de dicas, estou disponível!</div>
+                                        <div class="small text-gray-500">Jorge Luis · Personal Trainer</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Ver todas mensagens</a>
+                            </div>
+                        </li> -->
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">João Vitor Richard</span>
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Perfil
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Configurações
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Sair
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+
+
+                    <!-- Page Heading -->
+                    <div class="d-flex align-items-center justify-content-between mb-4 no-print">
+                        <h1 class="h3 mr-auto text-gray-800" id="dtConsulta"></h1>
+
+
+                        <button onclick="location.href = 'avaliacao.html'"
+                            class="d-none mr-3 d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fa fa-solid fa-plus"></i> Nova avaliação</a></button>
+
+                        <button onclick="window.print()"
+                            class="d-none  d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i> Gerar relatório</a></button>
+
+
+
+
+                    </div>
+
+
+
+                    <div class="form-group row">
+                        <div class="col-sm-2 mb-3 mb-sm-0">
+                            <span>Nome</span>
+                            <input type="text" disabled class="form-control form-control-user" id="nome">
+                        </div>
+                        <div class="col-sm-2 mb-3 mb-sm-0">
+                            <span>Data de nascimento</span>
+                            <input type="text" disabled class="form-control form-control-user" id="dtnascimento">
+                        </div>
+                        <div class="col-sm-2">
+                            <span>Gênero</span>
+                            <input type="text" disabled class="form-control form-control-user" id="genero">
+                        </div>
+                        <div class="col-sm-4">
+                            <span>E-mail</span>
+                            <input type="text" disabled class="form-control form-control-user" id="email">
+                        </div>
+                        <div class="col-sm-2">
+                            <span>CPF</span>
+                            <input type="text" disabled class="form-control form-control-user" id="cpf">
+                        </div>
+                    </div>
+
+                    <h1 class="h3 mr-auto text-gray-800">Informações gerais</h1>
+                    <!-- Content Row -->
+                    <div class="row">
+                        <h1 class="h3 mr-auto text-gray-800" id="dtConsulta"></h1>
+
+                        
+                        <div class="col-xl-2 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Idade metabólica</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="idade metabolica">
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                      
+                        <div class="col-xl-2 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Peso atual</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="peso atual"></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-balance-scale fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-2 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Altura</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="altura"></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-male fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                       
+                        <div class="col-xl-2 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Massa
+                                                muscular
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="massa muscular">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-heart fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xl-2 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Gordura corporal</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="gordura corporal">
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-cubes fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="col-xl-2 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Metabolismo basal
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="metabolismo">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-cart-plus fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                
+
+                    </div>
+
+                    <h1 class="h3 mr-auto text-gray-800">Medidas</h1>
+                    <!-- Content Row -->
+                    <div class="row">
+                       
+
+                        
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Torax</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="torax">
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                      
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Cintura</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="cintura"></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-balance-scale fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Abdomem</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="abdomem"></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-male fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Quadril
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="quadril">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-heart fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Biceps Esquerdo</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="bicepsesquerdo">
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-cubes fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Biceps Direito</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="bicepsdireito">
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-cubes fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Coxa Esquerda
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="coxaesquerda">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-cart-plus fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Coxa Direita
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="coxadireita">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-cart-plus fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Antebraço Esquerdo
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="anteesquerdo">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-cart-plus fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Antebraço Direito
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="antedireito">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-cart-plus fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                     
+                       
+
+
+                  
+                        
+                       
+
+                        
+                     
+                       
+                
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Panturrilha Esquerda
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="pantesquerda">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-cart-plus fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                     
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card borda-medida shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Panturrilha Direita
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+                                                        id="pantdireita">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-cart-plus fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                       
+
+                    </div>
+                    
+
+               
+
+                    <!-- Content Row -->
+
+                    <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Evolução de peso</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <canvas id="myAreaChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pie Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Percentual de composição corporal</h6>
+                                    <div class="dropdown no-arrow">
+
+
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                    <div class="mt-4 text-center small">
+                                        <span class="mr-2">
+                                            <span class="dot" style=" background-color: #e2bc11;"></span></i> Gordura
+                                        </span>
+                                        <span class="mr-2">
+                                            <span class="dot" style=" background-color: #e24b11;"></span> Massa muscular
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <!-- Area Chart -->
+                        <div class="col-xl-12 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Treinos</h6>
+                                </div>
+
+                                <!-- NAVBAR INDICANDO OS TREINOS **LEMBRAR DOS IDs E ROLES -->
+                                <ul class="nav nav-tabs " id="myTab" role="tablist">
+
+
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+
+                                </div>
+                                <div id="treinosClientes"></div>
+
+
+
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Deseja realmente sair?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- TEXTO -->
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" href="login.html">Sair</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="clienteSemTreino" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Atenção</h5>
+                </div>
+                <div class="modal-body">
+                    Cliente sem avaliação. Deseja realizar uma avaliação?
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <a class="btn btn-primary" href="inicial.html">Cancelar</a>
+                    <a class="btn btn-primary" href="avaliacao.html">Nova avaliação</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <!-- <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script> -->
+
+
+
+    <script>
+
+        URL = 'http://192.168.15.16:8080/api/v1/'
+
+        function dashClientes() {
+
+            console.log(localStorage.getItem('id'))
+
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('GET', `${URL}cliente/pagina-cliente?cliente-id=${localStorage.getItem('id')}`, true);
+
+            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2OTA4NjAwMCwiZXhwIjoxNjcxNjc4MDAwfQ.hwqMsIGrwHHCvq320foQwJbpMu44ERkQLI_xMJP1qILqyqUZxCJP-KwUuAfa6NqEjc3qIlvh_fgHWYWt1BZu3Q');
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    const dados = JSON.parse(xhr.responseText);
+                    if (dados.ultima_avaliacao == null) {
+                        $("#clienteSemTreino").modal()
+                    }
+                    else {
+                        document.getElementById('dtConsulta').innerHTML = `Dashboard - Última avaliação: ${dados.ultima_avaliacao.dataRealizacao.split("-")[2]}/${dados.ultima_avaliacao.dataRealizacao.split("-")[1]}/${dados.ultima_avaliacao.dataRealizacao.split("-")[0]}`;
+
+                        
+                        document.getElementById('nome').value = dados.cliente.nome + ' ' +dados.cliente.sobrenome;
+                        document.getElementById('dtnascimento').value = `${dados.cliente.dataNascimento.split("-")[2]}/${dados.cliente.dataNascimento.split("-")[1]}/${dados.cliente.dataNascimento.split("-")[0]}`;
+                        document.getElementById('genero').value = dados.cliente.genero;
+                        document.getElementById('email').value = dados.cliente.email;
+                        document.getElementById('cpf').value = dados.cliente.cpf;
+
+                        document.getElementById('idade metabolica').innerHTML = dados.ultima_avaliacao.idadeCorporal
+                        document.getElementById('peso atual').innerHTML = dados.ultima_avaliacao.peso + ' Kg'
+                        document.getElementById('altura').innerHTML = dados.ultima_avaliacao.altura + ' cm'
+                        document.getElementById('massa muscular').innerHTML = dados.ultima_avaliacao.musculoEsqueletico + ' %'
+                        document.getElementById('gordura corporal').innerHTML = dados.ultima_avaliacao.gorduraCorporal + ' %'
+                        document.getElementById('metabolismo').innerHTML = dados.ultima_avaliacao.metabolismoBasal + ' kcal'
+
+                        document.getElementById('torax').innerHTML = dados.ultima_avaliacao.torax + ' cm'
+                        document.getElementById('cintura').innerHTML = dados.ultima_avaliacao.cintura + ' cm'
+                        document.getElementById('abdomem').innerHTML = dados.ultima_avaliacao.abdomem + ' cm'
+                        document.getElementById('quadril').innerHTML = dados.ultima_avaliacao.quadril + ' cm'
+
+                        
+                        document.getElementById('bicepsdireito').innerHTML = dados.ultima_avaliacao.bicepsDireito + ' cm'
+                        document.getElementById('antedireito').innerHTML = dados.ultima_avaliacao.antebracoDireito + ' cm'
+                        document.getElementById('bicepsesquerdo').innerHTML = dados.ultima_avaliacao.bicepsEsquerdo + ' cm'
+                        document.getElementById('anteesquerdo').innerHTML = dados.ultima_avaliacao.antebracoEsquerdo + ' cm'
+
+
+                        document.getElementById('coxadireita').innerHTML = dados.ultima_avaliacao.coxaDireita + ' cm'
+                        document.getElementById('pantdireita').innerHTML = dados.ultima_avaliacao.panturrilhaDireita + ' cm'
+                        document.getElementById('coxaesquerda').innerHTML = dados.ultima_avaliacao.coxaEsquerda + ' cm'
+                        document.getElementById('pantesquerda').innerHTML = dados.ultima_avaliacao.panturrilhaEsquerda + ' cm'
+
+                        let treinos_data = []
+                        let treinos_valores = []
+
+                        dados.grafico_peso.forEach(element => {
+                            treinos_valores.push(element.a)
+                            treinos_data.push(element.b.split("-")[1]+"/"+element.b.split("-")[0])
+                        });
+
+                        treinos_data.reverse()
+                        treinos_valores.reverse()
+                        
+                        let massa = dados.ultima_avaliacao.musculoEsqueletico
+                        let gordura = dados.ultima_avaliacao.gorduraCorporal
+
+                        // Gráfico de percentual de composição corporal
+                        var ptx = document.getElementById("myPieChart");
+                        var myPieChart = new Chart(ptx, {
+                            type: 'doughnut',
+                            data: {
+                                labels: ["Massa muscular", "Gordura"],
+                                datasets: [{
+                                    data: [massa, gordura],
+                                    backgroundColor: ['#e24b11', '#e2bc11', '#14213D']
+                                }],
+                            },
+                            options: {
+                                maintainAspectRatio: false,
+                                tooltips: {
+                                    backgroundColor: "rgb(255,255,255)",
+                                    bodyFontColor: "#000000",
+                                    borderColor: '#dddfeb',
+                                    borderWidth: 1,
+                                    xPadding: 15,
+                                    yPadding: 15,
+                                    displayColors: false,
+                                    caretPadding: 10,
+                                },
+                                legend: {
+                                    display: false
+                                },
+                                cutoutPercentage: 60,
+                            },
+                        });
+
+                        // Gráfico de evolução de peso
+                        var ctx = document.getElementById("myAreaChart");
+                        var myLineChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: treinos_data,
+                                datasets: [{
+                                    label: "Peso",
+                                    lineTension: 0.3,
+                                    backgroundColor: "rgba(78, 115, 223, 0.05)",
+                                    borderColor: "rgba(78, 115, 223, 1)",
+                                    pointRadius: 3,
+                                    pointBackgroundColor: "rgba(78, 115, 223, 1)",
+                                    pointBorderColor: "rgba(78, 115, 223, 1)",
+                                    pointHoverRadius: 3,
+                                    pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+                                    pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+                                    pointHitRadius: 10,
+                                    pointBorderWidth: 2,
+                                    data: treinos_valores,
+                                }],
+                            },
+                            options: {
+                                maintainAspectRatio: false,
+                                layout: {
+                                    padding: {
+                                        left: 10,
+                                        right: 25,
+                                        top: 25,
+                                        bottom: 0
+                                    }
+                                },
+                                scales: {
+                                    xAxes: [{
+                                        time: {
+                                            unit: 'date'
+                                        },
+                                        gridLines: {
+                                            display: false,
+                                            drawBorder: false
+                                        },
+                                        ticks: {
+                                            maxTicksLimit: 7
+                                        }
+                                    }],
+                                    yAxes: [{
+                                        ticks: {
+                                            maxTicksLimit: 5,
+                                            padding: 10,
+                                            // Include a dollar sign in the ticks
+                                            // callback: function (value, index, values) {
+                                            //     return '' + number_format(value);
+                                            // }
+                                        },
+                                        gridLines: {
+                                            color: "rgb(234, 236, 244)",
+                                            zeroLineColor: "rgb(234, 236, 244)",
+                                            drawBorder: false,
+                                            borderDash: [2],
+                                            zeroLineBorderDash: [2]
+                                        }
+                                    }],
+                                },
+                                legend: {
+                                    display: false
+                                },
+                                tooltips: {
+                                    backgroundColor: "rgb(255,255,255)",
+                                    bodyFontColor: "#858796",
+                                    titleMarginBottom: 10,
+                                    titleFontColor: '#6e707e',
+                                    titleFontSize: 14,
+                                    borderColor: '#dddfeb',
+                                    borderWidth: 1,
+                                    xPadding: 15,
+                                    yPadding: 15,
+                                    displayColors: false,
+                                    intersect: false,
+                                    mode: 'index',
+                                    caretPadding: 10,
+                                    callbacks: {
+                                        // label: function (tooltipItem, chart) {
+                                        //     var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                                        //     return datasetLabel + ' ' + number_format(tooltipItem.yLabel);
+                                        // }
+                                    }
+                                }
+                            }
+                        });
+
+                    }
+
+
+                }
+            };
+
+
+
+
+            xhr.send();
+            treinosClientes()
+        }
+
+        function number_format(number, decimals, dec_point, thousands_sep) {
+            // *     example: number_format(1234.56, 2, ',', ' ');
+            // *     return: '1 234,56'
+            number = (number + '').replace(',', '').replace(' ', '');
+            var n = !isFinite(+number) ? 0 : +number,
+                prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+                sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+                dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+                s = '',
+                toFixedFix = function (n, prec) {
+                    var k = Math.pow(10, prec);
+                    return '' + Math.round(n * k) / k;
+                };
+            // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+            s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+            if (s[0].length > 3) {
+                s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+            }
+            if ((s[1] || '').length < prec) {
+                s[1] = s[1] || '';
+                s[1] += new Array(prec - s[1].length + 1).join('0');
+            }
+            return s.join(dec);
+        }
+
+        function treinosClientes() {
+
+
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('GET', `${URL}treino/all?clienteid=${localStorage.getItem('id')}`, true);
+
+
+            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2OTA4NjAwMCwiZXhwIjoxNjcxNjc4MDAwfQ.hwqMsIGrwHHCvq320foQwJbpMu44ERkQLI_xMJP1qILqyqUZxCJP-KwUuAfa6NqEjc3qIlvh_fgHWYWt1BZu3Q');
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+
+                    const dados = JSON.parse(xhr.responseText);
+                    console.log(dados)
+                    if (dados.length == 0) {
+                        document.getElementById('treinosClientes').insertAdjacentHTML('beforeend', `<h3 class="h5 p-3 text-gray-800">Cliente sem treino cadastrado.</h3>`)
+                    }
+                    else {
+
+
+                        for (const [index, info] of dados.entries()) {
+                            document.getElementById('myTab').insertAdjacentHTML('beforeend', `<li class="nav-item"><a class="nav-link ${index == 0 ? "active" : " "}" id="treino-${info.titulo.toLowerCase()}-tab" data-toggle="tab" href="#treino-${info.titulo.toLowerCase()}" role="tab" aria-controls="treino-${info.titulo.toLowerCase()}" aria-selected="true">${info.titulo}</a></li>`)
+
+                            document.getElementById('myTabContent').insertAdjacentHTML('beforeend', `<div class="tab-pane fade ${index == 0 ? "show active" : " "}" id="treino-${info.titulo.toLowerCase()}" role="tabpanel" aria-labelledby="treino-${info.titulo.toLowerCase()}-tab"> <div class="list-group" id="infotreino${info.titulo}"></div></div>`)
+
+                            for (const valores of info.exercicios) {
+                                console.log(valores)
+
+                                document.getElementById(`infotreino${info.titulo}`).insertAdjacentHTML('beforeend', `<a class="list-group-item list-group-item-action flex-column align-items-start"> <div class="d-flex w-100 justify-content-between "> <h5 class="mb-1">${valores.nome}</h5> <small>${valores.id}</small> </div> <p class="mb-1">${valores.musculo}</p><small>Séries: ${valores.serie} | Repetições: ${valores.repeticao}</small> </a>`)
+                            }
+                        }
+                    }
+
+                }
+                else {
+
+                    alert("Falha na busca de dados do cliente")
+                }
+            }
+            xhr.send();
+        }
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery/jquery.mask.min.js"></script>
+
+    <!-- Máscaras JQUERY -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+           $("#cpf").mask("000.000.000-00")
+           $("#cnpj").mask("00.000.000/0000-00")
+           $("#telefone").mask("(00) 00000-0000")
+           $("#dataNascimento").mask("00/00/0000")
+    })
+    </script>
+
+    
+<!--Confirmação de senha-->
+    <script>
+        function confereSenha(){
+
+            const senha = document.querySelector('input[name=senha]');
+            const confirma = document.querySelector('input[name=confirma]');
+
+          if(confirma.value === senha.value){
+               confirma.setCustomValidity('');
+            }else{
+                confirma.setCustomValidity('As senhas não conferem');
+             }
+         } 
+    </script>
+
+<!------
+    <script type="text/javascript">
+        function validarSenha(){
+            var campo1 = document.getElementById('exampleInputPassword').value;
+            var campo2 = document.getElementById('exampleRepeatPassword').value;
+            if(campo1 != campo2){
+               campo2.setCustomValidity("Senhas diferentes");
+               return false;
+            }else{
+                return true;
+            }
+        }
+    </script>
+-->
+
+<!--Visualização de senha-->
+    <script>
+        function mouseoverPass(obj) {
+         var obj = document.getElementById('exampleInputPassword');
+        obj.type = "text";
+    }
+        function mouseoutPass(obj) {
+        var obj = document.getElementById('exampleInputPassword');
+        obj.type = "password";
+    }
+
+    function mouseoverPass2(obj) {
+         var obj = document.getElementById('exampleRepeatPassword');
+        obj.type = "text";
+    }
+        function mouseoutPass2(obj) {
+        var obj = document.getElementById('exampleRepeatPassword');
+        obj.type = "password";
+    }
+   </script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <title>Smart Trainer</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/Trevo.png" type="image/x-icon">
+
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Cadastro de Profissional</h1>
+                            </div>
+                            <form class="user" id="cadastroForm" method="POST">
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="exampleFirstName" required
+                                            placeholder="Nome">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" id="exampleLastName" required
+                                            placeholder="Sobrenome">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" required
+                                        placeholder="Endereço de e-mail">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" name="cpf" id="cpf" required class="form-control form-control-user"
+                                        placeholder="CPF">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" name="cnpj" id="cnpj" class="form-control form-control-user"
+                                        placeholder="CNPJ">
+                                </div>
+
+             
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"> 
+                                        <img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png" onclick="mouseoverPass();" onmouseout="mouseoutPass();"  id="olho" class="olho"/>                        
+                                        <input type="password" name="senha" class="form-control form-control-user"
+                                            id="exampleInputPassword" required placeholder="Senha" onchange='confereSenha();' >
+                                            
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png" onclick="mouseoverPass2();" onmouseout="mouseoutPass2();"  id="olho2" class="olho"/>
+                                        <input type="password" name="confirma" class="form-control form-control-user"
+                                            id="exampleRepeatPassword" required placeholder="Confirma Senha" onchange='confereSenha();' >
+                                    </div> 
+                                </div>
+                                <button class="btn btn-primary btn-user btn-block" type="submit" onclick="return confereSenha()">Cadastrar</button>
+                                <a href="cadastroSucesso.html"></a>
+                                 
+                                </a>
+                                <hr>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="esqueci-senha.html">Esqueceu sua senha?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="login.html">Já tem uma conta? Login!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+
+        document.getElementById('cadastroForm').addEventListener("submit", function (event) {
+            event.preventDefault()
+
+            URL = 'http://192.168.15.16:8080/api/v1/'
+
+            const dados = {
+                nome: document.getElementById('exampleFirstName').value,
+                sobrenome: document.getElementById('exampleLastName').value,
+                email: document.getElementById('exampleInputEmail').value,
+                cpf: document.getElementById('cpf').value,
+                cnpj: document.getElementById('cnpj').value,
+                senha: document.getElementById('exampleInputPassword').value,
+                // dataNascimento: document.getElementById('dataNascimento').value,
+                //dataNascimento: '2000-11-21',
+                //genero: document.getElementById('genero').value,
+            }
+
+            console.log(dados)
+
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('POST', `${URL}profissional/register`, true);
+
+            // PEGAR O TOKEN PARA AS REQUISIÇÕES ATRAVÉS DO SESSION STORAGE
+            // xhr.setRequestHeader('Authorization', sessionStorage.getItem('Authorization'))
+            // VALOR TRAVADO DO TOKEN PARA AS REQUISIÇÕES 
+            //xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInVzZXJfaWQiOjMsInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODEzNTYwMCwiZXhwIjoxNjcwNzI3NjAwfQ.aVnNeNxBcvrSKcE4da2i3ZqciLjKSp7JuachA4fWJW-tWGsSlF_hMjo_MSnfDavE2b7eoKSlvIZ2p2myyn7DfQ');
+
+            xhr.setRequestHeader('Content-type', 'application/json');
+            xhr.setRequestHeader('Accept', 'application/json');
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    location.href = './cadastroSucesso.html'
+                }
+                else {
+                    alert(xhr.status)
+                };
+
+            }
+            xhr.send(JSON.stringify(dados))
+        })
+
+        </script>   
+    
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "email": "cliente01@email.com",
+        "nome": "Cleitin",
+        "sobrenome": "do Cross",
+        "cpf": "456.123.789-10",
+        "dataNascimento": "1999-06-11",
+        "genero": "MASCULINO"
+    },
+    {
+        "id": 2,
+        "email": "sdfsdf@email.com",
+        "nome": "Adalberto",
+        "sobrenome": "do Pneu",
+        "cpf": "456.333.789-10",
+        "dataNascimento": "1993-06-11",
+        "genero": "FEMININO"
+    },
+    {
+        "id": 3,
+        "email": "sdfsdf@df.com",
+        "nome": "Xaolin",
+        "sobrenome": "Matado de Porco",
+        "cpf": "426.333.789-10",
+        "dataNascimento": "1993-06-11",
+        "genero": "MASCULINO"
+    }
+]

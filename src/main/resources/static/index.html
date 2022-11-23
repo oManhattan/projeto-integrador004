@@ -62,21 +62,8 @@
                     <i class="fas fa-fw fa-user-plus"></i>
                     <span>Novo cliente</span></a>
             </li>
-<<<<<<< HEAD
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-book"></i>
-                    <span>Meus treinos</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-plus-circle"></i>
-                    <span>Criar treino</span></a>
-            </li>
-=======
-            
-            
->>>>>>> dbeedad5b20591edb234a3112410a6c31f2b1d37
+
+
         </ul>
         <!-- End of Sidebar -->
 
@@ -133,6 +120,9 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
+
+                                <!-- Opções de menu para configuração e visualizar perfil -->
+                                <!-- 
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
@@ -141,7 +131,7 @@
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Configurações
                                 </a>
-
+                                -->
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -259,14 +249,10 @@
 
             const xhr = new XMLHttpRequest();
 
-            xhr.open('GET',  `${URL}cliente/all`, true);
+            xhr.open('GET', `${URL}cliente/all`, true);
 
 
-<<<<<<< HEAD
-            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODgyNjgwMCwiZXhwIjoxNjcxNDE4ODAwfQ.kegITyKHV7JDHQqprlmdZNkDqBo85muvFWwTfel0QjSbC1V_rAngBkq_l3mJZgXP6MpeIpvJlUueO6kQUfDa4w');
-=======
-            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjozLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODk5OTYwMCwiZXhwIjoxNjcxNTkxNjAwfQ.Wvsh8bETcn_e_HaN-lHUJZw44UVIAjA23dcgwg76SMf5i-DFKHLpneczJ8-BSZl3O8PVpUROFmRPLU7zVSf1TA');
->>>>>>> dbeedad5b20591edb234a3112410a6c31f2b1d37
+            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoyLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6ImpvYW8uY2FybG9zQGdtYWlsLmNvbSIsImlhdCI6MTY2OTA4NjAwMCwiZXhwIjoxNjcxNjc4MDAwfQ._fnJDQdOYJryae_iqciYIRb_BqJ5msOeYSaOHUTVT26cPvtKzmf02GgLe4m9P7fOUKOS9_Lk6cSs_thrdn5yDQ');
 
             // xhr.setRequestHeader('Access-Control-Allow-Origin','http://201.52.85.36')
 

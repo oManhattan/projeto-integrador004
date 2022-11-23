@@ -145,6 +145,9 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
+
+                                <!-- Opções de menu para configuração e visualizar perfil -->
+                                <!--
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
@@ -153,6 +156,7 @@
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Configurações
                                 </a>
+                                -->
 
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -308,7 +312,7 @@
             // xhr.setRequestHeader('Authorization', sessionStorage.getItem('Authorization'))
 
             // VALOR TRAVADO DO TOKEN PARA AS REQUISIÇÕES 
-            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODQ4MTIwMCwiZXhwIjoxNjcxMDczMjAwfQ.mEuUovehMv5Bw7Oq_uAluJ-hLpbWTGYEUn0EtIBzdcoJ4O4uPuGzPOH3PL38sVV6xpqJ8o3grNpp_a96iuc2Tw');
+            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoyLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6ImpvYW8uY2FybG9zQGdtYWlsLmNvbSIsImlhdCI6MTY2OTA4NjAwMCwiZXhwIjoxNjcxNjc4MDAwfQ._fnJDQdOYJryae_iqciYIRb_BqJ5msOeYSaOHUTVT26cPvtKzmf02GgLe4m9P7fOUKOS9_Lk6cSs_thrdn5yDQs');
 
             xhr.setRequestHeader('Content-type', 'application/json');
             xhr.setRequestHeader('Accept', 'application/json');

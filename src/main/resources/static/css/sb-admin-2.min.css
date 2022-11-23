@@ -2721,15 +2721,12 @@ fieldset:disabled a.btn {
     border-color: #00740a;
 }
 
-<<<<<<< HEAD
-=======
 .btn-excluir {
     color: #fff;
     background-color: red;
     border-color: red;
 }
 
->>>>>>> dbeedad5b20591edb234a3112410a6c31f2b1d37
 .btn-primary:hover {
     color: #fff;
     background-color: #fca311;
@@ -11621,7 +11618,7 @@ a:focus {
 }
 
 .sidebar .sidebar-brand .sidebar-brand-text {
-    display: none
+    display: none;
 }
 
 .sidebar hr.sidebar-divider {

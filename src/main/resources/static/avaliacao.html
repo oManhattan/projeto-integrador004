@@ -78,29 +78,12 @@
             </li>
 
             <li class="nav-item">
-<<<<<<< HEAD
-                <a class="nav-link" href="branco.html">
-                    <i class="fas fa-fw fa-user-plus"></i>
-                    <span>Novo cliente</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-book"></i>
-                    <span>Meus treinos</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-plus-circle"></i>
-                    <span>Criar treino</span></a>
-            </li>
-=======
                 <a class="nav-link" href="novocliente.html">
                     <i class="fas fa-fw fa-user-plus"></i>
                     <span>Novo cliente</span></a>
             </li>
 
 
->>>>>>> dbeedad5b20591edb234a3112410a6c31f2b1d37
         </ul>
         <!-- End of Sidebar -->
 
@@ -162,14 +145,17 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+
+                                <!-- Opções de menu para configuração e visualizar perfil -->
+                                
+                                <!-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Configurações
-                                </a>
+                                </a> -->
 
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -197,28 +183,6 @@
                                 <div class="card-body text-left d-flex align-items-center justify-content-center">
 
                                     <form class="user" id="dadosForm" method="POST"
-<<<<<<< HEAD
-                                        action="http://192.168.15.16:8080/api/v1/cliente/register">
-
-                                        <div class="form-group">
-                                            <span><b>Nome completo</b></span>
-                                            <input type="text" required name="nomecompleto" id="nomecompleto"
-                                                name="nomecompleto" class="form-control" placeholder="Nome completo">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <span><b>Data da avaliação</b></span>
-                                            <input type="date" class="form-control" placeholder="Data de realização">
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                                <span><b>Altura</b></span>
-                                                <input required type="text" class="form-control" name="altura"
-                                                    id="altura" placeholder="Altura">
-                                            </div>
-                                            <div class="col-sm-6">
-=======
                                         action="http://192.168.15.16:8080/api/v1/cliente/register" class="form-group ">
 
                                         <div class="form-group row">
@@ -245,122 +209,54 @@
 
                                             <div class="col-sm-3 mb-3 ">
                                                 <span><b>Altura</b></span>
-                                                <input required type="number" class="form-control" name="altura"
+                                                <input required type="number" min="0" value="0" class="form-control" name="altura"
                                                     id="altura" placeholder="Altura">
                                             </div>
 
                                             <div class="col-sm-3 mb-3 ">
->>>>>>> dbeedad5b20591edb234a3112410a6c31f2b1d37
                                                 <span><b>Peso atual</b></span>
-                                                <input type="text" required class="form-control" name="pesoAtual"
+                                                <input required type="number" min="0" value="0" step=".01" class="form-control" name="pesoAtual"
                                                     id="pesoAtual" placeholder="Peso atual">
                                             </div>
-<<<<<<< HEAD
-                                        </div>
-
-                                        <div class="form-group">
-                                            <span><b>Músculo esqueletico</b></span>
-                                            <input type="text" required name="musculoEsqueletico"
-                                                id="musculoEsqueletico" name="musculoEsqueletico" class="form-control"
-                                                placeholder="Músculo esquelético">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <span><b>Massa muscular</b></span>
-                                            <input type="text" required name="massaMuscular" id="massaMuscular"
-                                                name="massaMuscular" class="form-control" placeholder="Massa muscular">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <span><b>Idade corporal</b></span>
-                                            <input type="text" required name="idadeCorporal" id="idadeCorporal"
-                                                name="idadeCorporal" class="form-control" placeholder="Idade corporal">
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <div class="col-sm-6 mb-3 mb-sm-0">
-=======
 
 
                                             <div class="col-sm-3 mb-3 ">
                                                 <span><b>Músculo esqueletico</b></span>
-                                                <input type="text" required name="musculoEsqueletico"
+                                                <input required type="number" min="0" value="0" step=".01" name="musculoEsqueletico"
                                                     id="musculoEsqueletico" name="musculoEsqueletico"
                                                     class="form-control" placeholder="Músculo esquelético">
                                             </div>
 
                                             <div class="col-sm-3 mb-3 ">
                                                 <span><b>Massa muscular</b></span>
-                                                <input type="text" required name="massaMuscular" id="massaMuscular"
+                                                <input required type="number" min="0" value="0" step=".01" name="massaMuscular" id="massaMuscular"
                                                     name="massaMuscular" class="form-control"
                                                     placeholder="Massa muscular">
                                             </div>
 
                                             <div class="col-sm-3 mb-3 ">
                                                 <span><b>Idade corporal</b></span>
-                                                <input type="text" required name="idadeCorporal" id="idadeCorporal"
+                                                <input required type="number" min="0" value="0" name="idadeCorporal" id="idadeCorporal"
                                                     name="idadeCorporal" class="form-control"
                                                     placeholder="Idade corporal">
                                             </div>
 
 
                                             <div class="col-sm-3 mb-3 ">
->>>>>>> dbeedad5b20591edb234a3112410a6c31f2b1d37
                                                 <span><b>Gordura corporal</b></span>
-                                                <input required type="text" class="form-control" name="gorduraCorporal"
+                                                <input required type="number" min="0" value="0" step=".01" class="form-control" name="gorduraCorporal"
                                                     id="gorduraCorporal" placeholder="Gordura corporal">
                                             </div>
-<<<<<<< HEAD
-                                            <div class="col-sm-6">
-=======
                                             <div class="col-sm-3 mb-3 ">
->>>>>>> dbeedad5b20591edb234a3112410a6c31f2b1d37
                                                 <span><b>Gordura visceral</b></span>
-                                                <input type="text" required class="form-control" name="gorduraVisceral"
+                                                <input required type="number" min="0" value="0" step=".01" class="form-control" name="gorduraVisceral"
                                                     id="gorduraVisceral" placeholder="Gordura visceral">
                                             </div>
-<<<<<<< HEAD
-                                        </div>
-
-                                        <div class="form-group">
-                                            <span><b>Metabolismo basal</b></span>
-                                            <input type="text" required name="metabolismoBasal" id="metabolismoBasal"
-                                                name="metabolismoBasal" class="form-control"
-                                                placeholder="Metabolismo basal">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <span><b>Torax</b></span>
-                                            <input type="text" required name="torax" id="torax" name="torax"
-                                                class="form-control" placeholder="Torax">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <span><b>Cintura</b></span>
-                                            <input type="text" required name="cintura" id="cintura" name="cintura"
-                                                class="form-control" placeholder="Cintura">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <span><b>Abdômen</b></span>
-                                            <input type="text" required name="abdomem" id="abdomem" name="abdomem"
-                                                class="form-control" placeholder="Abdômen">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <span><b>Quadril</b></span>
-                                            <input type="text" required name="quadril" id="quadril" name="quadril"
-                                                class="form-control" placeholder="Quadril">
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <div class="col-sm-6 mb-3 mb-sm-0">
-=======
 
 
                                             <div class="col-sm-3 mb-3 ">
                                                 <span><b>Metabolismo basal</b></span>
-                                                <input type="text" required name="metabolismoBasal"
+                                                <input required type="number" min="0" value="0" name="metabolismoBasal"
                                                     id="metabolismoBasal" name="metabolismoBasal" class="form-control"
                                                     placeholder="Metabolismo basal">
                                             </div>
@@ -374,285 +270,91 @@
 
                                             <div class="col-sm-2 mb-3 ">
                                                 <span><b>Torax</b></span>
-                                                <input type="text" required name="torax" id="torax" name="torax"
+                                                <input required type="number" min="0" value="0" step=".01" name="torax" id="torax" name="torax"
                                                     class="form-control" placeholder="Torax">
                                             </div>
 
                                             <div class="col-sm-2 mb-3 ">
                                                 <span><b>Cintura</b></span>
-                                                <input type="text" required name="cintura" id="cintura" name="cintura"
+                                                <input required type="number" min="0" value="0" step=".01" name="cintura" id="cintura" name="cintura"
                                                     class="form-control" placeholder="Cintura">
                                             </div>
 
                                             <div class="col-sm-2 mb-3 ">
                                                 <span><b>Abdômen</b></span>
-                                                <input type="text" required name="abdomem" id="abdomem" name="abdomem"
+                                                <input required type="number" min="0" value="0" step=".01"name="abdomem" id="abdomem" name="abdomem"
                                                     class="form-control" placeholder="Abdômen">
                                             </div>
 
                                             <div class="col-sm-2 mb-3 ">
                                                 <span><b>Quadril</b></span>
-                                                <input type="text" required name="quadril" id="quadril" name="quadril"
+                                                <input required type="number" min="0" value="0" step=".01" name="quadril" id="quadril" name="quadril"
                                                     class="form-control" placeholder="Quadril">
                                             </div>
 
 
                                             <div class="col-sm-2 mb-3 ">
->>>>>>> dbeedad5b20591edb234a3112410a6c31f2b1d37
                                                 <span><b>Bíceps esquerdo</b></span>
-                                                <input required type="text" class="form-control" name="bicepsEsquerdo"
+                                                <input required type="number" min="0" value="0" step=".01" class="form-control" name="bicepsEsquerdo"
                                                     id="bicepsEsquerdo" placeholder="Bíceps esquerdo">
                                             </div>
-<<<<<<< HEAD
-                                            <div class="col-sm-6">
-=======
                                             <div class="col-sm-2 mb-3 ">
->>>>>>> dbeedad5b20591edb234a3112410a6c31f2b1d37
                                                 <span><b>Bíceps direito</b></span>
-                                                <input type="text" required class="form-control" name="bicepsDireito"
+                                                <input required type="number" min="0" value="0" step=".01" class="form-control" name="bicepsDireito"
                                                     id="bicepsDireito" placeholder="Bíceps direito">
                                             </div>
-<<<<<<< HEAD
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <div class="col-sm-6 mb-3 mb-sm-0">
-=======
 
 
 
                                             <div class="col-sm-2 mb-3 ">
->>>>>>> dbeedad5b20591edb234a3112410a6c31f2b1d37
                                                 <span><b>Antebraço esquerdo</b></span>
-                                                <input required type="text" class="form-control"
+                                                <input required type="number" min="0" value="0" step=".01" class="form-control"
                                                     name="antebracoEsquerdo" id="antebracoEsquerdo"
                                                     placeholder="Antebraço esquerdo">
                                             </div>
-<<<<<<< HEAD
-                                            <div class="col-sm-6">
-=======
                                             <div class="col-sm-2 mb-3 ">
->>>>>>> dbeedad5b20591edb234a3112410a6c31f2b1d37
                                                 <span><b>Antebraço direito</b></span>
-                                                <input type="text" required class="form-control" name="antebracoDireito"
+                                                <input required type="number" min="0" value="0" step=".01" class="form-control" name="antebracoDireito"
                                                     id="antebracoDireito" placeholder="Antebraço direto">
                                             </div>
-<<<<<<< HEAD
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <div class="col-sm-6 mb-3 mb-sm-0">
-=======
 
 
 
                                             <div class="col-sm-2 mb-3 ">
->>>>>>> dbeedad5b20591edb234a3112410a6c31f2b1d37
                                                 <span><b>Coxa esquerda</b></span>
-                                                <input required type="text" class="form-control" name="coxaEsquerda"
+                                                <input required type="number" min="0" value="0" step=".01" class="form-control" name="coxaEsquerda"
                                                     id="coxaEsquerda" placeholder="Coxa esquerda">
                                             </div>
-<<<<<<< HEAD
-                                            <div class="col-sm-6">
-=======
                                             <div class="col-sm-2 mb-3 ">
->>>>>>> dbeedad5b20591edb234a3112410a6c31f2b1d37
                                                 <span><b>Coxa direita</b></span>
-                                                <input type="text" required class="form-control" name="coxaDireita"
+                                                <input required type="number" min="0" value="0" step=".01" class="form-control" name="coxaDireita"
                                                     id="coxaDireita" placeholder="Coxa direita">
                                             </div>
-<<<<<<< HEAD
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-sm-6 mb-3 mb-sm-0">
-=======
 
 
                                             <div class="col-sm-2 mb-3 ">
->>>>>>> dbeedad5b20591edb234a3112410a6c31f2b1d37
                                                 <span><b>Panturilha esquerda</b></span>
-                                                <input required type="text" class="form-control"
+                                                <input required type="number" min="0" value="0" step=".01" class="form-control"
                                                     name="panturrilhaEsquerda" id="panturrilhaEsquerda"
                                                     placeholder="Panturilha esquerda">
                                             </div>
 
-<<<<<<< HEAD
-                                            <div class="col-sm-6">
-=======
                                             <div class="col-sm-2 mb-3 ">
->>>>>>> dbeedad5b20591edb234a3112410a6c31f2b1d37
                                                 <span><b>Panturilha direita</b></span>
-                                                <input type="text" required class="form-control"
+                                                <input required type="number" min="0" value="0" step=".01" class="form-control"
                                                     name="panturrilhaDireita" id="panturrilhaDireita"
                                                     placeholder="Panturilha direita">
                                             </div>
-<<<<<<< HEAD
-                                        </div>
-
-                                        <div class="form-control-user text-center">
-
-                                            <button type="submit" onclick="acao()"
-                                                class="btn btn-primary btn-icon-split btn-lg mt-3 mb-3"
-                                                id="cadastro">Salvar informações</button>
-                                        </div>
-                                </div>
-
-                                </form>
-                            </div>
-
-                            <!-- Inicio do Treino -->
-
-                            <h1 class="h3 mb-4 text-gray-800 text-center">Treino personalizado</h1>
-                            <div class="row">
-                                <div class="col-12">
-
-                                    <div class="card shadow mb-4 card-novaaposta mx-auto">
-=======
 
 
                                         </div>
 
                                         <h1 class="h3 mr-auto text-gray-800 text-center">Treino personalizado</h1>
 
->>>>>>> dbeedad5b20591edb234a3112410a6c31f2b1d37
                                         <div class="card-header py-3">
                                             <h6 class="m-0 font-weight-bold text-primary text-center">Preencha as
                                                 informações do treino personalizado.</h6>
                                         </div>
-<<<<<<< HEAD
-                                        <div
-                                            class="card-body text-left d-flex align-items-center justify-content-center">
-
-                                            <form class="user" id="dadosForm" method="POST"
-                                                action="http://192.168.15.16:8080/api/v1/cliente/register">
-
-                                                <div class="form-group row">
-                                                    <div class="col-sm-6">
-                                                        <span><b>Tipo de treino</b></span>
-                                                        <select name="tituloTreino" id="tituloTreino"
-                                                            class="form-control" placeholder="Título do treino">
-                                                            <option value="" disabled selected hidden>Treino</option>
-                                                            <option value="A">Treino A</option>
-                                                            <option value="B">Treino B</option>
-                                                            <option value="C">Treino C</option>
-                                                            <option value="D">Treino D</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <span><b>Subtítulo</b></span>
-                                                        <input type="text" required class="form-control"
-                                                            name="subtituloExercicio" id="subtituloExercicio"
-                                                            placeholder="Subtítulo">
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <div class="col-sm-6">
-                                                        <span><b>Nome exercicio</b></span>
-                                                        <input type="text" required class="form-control"
-                                                            name="nomeExercicio" id="nomeExercicio"
-                                                            placeholder="Nome exercicio">
-                                                    </div>
-                                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                                        <span><b>Muscúlo</b></span>
-                                                        <input required type="text" class="form-control"
-                                                            name="musculoExercicio" id="musculoExercicio"
-                                                            placeholder="Muscúlo">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <div class="col-sm-6">
-                                                        <span><b>Séries</b></span>
-                                                        <input type="text" required class="form-control"
-                                                            name="serieExercicio" id="serieExercicio"
-                                                            placeholder="Quantidade de séries">
-                                                    </div>
-                                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                                        <span><b>Repetições</b></span>
-                                                        <input required type="text" class="form-control"
-                                                            name="repeticaoExercicio" id="repeticaoExercicio"
-                                                            placeholder="Quantidade de repetições">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-control-user text-center">
-
-                                                    <button type="submit" onclick="acao()"
-                                                        class="btn btn-exercicio btn-icon-split btn-lg mt-3 mb-3"
-                                                        id="cadastro">Adicionar exercicio</button>
-                                                </div>
-                                            </form>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- /.container-fluid -->
-
-                    </div>
-                    <!-- End of Main Content -->
-
-
-
-                </div>
-                <!-- End of Content Wrapper -->
-
-            </div>
-            <!-- End of Page Wrapper -->
-
-            <!-- Scroll to Top Button-->
-            <a class="scroll-to-top rounded" href="#page-top">
-                <i class="fas fa-angle-up"></i>
-            </a>
-
-            <!-- Logout Modal-->
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Deseja realmente sair?</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- TEXTO -->
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                            <a class="btn btn-primary" href="login.html">Sair</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <script>
-                URL = 'http://localhost:8080/api/v1/'
-
-                console.log(localStorage.getItem('id'))
-
-                const xhr = new XMLHttpRequest();
-                xhr.open('GET', `${URL}cliente/pagina-cliente?cliente-id=${localStorage.getItem('id')}`, true);
-
-                xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODgyNjgwMCwiZXhwIjoxNjcxNDE4ODAwfQ.kegITyKHV7JDHQqprlmdZNkDqBo85muvFWwTfel0QjSbC1V_rAngBkq_l3mJZgXP6MpeIpvJlUueO6kQUfDa4w');
-                xhr.onload = function () {
-                    if (xhr.status === 200) {
-                        const dados = JSON.parse(xhr.responseText);
-
-                        document.getElementById('nomecompleto').value = dados.cliente.nome + ' ' + dados.cliente.sobrenome;
-                    }
-                }
-
-                xhr.send()
-
-            </script>
-=======
 
                                         <div class="row ">
                                             <div class="col-sm-2 p-2">
@@ -680,12 +382,12 @@
                                             </div>
                                             <div class="col-sm-2  p-2">
                                                 <span><b>Séries</b></span>
-                                                <input type="text"  class="form-control" name="serieExercicio"
+                                                <input type="number"  class="form-control" name="serieExercicio"
                                                     id="serieExercicio" placeholder="Qtd. de séries">
                                             </div>
                                             <div class="col-sm-2  p-2">
                                                 <span><b>Repetições</b></span>
-                                                <input  type="text" class="form-control"
+                                                <input  type="number" class="form-control"
                                                     name="repeticaoExercicio" id="repeticaoExercicio"
                                                     placeholder="Qtd. de repetições">
                                             </div>
@@ -760,9 +462,6 @@
                                                                 <option value="D">Treino D</option>
                                                             </select>
                                                         </div>
-
-
-
 
                                                         <div class="col-sm-3">
                                                             <span><b>Nome exercicio</b></span>
@@ -896,14 +595,15 @@
 
 
                     <script>
-                        URL = 'http://192.168.15.16:8080/api/v1/'
+                        URL = 'http://localhost:8080/api/v1/'
 
                         console.log(localStorage.getItem('id'))
 
                         const xhr = new XMLHttpRequest();
                         xhr.open('GET', `${URL}cliente/pagina-cliente?cliente-id=${localStorage.getItem('id')}`, true);
 
-                        xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjozLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODgyNjgwMCwiZXhwIjoxNjcxNDE4ODAwfQ.KZDlgKuGyXkwKJTqCcGQEcprNOJFzKgBEBLYwZEHjzJdBJ2T7WAT7c4MQySjo-UiDdhEM4g0JQiIeeQhgZ_G_w');
+                        xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODgyNjgwMCwiZXhwIjoxNjcxNDE4ODAwfQ.kegITyKHV7JDHQqprlmdZNkDqBo85muvFWwTfel0QjSbC1V_rAngBkq_l3mJZgXP6MpeIpvJlUueO6kQUfDa4w');
+                        
                         xhr.onload = function () {
                             if (xhr.status === 200) {
                                 const dados = JSON.parse(xhr.responseText);
@@ -920,7 +620,7 @@
                         document.getElementById('dadosForm').addEventListener("submit", function (event) {
                             event.preventDefault()
 
-                            URL = 'http://192.168.15.16:8080/api/v1/'
+                            URL = 'http://localhost:8080/api/v1/'
 
                             const dados = {
                                 dataRealizacao: document.getElementById('dt_avaliacao').value,
@@ -950,7 +650,7 @@
                             xhr.open('POST', `${URL}avaliacao/create?cliente-id=${localStorage.getItem('id')}`, true);
 
                             // VALOR TRAVADO DO TOKEN PARA AS REQUISIÇÕES 
-                            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjozLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2ODk5OTYwMCwiZXhwIjoxNjcxNTkxNjAwfQ.Wvsh8bETcn_e_HaN-lHUJZw44UVIAjA23dcgwg76SMf5i-DFKHLpneczJ8-BSZl3O8PVpUROFmRPLU7zVSf1TA');
+                            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoyLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6ImpvYW8uY2FybG9zQGdtYWlsLmNvbSIsImlhdCI6MTY2OTA4NjAwMCwiZXhwIjoxNjcxNjc4MDAwfQ._fnJDQdOYJryae_iqciYIRb_BqJ5msOeYSaOHUTVT26cPvtKzmf02GgLe4m9P7fOUKOS9_Lk6cSs_thrdn5yDQ');
 
                             xhr.setRequestHeader('Content-type', 'application/json');
                             xhr.setRequestHeader('Accept', 'application/json');
@@ -1133,7 +833,6 @@
                         })
                     </script>
 
->>>>>>> dbeedad5b20591edb234a3112410a6c31f2b1d37
 
 </body>
 

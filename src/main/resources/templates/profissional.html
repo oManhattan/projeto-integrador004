@@ -35,7 +35,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion no-print" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="inicial.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href = 'http://localhost:8080/tela-profissional'>
                 <div class="sidebar-brand-icon rotate-n-15">
                 </div>
                 <div class="sidebar-brand-text mx-3">Smart Trainer</div>
@@ -51,14 +51,14 @@
                 Painel profissional
             </div>
 
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{inicial.html}">
+            <li class="nav-item ">
+                <a class="nav-link" href = 'http://localhost:8080/tela-profissional'>
                     <i class="fas fa-fw fa-users"></i>
                     <span>Meus clientes</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" th:href="@{novocliente.html}">
+                <a class="nav-link" href="http://localhost:8080/novo-cliente">
                     <i class="fas fa-fw fa-user-plus"></i>
                     <span>Novo cliente</span></a>
             </li>
@@ -156,7 +156,7 @@
                         <div class="card-header py-3"
                             style="display: flex;align-items: center;justify-content: space-between;">
                             <h6 class="m-0 font-weight-bold text-primary">Lista completa</h6>
-                            <a href="novocliente.html" class="btn btn-primary btn-icon-split btn-lg mt-3 mb-3"
+                            <a onclick="window.location.href = 'http://localhost:8080/novo-cliente'" class="btn btn-primary btn-icon-split btn-lg mt-3 mb-3"
                                 style="height: 35px; font-size: medium; ">
                                 <span class="icon text-white-50">
                                     <i class="fa fa-solid fa-plus"></i>
@@ -261,7 +261,7 @@
                 }
             })[0].split('=')[1].replace("$"," ")
 
-            console.log(token)
+           
 
             xhr.setRequestHeader('Authorization', token);
 

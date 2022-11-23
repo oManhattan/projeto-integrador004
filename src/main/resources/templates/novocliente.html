@@ -55,7 +55,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion no-print " id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="inicial.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href = 'http://localhost:8080/tela-profissional'>
                 <div class="sidebar-brand-icon rotate-n-15">
                 </div>
                 <div class="sidebar-brand-text mx-3">Smart Trainer</div>
@@ -72,18 +72,18 @@
             </div>
 
             <li class="nav-item ">
-                <a class="nav-link" href="inicial.html">
+                <a class="nav-link" href = 'http://localhost:8080/tela-profissional'>
                     <i class="fas fa-fw fa-users"></i>
                     <span>Meus clientes</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="novocliente.html">
+                <a class="nav-link" href="http://localhost:8080/novo-cliente">
                     <i class="fas fa-fw fa-user-plus"></i>
                     <span>Novo cliente</span></a>
             </li>
-            
-            
+
+
         </ul>
         <!-- End of Sidebar -->
 
@@ -102,7 +102,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    
+
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -131,7 +131,7 @@
                             </div>
                         </li>
 
-                      
+
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -139,7 +139,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">João Vitor Richard</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="nome-user"></span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -190,13 +190,13 @@
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
                                                 <span><b>Primeiro nome</b></span>
-                                                <input required type="text" class="form-control"
-                                                    name="nome" id="primeiroNome" placeholder="Primeiro nome">
+                                                <input required type="text" class="form-control" name="nome"
+                                                    id="primeiroNome" placeholder="Primeiro nome">
                                             </div>
                                             <div class="col-sm-6">
                                                 <span><b>Sobrenome</b></span>
-                                                <input type="text" required class="form-control"
-                                                    name="sobrenome" id="ultimoNome" placeholder="Sobrenome">
+                                                <input type="text" required class="form-control" name="sobrenome"
+                                                    id="ultimoNome" placeholder="Sobrenome">
                                             </div>
                                         </div>
 
@@ -205,8 +205,8 @@
                                             <input type="date" class="form-control" placeholder="Data de nascimento">
                                         </div>
 
-                                        <div class="form-group"> 
-                                            <span><b>Genêro</b></span> 
+                                        <div class="form-group">
+                                            <span><b>Genêro</b></span>
                                             <select name="genero" id="genero" class="form-control" placeholder="Gênero">
                                                 <option value="" disabled selected hidden>Gênero</option>
                                                 <option value="MASCULINO">MASCULINO</option>
@@ -216,19 +216,21 @@
 
                                         <div class="form-group">
                                             <span><b>CPF</b></span>
-                                            <input type="text" required name="cpf" id="cpf" name="cpf"
-                                                class="form-control" placeholder="CPF">
+                                            <input type="text" required id="cpf" name="cpf" class="form-control"
+                                                placeholder="CPF">
                                         </div>
 
                                         <div class="form-group">
                                             <span><b>Endereço de e-mail</b></span>
-                                            <input type="email" required class="form-control"
-                                                name="email" id="exampleInputEmail" placeholder="Endereço de e-mail">
+                                            <input type="email" required class="form-control" name="email"
+                                                id="exampleInputEmail" placeholder="Endereço de e-mail">
                                         </div>
                                         <div class="form-control-user text-center">
 
-                                            <button type="submit" onclick="acao()" class="btn btn-primary btn-icon-split btn-lg mt-3 mb-3" id="cadastro">Cadastrar
-                                                
+                                            <button type="submit" onclick="acao()"
+                                                class="btn btn-primary btn-icon-split btn-lg mt-3 mb-3"
+                                                id="cadastro">Cadastrar
+
                                             </button>
                                         </div>
                                 </div>
@@ -247,7 +249,7 @@
         </div>
         <!-- End of Main Content -->
 
-        
+
 
     </div>
     <!-- End of Content Wrapper -->
@@ -276,7 +278,8 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="http://localhost:8080" onclick='document.cookie = "Authorization=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/"'>Sair</a>
+                    <a class="btn btn-primary" href="http://localhost:8080"
+                        onclick='document.cookie = "Authorization=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/"'>Sair</a>
                 </div>
             </div>
         </div>
@@ -289,7 +292,7 @@
         document.getElementById('dadosForm').addEventListener("submit", function (event) {
             event.preventDefault()
 
-            URL = 'http://192.168.15.16:8080/api/v1/'
+            URL = 'http://localhost:8080/api/v1/'
 
             const dados = {
                 email: document.getElementById('exampleInputEmail').value,
@@ -300,7 +303,7 @@
                 dataNascimento: '2000-11-21',
                 genero: document.getElementById('genero').value,
             }
-            
+
 
             console.log(dados)
 
@@ -308,11 +311,15 @@
 
             xhr.open('POST', `${URL}cliente/register`, true);
 
-            // PEGAR O TOKEN PARA AS REQUISIÇÕES ATRAVÉS DO SESSION STORAGE
-            // xhr.setRequestHeader('Authorization', sessionStorage.getItem('Authorization'))
+            let token = document.cookie.split(";").filter(cookie => {
+                if (cookie.split("=")[0] == "Authorization") {
+                    return cookie.split("=")[1]
+                }
+            })[0].split('=')[1].replace("$", " ")
 
-            // VALOR TRAVADO DO TOKEN PARA AS REQUISIÇÕES 
-            xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInVzZXJfaWQiOjEsInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2OTA4NjAwMCwiZXhwIjoxNjcxNjc4MDAwfQ.5NFtMtIF2aMn7g7NBDS4bIbG6mZmMkICfhKUmbh7SleW1nl7VC8Udj8KIdbcvhAOuYA98Rmx4GGKbEhnWn7M0ws');
+
+
+            xhr.setRequestHeader('Authorization', token);
 
             xhr.setRequestHeader('Content-type', 'application/json');
             xhr.setRequestHeader('Accept', 'application/json');
@@ -322,7 +329,7 @@
             xhr.onload = function () {
                 if (xhr.status === 201) {
                     alert("Cadastrado com sucesso")
-                    location.href="inicial.html"
+                    window.location.href = 'http://localhost:8080/tela-profissional'
                 }
                 else {
                     alert(xhr.responseText)
@@ -340,38 +347,12 @@
 
     </script>
 
-    <!-- EXEMPLO REQUISIÇÃO PARA SALVAR O TOKEN DA SESSÃO DURANTE O LOGIN-->
+
     <script>
-        function teste() {
 
-            const xhr = new XMLHttpRequest();
-
-            //CHAMADA DO MÉTODO COM O ENDPOINT E OS CABEÇALHOS NECESSÁRIOS
-            xhr.open('POST', 'http://localhost:8080/api/v1/login', true)
-            xhr.setRequestHeader('Content-type', 'application/json');
-            xhr.setRequestHeader('Accept', 'application/json');
-
-
-            // AO RETORNO DA CHAMADA FAZ :
-            xhr.onload = function () {
-
-
-                console.log(xhr.getResponseHeader('Authorization'))
-                // SALVA A AUTORIZAÇAO NA SESSÃO DO NAVEGADOR
-                sessionStorage.setItem("Authorization", xhr.getResponseHeader('Authorization'))
-            }
-
-            // BODY DE ENVIO NA REQUISIÇÃO
-            const login = {
-                email: "teste@teste.com",
-                password: "senha123"
-            }
-
-            // PROCESSO DE ENVIO DA REQUISIÇÃO PASSANDO O COPRO 
-            xhr.send(JSON.stringify(login))
-
-
-        }
+        $(document).ready(function () {
+            document.getElementById('nome-user').innerHTML = localStorage.getItem('nome')
+        })
 
 
     </script>

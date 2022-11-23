@@ -55,7 +55,8 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion no-print" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="inicial.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center"
+                href='http://localhost:8080/tela-profissional'>
                 <div class="sidebar-brand-icon rotate-n-15">
                 </div>
                 <div class="sidebar-brand-text mx-3">Smart Trainer</div>
@@ -72,13 +73,13 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="inicial.html">
+                <a class="nav-link" href='http://localhost:8080/tela-profissional'>
                     <i class="fas fa-fw fa-users"></i>
                     <span>Meus clientes</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="novocliente.html">
+                <a class="nav-link" href="http://localhost:8080/novo-cliente">
                     <i class="fas fa-fw fa-user-plus"></i>
                     <span>Novo cliente</span></a>
             </li>
@@ -139,7 +140,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">João Vitor Richard</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="nome-user"></span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -147,7 +148,7 @@
                                 aria-labelledby="userDropdown">
 
                                 <!-- Opções de menu para configuração e visualizar perfil -->
-                                
+
                                 <!-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
@@ -182,7 +183,7 @@
                                 </div>
                                 <div class="card-body text-left d-flex align-items-center justify-content-center">
 
-                                    <form class="user" id="dadosForm" method="POST"
+                                    <form id="dadosForm" method="POST"
                                         action="http://192.168.15.16:8080/api/v1/cliente/register" class="form-group ">
 
                                         <div class="form-group row">
@@ -191,8 +192,7 @@
                                             <div class="col-sm-6 mb-3 ">
                                                 <span><b>Nome completo</b></span>
                                                 <input type="text" disabled required name="nomecompleto"
-                                                    id="nomecompleto" name="nomecompleto" class="form-control"
-                                                    placeholder="Nome completo">
+                                                    id="nomecompleto" class="form-control" placeholder="Nome completo">
                                             </div>
 
                                             <div class="col-sm-6 mb-3 ">
@@ -209,34 +209,35 @@
 
                                             <div class="col-sm-3 mb-3 ">
                                                 <span><b>Altura</b></span>
-                                                <input required type="number" min="0" value="0" class="form-control" name="altura"
-                                                    id="altura" placeholder="Altura">
+                                                <input required type="number" min="0" value="0" class="form-control"
+                                                    name="altura" id="altura" placeholder="Altura">
                                             </div>
 
                                             <div class="col-sm-3 mb-3 ">
                                                 <span><b>Peso atual</b></span>
-                                                <input required type="number" min="0" value="0" step=".01" class="form-control" name="pesoAtual"
-                                                    id="pesoAtual" placeholder="Peso atual">
+                                                <input required type="number" min="0" value="0" step=".01"
+                                                    class="form-control" name="pesoAtual" id="pesoAtual"
+                                                    placeholder="Peso atual">
                                             </div>
 
 
                                             <div class="col-sm-3 mb-3 ">
                                                 <span><b>Músculo esqueletico</b></span>
-                                                <input required type="number" min="0" value="0" step=".01" name="musculoEsqueletico"
-                                                    id="musculoEsqueletico" name="musculoEsqueletico"
+                                                <input required type="number" min="0" value="0" step=".01"
+                                                    name="musculoEsqueletico" id="musculoEsqueletico"
                                                     class="form-control" placeholder="Músculo esquelético">
                                             </div>
 
                                             <div class="col-sm-3 mb-3 ">
                                                 <span><b>Massa muscular</b></span>
-                                                <input required type="number" min="0" value="0" step=".01" name="massaMuscular" id="massaMuscular"
-                                                    name="massaMuscular" class="form-control"
+                                                <input required type="number" min="0" value="0" step=".01"
+                                                    name="massaMuscular" id="massaMuscular" class="form-control"
                                                     placeholder="Massa muscular">
                                             </div>
 
                                             <div class="col-sm-3 mb-3 ">
                                                 <span><b>Idade corporal</b></span>
-                                                <input required type="number" min="0" value="0" name="idadeCorporal" id="idadeCorporal"
+                                                <input required type="number" min="0" value="0" id="idadeCorporal"
                                                     name="idadeCorporal" class="form-control"
                                                     placeholder="Idade corporal">
                                             </div>
@@ -244,20 +245,22 @@
 
                                             <div class="col-sm-3 mb-3 ">
                                                 <span><b>Gordura corporal</b></span>
-                                                <input required type="number" min="0" value="0" step=".01" class="form-control" name="gorduraCorporal"
-                                                    id="gorduraCorporal" placeholder="Gordura corporal">
+                                                <input required type="number" min="0" value="0" step=".01"
+                                                    class="form-control" name="gorduraCorporal" id="gorduraCorporal"
+                                                    placeholder="Gordura corporal">
                                             </div>
                                             <div class="col-sm-3 mb-3 ">
                                                 <span><b>Gordura visceral</b></span>
-                                                <input required type="number" min="0" value="0" step=".01" class="form-control" name="gorduraVisceral"
-                                                    id="gorduraVisceral" placeholder="Gordura visceral">
+                                                <input required type="number" min="0" value="0" step=".01"
+                                                    class="form-control" name="gorduraVisceral" id="gorduraVisceral"
+                                                    placeholder="Gordura visceral">
                                             </div>
 
 
                                             <div class="col-sm-3 mb-3 ">
                                                 <span><b>Metabolismo basal</b></span>
-                                                <input required type="number" min="0" value="0" name="metabolismoBasal"
-                                                    id="metabolismoBasal" name="metabolismoBasal" class="form-control"
+                                                <input required type="number" min="0" value="0" id="metabolismoBasal"
+                                                    name="metabolismoBasal" class="form-control"
                                                     placeholder="Metabolismo basal">
                                             </div>
 
@@ -270,80 +273,85 @@
 
                                             <div class="col-sm-2 mb-3 ">
                                                 <span><b>Torax</b></span>
-                                                <input required type="number" min="0" value="0" step=".01" name="torax" id="torax" name="torax"
-                                                    class="form-control" placeholder="Torax">
+                                                <input required type="number" min="0" value="0" step=".01" id="torax"
+                                                    name="torax" class="form-control" placeholder="Torax">
                                             </div>
 
                                             <div class="col-sm-2 mb-3 ">
                                                 <span><b>Cintura</b></span>
-                                                <input required type="number" min="0" value="0" step=".01" name="cintura" id="cintura" name="cintura"
-                                                    class="form-control" placeholder="Cintura">
+                                                <input required type="number" min="0" value="0" step=".01" id="cintura"
+                                                    name="cintura" class="form-control" placeholder="Cintura">
                                             </div>
 
                                             <div class="col-sm-2 mb-3 ">
                                                 <span><b>Abdômen</b></span>
-                                                <input required type="number" min="0" value="0" step=".01"name="abdomem" id="abdomem" name="abdomem"
-                                                    class="form-control" placeholder="Abdômen">
+                                                <input required type="number" min="0" value="0" step=".01" id="abdomem"
+                                                    name="abdomem" class="form-control" placeholder="Abdômen">
                                             </div>
 
                                             <div class="col-sm-2 mb-3 ">
                                                 <span><b>Quadril</b></span>
-                                                <input required type="number" min="0" value="0" step=".01" name="quadril" id="quadril" name="quadril"
-                                                    class="form-control" placeholder="Quadril">
+                                                <input required type="number" min="0" value="0" step=".01" id="quadril"
+                                                    name="quadril" class="form-control" placeholder="Quadril">
                                             </div>
 
 
                                             <div class="col-sm-2 mb-3 ">
                                                 <span><b>Bíceps esquerdo</b></span>
-                                                <input required type="number" min="0" value="0" step=".01" class="form-control" name="bicepsEsquerdo"
-                                                    id="bicepsEsquerdo" placeholder="Bíceps esquerdo">
+                                                <input required type="number" min="0" value="0" step=".01"
+                                                    class="form-control" name="bicepsEsquerdo" id="bicepsEsquerdo"
+                                                    placeholder="Bíceps esquerdo">
                                             </div>
                                             <div class="col-sm-2 mb-3 ">
                                                 <span><b>Bíceps direito</b></span>
-                                                <input required type="number" min="0" value="0" step=".01" class="form-control" name="bicepsDireito"
-                                                    id="bicepsDireito" placeholder="Bíceps direito">
+                                                <input required type="number" min="0" value="0" step=".01"
+                                                    class="form-control" name="bicepsDireito" id="bicepsDireito"
+                                                    placeholder="Bíceps direito">
                                             </div>
 
 
 
                                             <div class="col-sm-2 mb-3 ">
                                                 <span><b>Antebraço esquerdo</b></span>
-                                                <input required type="number" min="0" value="0" step=".01" class="form-control"
-                                                    name="antebracoEsquerdo" id="antebracoEsquerdo"
+                                                <input required type="number" min="0" value="0" step=".01"
+                                                    class="form-control" name="antebracoEsquerdo" id="antebracoEsquerdo"
                                                     placeholder="Antebraço esquerdo">
                                             </div>
                                             <div class="col-sm-2 mb-3 ">
                                                 <span><b>Antebraço direito</b></span>
-                                                <input required type="number" min="0" value="0" step=".01" class="form-control" name="antebracoDireito"
-                                                    id="antebracoDireito" placeholder="Antebraço direto">
+                                                <input required type="number" min="0" value="0" step=".01"
+                                                    class="form-control" name="antebracoDireito" id="antebracoDireito"
+                                                    placeholder="Antebraço direto">
                                             </div>
 
 
 
                                             <div class="col-sm-2 mb-3 ">
                                                 <span><b>Coxa esquerda</b></span>
-                                                <input required type="number" min="0" value="0" step=".01" class="form-control" name="coxaEsquerda"
-                                                    id="coxaEsquerda" placeholder="Coxa esquerda">
+                                                <input required type="number" min="0" value="0" step=".01"
+                                                    class="form-control" name="coxaEsquerda" id="coxaEsquerda"
+                                                    placeholder="Coxa esquerda">
                                             </div>
                                             <div class="col-sm-2 mb-3 ">
                                                 <span><b>Coxa direita</b></span>
-                                                <input required type="number" min="0" value="0" step=".01" class="form-control" name="coxaDireita"
-                                                    id="coxaDireita" placeholder="Coxa direita">
+                                                <input required type="number" min="0" value="0" step=".01"
+                                                    class="form-control" name="coxaDireita" id="coxaDireita"
+                                                    placeholder="Coxa direita">
                                             </div>
 
 
                                             <div class="col-sm-2 mb-3 ">
                                                 <span><b>Panturilha esquerda</b></span>
-                                                <input required type="number" min="0" value="0" step=".01" class="form-control"
-                                                    name="panturrilhaEsquerda" id="panturrilhaEsquerda"
-                                                    placeholder="Panturilha esquerda">
+                                                <input required type="number" min="0" value="0" step=".01"
+                                                    class="form-control" name="panturrilhaEsquerda"
+                                                    id="panturrilhaEsquerda" placeholder="Panturilha esquerda">
                                             </div>
 
                                             <div class="col-sm-2 mb-3 ">
                                                 <span><b>Panturilha direita</b></span>
-                                                <input required type="number" min="0" value="0" step=".01" class="form-control"
-                                                    name="panturrilhaDireita" id="panturrilhaDireita"
-                                                    placeholder="Panturilha direita">
+                                                <input required type="number" min="0" value="0" step=".01"
+                                                    class="form-control" name="panturrilhaDireita"
+                                                    id="panturrilhaDireita" placeholder="Panturilha direita">
                                             </div>
 
 
@@ -372,24 +380,23 @@
 
                                             <div class="row-sm-3 p-2">
                                                 <span><b>Nome exercicio</b></span>
-                                                <input type="text"  class="form-control" name="nomeExercicio"
+                                                <input type="text" class="form-control" name="nomeExercicio"
                                                     id="nomeExercicio" placeholder="Nome exercicio">
                                             </div>
                                             <div class="col-sm-2   p-2">
                                                 <span><b>Muscúlo</b></span>
-                                                <input  type="text" class="form-control" name="musculoExercicio"
+                                                <input type="text" class="form-control" name="musculoExercicio"
                                                     id="musculoExercicio" placeholder="Muscúlo">
                                             </div>
                                             <div class="col-sm-2  p-2">
                                                 <span><b>Séries</b></span>
-                                                <input type="number"  class="form-control" name="serieExercicio"
+                                                <input type="number" class="form-control" name="serieExercicio"
                                                     id="serieExercicio" placeholder="Qtd. de séries">
                                             </div>
                                             <div class="col-sm-2  p-2">
                                                 <span><b>Repetições</b></span>
-                                                <input  type="number" class="form-control"
-                                                    name="repeticaoExercicio" id="repeticaoExercicio"
-                                                    placeholder="Qtd. de repetições">
+                                                <input type="number" class="form-control" name="repeticaoExercicio"
+                                                    id="repeticaoExercicio" placeholder="Qtd. de repetições">
                                             </div>
                                             <div class="col-sm-2 text-center p-2">
 
@@ -421,8 +428,8 @@
 
                                         <div class="form-control-user text-center m-2 p-0">
 
-                                            <button type="submit"
-                                                class="btn btn-primary  btn-lg mt-3 mb-3" id="cadastro">Salvar
+                                            <button type="submit" class="btn btn-primary  btn-lg mt-3 mb-3"
+                                                id="cadastro">Salvar
                                                 informações</button>
                                         </div>
 
@@ -567,7 +574,8 @@
                                 <div class="modal-footer">
                                     <button class="btn btn-secondary" type="button"
                                         data-dismiss="modal">Cancelar</button>
-                                    <a class="btn btn-primary" href="http://localhost:8080" onclick='document.cookie = "Authorization=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/"'>Sair</a>
+                                    <a class="btn btn-primary" href="http://localhost:8080"
+                                        onclick='document.cookie = "Authorization=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/"'>Sair</a>
                                 </div>
                             </div>
                         </div>
@@ -592,16 +600,25 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <script>
-                        URL = 'http://192.168.15.16:8080/api/v1/'
+                        URL = 'http://localhost:8080/api/v1/'
 
                         console.log(localStorage.getItem('id'))
 
                         const xhr = new XMLHttpRequest();
                         xhr.open('GET', `${URL}cliente/pagina-cliente?cliente-id=${localStorage.getItem('id')}`, true);
 
-                        xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2OTA4NjAwMCwiZXhwIjoxNjcxNjc4MDAwfQ.hwqMsIGrwHHCvq320foQwJbpMu44ERkQLI_xMJP1qILqyqUZxCJP-KwUuAfa6NqEjc3qIlvh_fgHWYWt1BZu3Q');
+                        let token = document.cookie.split(";").filter(cookie => {
+                            if (cookie.split("=")[0] == "Authorization") {
+                                return cookie.split("=")[1]
+                            }
+                        })[0].split('=')[1].replace("$", " ")
+
+
+
+                        xhr.setRequestHeader('Authorization', token);
+
                         xhr.onload = function () {
                             if (xhr.status === 200) {
                                 const dados = JSON.parse(xhr.responseText);
@@ -623,7 +640,7 @@
                             }
                             else {
 
-                                URL = 'http://192.168.15.16:8080/api/v1/'
+                                URL = 'http://localhost:8080/api/v1/'
 
                                 const dados = {
                                     dataRealizacao: document.getElementById('dt_avaliacao').value,
@@ -652,8 +669,15 @@
 
                                 xhr.open('POST', `${URL}avaliacao/create?cliente-id=${localStorage.getItem('id')}`, true);
 
-                                // VALOR TRAVADO DO TOKEN PARA AS REQUISIÇÕES 
-                                xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxLCJyb2xlIjp7ImF1dGhvcml0eSI6IlJPTEVfUFJPRklTU0lPTkFMIn0sInN1YiI6Im1hdGhldXNiYXR1cXVlQGdtYWlsLmNvbSIsImlhdCI6MTY2OTA4NjAwMCwiZXhwIjoxNjcxNjc4MDAwfQ.hwqMsIGrwHHCvq320foQwJbpMu44ERkQLI_xMJP1qILqyqUZxCJP-KwUuAfa6NqEjc3qIlvh_fgHWYWt1BZu3Q');
+                                let token = document.cookie.split(";").filter(cookie => {
+                                    if (cookie.split("=")[0] == "Authorization") {
+                                        return cookie.split("=")[1]
+                                    }
+                                })[0].split('=')[1].replace("$", " ")
+
+
+
+                                xhr.setRequestHeader('Authorization', token);
 
                                 xhr.setRequestHeader('Content-type', 'application/json');
                                 xhr.setRequestHeader('Accept', 'application/json');
@@ -678,7 +702,7 @@
                     <script>
                         function add_treinos() {
 
-                            URL = 'http://192.168.15.16:8080/api/v1/'
+                            URL = 'http://localhost:8080/api/v1/'
 
                             let dados = []
                             let linha = document.getElementsByClassName('tp_linha')
@@ -756,6 +780,14 @@
                             xhr.open('DELETE', `${URL}treino/delete/all?clienteid=${localStorage.getItem('id')}`, true);
 
 
+                            let token = document.cookie.split(";").filter(cookie => {
+                                if (cookie.split("=")[0] == "Authorization") {
+                                    return cookie.split("=")[1]
+                                }
+                            })[0].split('=')[1].replace("$", " ")
+
+
+
                             xhr.setRequestHeader('Authorization', token);
 
 
@@ -768,6 +800,14 @@
                                     xhr.setRequestHeader('Content-type', 'application/json');
                                     xhr.setRequestHeader('Accept', 'application/json');
 
+                                    let token = document.cookie.split(";").filter(cookie => {
+                                        if (cookie.split("=")[0] == "Authorization") {
+                                            return cookie.split("=")[1]
+                                        }
+                                    })[0].split('=')[1].replace("$", " ")
+
+
+
                                     xhr.setRequestHeader('Authorization', token);
 
 
@@ -775,7 +815,7 @@
                                         if (xhr.status === 200) {
                                             console.log("Cadastro lista de treinos com sucesso")
                                             alert("Avaliação cadastrada com sucesso!")
-                                            location.href = './tabelaclientes.html'
+                                            window.location.href = 'http://localhost:8080/tela-tabela-cliente'
 
                                         }
                                         else {
@@ -867,6 +907,16 @@
                             $(this).parents('tr').remove();
                         })
                     </script>
+
+                    <script>
+
+                        $(document).ready(function () {
+                            document.getElementById('nome-user').innerHTML = localStorage.getItem('nome')
+                        })
+
+
+                    </script>
+
 
 
 </body>

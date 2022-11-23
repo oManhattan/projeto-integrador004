@@ -35,7 +35,7 @@ public class JWTFilter extends OncePerRequestFilter {
 
         String authorization = request.getHeader("Authorization");
 
-        if (authorization == null) {
+        if (authorization == null && request.getCookies() != null) {
             Cookie authorizationCookie = Arrays.asList(request.getCookies()).stream().filter((cookie) -> cookie.getName().equals("Authorization")).findFirst().orElse(null);
             if (authorizationCookie != null) {
                 authorization = authorizationCookie.getValue().replace("$", " ");

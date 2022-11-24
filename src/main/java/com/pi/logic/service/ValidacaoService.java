@@ -25,8 +25,8 @@ public class ValidacaoService {
 
 		for (int i = 0; i < 10; i++) {
 			String dummyCPF = String.format("%d", i).repeat(11);
-			if (cpf.equals(dummyCPF)) {
-				throw new Exception("CPF inválido 1");
+			if (formattedCPF.equals(dummyCPF)) {
+				throw new Exception("CPF inválido.");
 			}
 		}
 

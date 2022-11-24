@@ -858,7 +858,7 @@
 
             const xhr = new XMLHttpRequest();
 
-            xhr.open('GET', `${URL}cliente/pagina-cliente?cliente-id=${localStorage.getItem('id')}`, true);
+            xhr.open('GET', `${URL}cliente/pagina-cliente?cliente-id=${localStorage.getItem('id-cliente')}`, true);
 
             let token = document.cookie.split(";").filter(cookie => {
                 if (cookie.split("=")[0] == "Authorization") {
@@ -1085,7 +1085,7 @@
 
             const xhr = new XMLHttpRequest();
 
-            xhr.open('GET', `${URL}cliente/pagina-cliente?cliente-id=${localStorage.getItem('id')}`, true);
+            xhr.open('GET', `${URL}cliente/pagina-cliente?cliente-id=${localStorage.getItem('id-cliente')}`, true);
 
             let token = document.cookie.split(";").filter(cookie => {
                 if (cookie.split("=")[0] == "Authorization") {

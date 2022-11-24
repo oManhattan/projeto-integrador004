@@ -111,7 +111,10 @@
 
             xhr.onload = function () {
                 if (xhr.status === 200) {
+                    
                     localStorage.setItem("nome", JSON.parse(xhr.responseText).nome + ' ' + JSON.parse(xhr.responseText).sobrenome)
+                    localStorage.setItem("id-cliente", JSON.parse(xhr.responseText).id)
+
                     document.cookie = "Authorization=Bearer$" + xhr.getResponseHeader('Authorization')
                     window.location.href = 'http://localhost:8080/'
                 } else {

@@ -823,7 +823,7 @@
                     Você não possui uma avaliação cadastrada, entre em contato com o seu profissional para realizar uma nova avaliação
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <a class="btn btn-primary" href="http://localhost:8080/tela-cliente">OK</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">OK</button>
                 </div>
             </div>
         </div>
@@ -872,7 +872,18 @@
                 if (xhr.status === 200) {
                     const dados = JSON.parse(xhr.responseText);
                     if (dados.ultima_avaliacao == null) {
+
                         $("#clienteSemTreino").modal()
+
+                        document.getElementById('nome').value = dados.cliente.nome + ' ' + dados.cliente.sobrenome;
+                        document.getElementById('dtnascimento').value = `${dados.cliente.dataNascimento.split("-")[2]}/${dados.cliente.dataNascimento.split("-")[1]}/${dados.cliente.dataNascimento.split("-")[0]}`;
+                        document.getElementById('genero').value = dados.cliente.genero;
+                        document.getElementById('email').value = dados.cliente.email;
+                        document.getElementById('cpf').value = dados.cliente.cpf;
+
+                        document.getElementById('treinosClientes').insertAdjacentHTML('beforeend', `<h3 class="h5 p-3 text-gray-800">Sem treino cadastrado.</h3>`)
+
+                 
                     }
                     else {
                         document.getElementById('dtConsulta').innerHTML = `Dashboard - Última avaliação: ${dados.ultima_avaliacao.dataRealizacao.split("-")[2]}/${dados.ultima_avaliacao.dataRealizacao.split("-")[1]}/${dados.ultima_avaliacao.dataRealizacao.split("-")[0]}`;
@@ -1105,7 +1116,7 @@
                     if (dados.treinos.length != 0) {
 
 
-                        for (const [index, info] of dados.treinos) {
+                        for (const [index, info] of dados.treinos.entries()) {
                             document.getElementById('myTab').insertAdjacentHTML('beforeend', `<li class="nav-item"><a class="nav-link ${index == 0 ? "active" : " "}" id="treino-${info.titulo.toLowerCase()}-tab" data-toggle="tab" href="#treino-${info.titulo.toLowerCase()}" role="tab" aria-controls="treino-${info.titulo.toLowerCase()}" aria-selected="true">${info.titulo}</a></li>`)
 
                             document.getElementById('myTabContent').insertAdjacentHTML('beforeend', `<div class="tab-pane fade ${index == 0 ? "show active" : " "}" id="treino-${info.titulo.toLowerCase()}" role="tabpanel" aria-labelledby="treino-${info.titulo.toLowerCase()}-tab"> <div class="list-group" id="infotreino${info.titulo}"></div></div>`)
@@ -1136,6 +1147,8 @@
 
 
     </script>
+
+    
 
 </body>
 
